@@ -1,0 +1,16 @@
+### FRONTEND ###
+/frontend/node_modules
+/frontend/dist
+
+### BACKEND ###
+/backend/target
+
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+.vscode/
