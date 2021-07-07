@@ -3,7 +3,6 @@ import Home from "../views/Home.vue";
 import Constructor from "../views/Constructor.vue"
 import Catalog from "../views/Сatalog.vue"
 import Registration from "../views/Registration.vue"
-import Entrance from "../views/Entrance.vue"
 import Basket from "../views/Basket.vue" 
 
 const routes = [
@@ -26,11 +25,6 @@ const routes = [
     path: "/registration",
     name: "Registration",
     component: Registration
-  },
-  {
-    path: "/entrance",
-    name: "Entrance",
-    component: Entrance
   },
   {
     path: "/basket",
