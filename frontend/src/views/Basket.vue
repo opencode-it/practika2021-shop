@@ -1,11 +1,13 @@
 <template>
-  <h1>Главная</h1>
+  <h1>Корзина</h1>
 </template>
 
 <script>
-
-
 export default {
-  
-};
+
+}
 </script>
+
+<style>
+
+</style>
