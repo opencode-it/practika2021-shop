@@ -4,6 +4,7 @@ server:
     whitelabel:
       enabled: true
 
+
 spring:
   datasource:
     username: 'pracktika2021'
