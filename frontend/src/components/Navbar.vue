@@ -1,33 +1,24 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Магазин</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <router-link class="nav-link" aria-current="page" to="/">Главная</router-link>
-        <router-link class="nav-link" to="/constructor">Конструктор</router-link>
-        <router-link class="nav-link" to="/catalog">Каталог</router-link>
-      </div>
-      <div class="right-side d-flex">
-        <router-link to="/basket">
-          <div class="basket-high">
-            <div class="counter"></div>
-            <img src="../assets/basket.svg" class="basket"/>
-          </div>
-        </router-link>
-        <router-link to="/registration">
-          <button class="btn btn-danger registration">Регистрация</button>
-        </router-link>
-        <router-link to="/entrance">
-          <button class="btn btn-info ms-2 entrance">Вход</button>
+  <div class="navbar">
+    <div class="container navbar-line">
+      <div class="navbar-content">
+        <router-link to="/" class="navbar-logo">
+          <img src="../assets/LOGO_2_0_1.svg" alt="">
+        </router-link>  
+        <ul class="navbar-menu">
+          <router-link to="/catalog" class="navbar-menu__item">Каталог</router-link>
+          <router-link to="/" class="navbar-menu__item">Домашняя</router-link>
+          <router-link to="/constructor" class="navbar-menu__item">Конструктор</router-link>
+          <button class="navbar-menu__item login-btn" @click="$store.state.modalActive = true">
+            Вход
+          </button>
+        </ul>
+        <router-link to="/basket" class="basket">
+          <img src="../assets/basket.png" alt="basket">
         </router-link>
       </div>
     </div>
   </div>
-</nav>
 </template>
 
 <script>
@@ -37,29 +28,59 @@ export default {
 </script>
 
 <style lang="scss">
-.basket{
-  margin-right: 20px;
-  width: 40px;
-  height: 40px;
-  color: white;
-}
-.basket-high{
-  position: relative;
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+.navbar {
+  
 }
 
-.counter{
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: rgb(241, 48, 48);
-  position: absolute;
-  font-weight: bold;
-  color: black;
-  top: -7px;
-  left: -5px;
-  display: none;
-  justify-content: center;
+.navbar-logo.active {
+  border-bottom: none;
+}
+
+.login-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.basket{
+  &:hover {
+    // добавить эффекты
+  }
+}
+
+.active {
+  border-bottom: 2px solid #ED7102;
+}
+
+.navbar-content {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+.navbar-logo {
+  width: 308px;
+  height: 89px;
+}
+.navbar-line{
+  padding: 27px 0;
+  border-bottom: 1px solid #B8B3AD;
+}
+.navbar-menu {
+
+  &__item {
+    text-decoration: none;
+    color: black;
+    margin-left: 118px;
+    padding-bottom: 8px;
+    &:hover {
+      color: #ED7102;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+  }
 }
 
 </style>
