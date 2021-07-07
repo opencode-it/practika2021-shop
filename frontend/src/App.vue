@@ -1,11 +1,18 @@
 <template>
-  <div class="container text-center">
-    <h1>Проверка bootstrap</h1>
-    <div>
-      <button class="btn btn-danger">Кнопка1</button>
-    </div>
+  <div>
+    <Navbar/>
+    <router-view></router-view>
   </div>
 </template>
+
+<script>
+import Navbar from './components/Navbar.vue'
+
+export default {
+  components: { Navbar },
+  
+}
+</script>
 
 <style lang="scss">
 @import "bootstrap/scss/bootstrap"
