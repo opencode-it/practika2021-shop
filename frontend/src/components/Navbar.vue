@@ -14,6 +14,7 @@
           </button>
         </ul>
         <router-link to="/basket" class="basket">
+          <div class="counter">0</div>
           <img src="../assets/basket.png" alt="basket">
         </router-link>
       </div>
@@ -27,7 +28,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 .navbar {
@@ -45,9 +46,24 @@ export default {
 }
 
 .basket{
+  position: relative;
   &:hover {
     // добавить эффекты
   }
+}
+
+.counter{
+  position: absolute;
+  width: 25px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: #fc7500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  top: -5px;
+  right: -10px;
 }
 
 .active {
