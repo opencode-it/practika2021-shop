@@ -8,7 +8,7 @@
       <div class="products-flex">
         <router-link to="/" class="flex-item" v-for="cup in $store.state.cups" :key="cup.id">
           <img :src='cup.link' class="item">
-          <span class="product-name">{{cup.name}}</span>
+          <span class="product-name">{{cup.name.substring(0, 12)}}</span>
         </router-link>
       </div>
     </div>
@@ -21,7 +21,7 @@
       <div class="products-flex">
         <router-link to="/" class="flex-item" v-for="tshirt in $store.state.tshirts" :key="tshirt.id">
           <img :src='tshirt.link' class="item">
-          <span class="product-name">{{tshirt.name}}</span>
+          <span class="product-name">{{tshirt.name.substring(0, 12)}}</span>
         </router-link >
       </div>
     </div>
@@ -34,7 +34,7 @@
       <div class="products-flex">
         <router-link to="/" class="flex-item" v-for="plate in $store.state.plates" :key="plate.id">
           <img :src='plate.link' class="item">
-          <span class="product-name">{{plate.name}}</span>
+          <span class="product-name">{{plate.name.substring(0, 12)}}</span>
         </router-link >
       </div>
     </div>
@@ -83,9 +83,11 @@ export default {
   &:first-child {
     margin-left: 0;
   }
-  &:hover {
-    box-shadow: -1px 1px 14px 19px rgba(34, 60, 80, 0.2);
-  }
+}
+
+.flex-item:hover {
+  background-color: #e79247;
+  box-shadow: -1px 1px 14px 19px rgba(34, 60, 80, 0.2);
 }
 
 .item{

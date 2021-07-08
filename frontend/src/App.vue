@@ -28,7 +28,7 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 .container{
-  max-width: 1117px;
+  max-width: 1070px;
   margin: 0 auto;
 }
 </style>

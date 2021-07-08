@@ -3,6 +3,9 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     modalActive: false,
+    catalog: {
+      isActive: false
+    },
     cups: [
       {link: require('../assets/cups/cup1.svg'), id:0, name: 'BA-BUM-TSS!'},
       {link: require('../assets/cups/cup2.svg'), id:1, name: 'NEO-BUM'},

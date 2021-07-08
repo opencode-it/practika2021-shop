@@ -31,9 +31,6 @@ export default {
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
-.navbar {
-  
-}
 
 .navbar-logo.active {
   border-bottom: none;
@@ -82,6 +79,7 @@ export default {
 .navbar-line{
   padding: 27px 0;
   border-bottom: 1px solid #B8B3AD;
+  margin-bottom: 30px;
 }
 .navbar-menu {
 
