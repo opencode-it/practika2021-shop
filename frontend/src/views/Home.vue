@@ -1,8 +1,7 @@
 <template>
   <div class="home">
     <div class="container">
-      <!-- slider place -->
-
+      <Slider/>
       <Products/>
       <About/>
       <Footer/>
@@ -14,10 +13,11 @@
 import About from '../components/About.vue';
 import Footer from '../components/Footer.vue';
 import Products from '../components/Products.vue';
+import Slider from '../components/Slider.vue';
 
 
 export default {
-  components: { Products, About, Footer }
+  components: { Products, About, Footer, Slider }
 };
 </script>
 
