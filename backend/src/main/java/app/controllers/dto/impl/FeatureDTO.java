@@ -20,8 +20,8 @@ public enum FeatureDTO implements DTO {;
         UnitsDTO.Response.Get getUnits();
     }
 
-    private interface Value {
-
+    private interface FeatureValue {
+        String getFeatureValue();
     }
 
     private interface FeaturePrice {
@@ -36,7 +36,7 @@ public enum FeatureDTO implements DTO {;
         }
 
         @Data
-        public static class
+        public static class UpdateUnit
 
 
     }
