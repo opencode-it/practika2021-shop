@@ -1,9 +1,6 @@
 package app.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "discount")
 @Data
+@Builder
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor

@@ -10,6 +10,8 @@ import javax.persistence.*;
 /**
  * @author Krll
  * */
+@Entity
+@Table(name = "base_entity")
 @Inheritance(strategy = InheritanceType.JOINED)
 @AllArgsConstructor
 @NoArgsConstructor
