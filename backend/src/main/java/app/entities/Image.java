@@ -9,17 +9,15 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Feature")
 @Data
+@Table(name = "image")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Feature extends AbstractEntity{
+public class Image extends AbstractEntity{
     @Column
-    private String name;
-
+    String path;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "unit_ID")
-    private Units unit;
-
+    @JoinColumn(name = "image_duty_id")
+    ImageDuty duty;
 }
