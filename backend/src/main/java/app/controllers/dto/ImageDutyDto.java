@@ -14,6 +14,7 @@ public enum ImageDutyDto {;
         public static class Get implements Name {
         String name;
     }
+
     }
 
     public enum Response {;
