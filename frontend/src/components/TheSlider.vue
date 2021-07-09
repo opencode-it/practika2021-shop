@@ -9,7 +9,7 @@
 
     <div class="slider-place">
       <div class="slider-item" v-for="item in 3" :key="item">
-        <img src="../assets/slider-img.png" />
+        <img src="../../public/img/slider-img.png" />
         <h1 class="slider-text">
           Cоздай свой дизайн в<br />
           удобном конструкторе
