@@ -3,7 +3,7 @@
     <div class="container navbar-line">
       <div class="navbar-content">
         <router-link to="/" class="navbar-logo">
-          <img src="../assets/LOGO_2_0_1.svg" alt="">
+          <img src="../../public/img/LOGO_2_0_1.svg" alt="">
         </router-link>  
         <ul class="navbar-menu">
           <router-link to="/catalog" class="navbar-menu__item">Каталог</router-link>
@@ -15,7 +15,7 @@
         </ul>
         <router-link to="/basket" class="basket">
           <div class="counter">0</div>
-          <img src="../assets/basket.png" alt="basket">
+          <img src="../../public/img/basket.png" alt="basket">
         </router-link>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <TheNavbar/>
     <router-view></router-view>
     <The-footer/>
@@ -28,5 +28,12 @@ body {
 .container{
   max-width: 1070px;
   margin: 0 auto;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 </style>
