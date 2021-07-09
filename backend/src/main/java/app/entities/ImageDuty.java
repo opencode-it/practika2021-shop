@@ -1,10 +1,7 @@
 package app.entities;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +11,7 @@ import javax.persistence.Table;
 @Table(name = "ImageDuty")
 @Builder
 @Data
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 public class ImageDuty extends AbstractEntity{
