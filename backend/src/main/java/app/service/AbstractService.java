@@ -6,11 +6,21 @@ import app.mapper.AbstractMapper;
 import app.repository.LongKeyRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Абстрактный сервис с базовым CRUD-функционалом
+ * @param <E> тип сущности, ограниченный {@link AbstractEntity}
+ * @param <D> тип DTO, ограниченный {@link AbstractDto}
+ * @param <R> тип репоозитория, ограниченный {@link LongKeyRepository}
+ * @param <M> тип маппера, ограниченный {@link AbstractMapper}
+ *
+ * @author Александров Илья
+ */
 @Service
 @Data
 @AllArgsConstructor
@@ -19,37 +29,73 @@ public abstract class AbstractService<E extends AbstractEntity,
                                       R extends LongKeyRepository<E>,
                                       M extends AbstractMapper<E, D>> {
 
+    @Autowired
     private R repository;
 
+    @Autowired
     private M mapper;
 
+    /**
+     *
+     * @param dto объект DTO, который конвертируется маппером
+     *            и сохраняется репозиторием как сущность
+     * @return объект DTO - представление сохраненной сущности
+     */
     public D save(D dto) {
         E savedEntity = repository.save(mapper.toEntity(dto));
         return mapper.toDto(savedEntity);
     }
 
+    /**
+     *
+     * @param dtoList список DTO, который конвертируется маппером
+     *                и сохраняется репозиторием как список сущностей
+     * @return список DTO - представление сохраненных сущностей
+     */
     public List<D> saveAll(List<D> dtoList) {
         List<E> savedEntities = repository.saveAll(mapper.toEntityList(dtoList));
         return mapper.toDtoList(savedEntities);
     }
 
+    /**
+     *
+     * @param id ключ, по которому осуществляется поиск сущности в БД
+     * @return Optional с результатом поиска в БД
+     */
     public Optional<D> findBy(Long id) {
         D dto = mapper.toDto(repository.getOne(id));
         return Optional.of(dto);
     }
 
+    /**
+     *
+     * @return объекты DTO - представление содержимого таблицы
+     */
     public List<D> findAll() {
         return mapper.toDtoList(repository.findAll());
     }
 
+    /**
+     *
+     * @param id ключ, по которому сущность удаляется из БД
+     */
     public void deleteBy(Long id) {
         repository.delete(repository.getOne(id));
     }
 
+    /**
+     *
+     * @param id ключ
+     * @return есть ли сущность с заданным ключом в таблице
+     */
     public Boolean exists(Long id) {
         return repository.existsById(id);
     }
 
+    /**
+     *
+     * @return размер таблицы
+     */
     public Long count() {
         return repository.count();
     }
