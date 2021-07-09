@@ -8,23 +8,23 @@ import java.util.List;
 public enum OrdersDTO {;
 
     private interface Account {
-        AccountDTO account();
+        AccountDTO.Request.Get getAccount();
     }
 
-    private interface Products {
-        List<Product> products();
-    }
+ //   private interface Products
 
     private interface Count {
-        Integer count();
+        Integer getCount();
     }
+/*
 
     private interface Discount {
-        DiscountDTO discount();
+        DiscountDTO getDiscount();
     }
+*/
 
     private interface Date {
-        LocalDateTime date();
+        LocalDateTime getDate();
     }
 
     /**
