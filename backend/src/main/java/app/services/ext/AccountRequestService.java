@@ -1,9 +1,10 @@
-package app.services;
+package app.services.ext;
 
 import app.controllers.dto.impl.AccountDTO;
 import app.entities.Account;
-import app.mappers.AccountRequestMapper;
-import app.repositories.AccountRepository;
+import app.mappers.impl.AccountRequestMapper;
+import app.repositories.impl.AccountRepository;
+import app.services.AbstractService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

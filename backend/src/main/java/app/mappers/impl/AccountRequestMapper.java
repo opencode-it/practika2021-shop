@@ -1,7 +1,8 @@
-package app.mappers;
+package app.mappers.impl;
 
 import app.controllers.dto.impl.AccountDTO;
 import app.entities.Account;
+import app.mappers.AbstractMapper;
 import org.mapstruct.Mapper;
 
 @Mapper(uses = RightsRequestMapper.class)
