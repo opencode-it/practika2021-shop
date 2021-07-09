@@ -2,9 +2,11 @@ package app.mapper;
 
 import app.dto.AbstractDto;
 import app.entities.AbstractEntity;
+import org.mapstruct.Mapper;
 
 import java.util.List;
 
+@Mapper
 public interface AbstractMapper<E extends AbstractEntity, D extends AbstractDto> {
 
     E toEntity(D dto);
