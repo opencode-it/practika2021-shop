@@ -1,30 +1,25 @@
 package app.controllers.dto.impl;
 
-import app.controllers.dto.ImageDutyDto;
 import lombok.Data;
 import lombok.Value;
 /**
  * @author ZubchenkoArtem
  * */
-public enum ImageDTO  {
-    ;
+public enum ImageDTO {;
 
     private interface Path {
         String getPath();
     }
 
-    private interface ImageDuty  {
-        ImageDutyDto.Request.Get getImageDyte();
+    private interface ImageDuty {
+        String getImageDuty();
     }
 
-
     public enum Request {;
-
         @Data
         public static class Get implements Path, ImageDuty {
             String path;
-            String imageDyte;
-
+            String ImageDuty;
 
         }
 
@@ -36,15 +31,8 @@ public enum ImageDTO  {
             private String path;
             private String ImageDuty;
 
-
-            @Override
-            public ImageDutyDto.Request.Get getImageDyte() {
-                return null;
-            }
         }
-        }
-
-
+    }
 
     public enum Response {
         ;
@@ -53,12 +41,6 @@ public enum ImageDTO  {
         public static class GetImage implements Path, ImageDuty {
             String path;
             String ImageDuty;
-
-
-            @Override
-            public ImageDutyDto.Request.Get getImageDyte() {
-                return null;
-            }
         }
 
     }
