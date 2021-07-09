@@ -46,7 +46,7 @@ public abstract class RESTController<D extends DTO, S extends AbstractService<?,
             return null;
         }
 
-        return edited;
+
     }
 
     @DeleteMapping("/{id}")
