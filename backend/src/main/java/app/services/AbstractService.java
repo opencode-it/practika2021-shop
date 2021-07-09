@@ -6,6 +6,7 @@ import app.mappers.AbstractMapper;
 import app.repositories.LongKeyRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ import java.util.Optional;
  */
 @Service
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 public abstract class AbstractService<E extends AbstractEntity,
                                       D,
