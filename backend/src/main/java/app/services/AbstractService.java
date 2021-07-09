@@ -1,9 +1,9 @@
-package app.service;
+package app.services;
 
 import app.dto.AbstractDto;
 import app.entities.AbstractEntity;
-import app.mapper.AbstractMapper;
-import app.repository.LongKeyRepository;
+import app.mappers.AbstractMapper;
+import app.repositories.LongKeyRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +30,10 @@ public abstract class AbstractService<E extends AbstractEntity,
                                       M extends AbstractMapper<E, D>> {
 
     @Autowired
-    private R repository;
+    R repository;
 
     @Autowired
-    private M mapper;
+    M mapper;
 
     /**
      *

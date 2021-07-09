@@ -1,4 +1,4 @@
-package app.mapper;
+package app.mappers;
 
 import app.dto.AbstractDto;
 import app.entities.AbstractEntity;
