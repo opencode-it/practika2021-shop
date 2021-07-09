@@ -16,7 +16,7 @@ import java.util.Optional;
 /**
  * Абстрактный сервис с базовым CRUD-функционалом
  * @param <E> тип сущности, ограниченный {@link AbstractEntity}
- * @param <D> тип DTO, ограниченный {@link DTO}
+ * @param <D> тип DTO
  * @param <R> тип репоозитория, ограниченный {@link LongKeyRepository}
  * @param <M> тип маппера, ограниченный {@link AbstractMapper}
  *
@@ -26,8 +26,7 @@ import java.util.Optional;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class AbstractService<E extends AbstractEntity,
-                                      D,
+public abstract class AbstractService<E extends AbstractEntity, D,
                                       R extends LongKeyRepository<E>,
                                       M extends AbstractMapper<E, D>> {
 

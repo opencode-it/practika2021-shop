@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class AccountRequestService extends AbstractService<Account,
-                                                    AccountDTO.Request.Create,
-                                                    AccountRepository,
-                                                    AccountRequestMapper> {
+                                                           AccountDTO.Request.Create,
+                                                           AccountRepository,
+                                                           AccountRequestMapper> {
 
 }
