@@ -1,19 +1,17 @@
 <template>
   <div>
-    <Navbar/>
-    <div v-if="$store.state.modalActive">
-      <Modal/>
-    </div>
+    <TheNavbar/>
     <router-view></router-view>
+    <The-footer/>
   </div>
 </template>
 
 <script>
-import Modal from './components/Modal.vue'
-import Navbar from './components/Navbar.vue'
+import TheNavbar from './components/TheNavbar.vue'
+import TheFooter from './components/TheFooter.vue'
 
 export default {
-  components: { Navbar, Modal },
+  components: { TheNavbar, TheFooter },
   
 }
 </script>

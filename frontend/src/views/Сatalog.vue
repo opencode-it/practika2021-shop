@@ -1,21 +1,24 @@
 <template>
   <div class="catalog">
     <div class="container">
-      <Catalog-navbar/>
-      <Search/>
+      <TheCatalog-navbar/>
+      <TheSearch/>
+      <TheCatalog-content/>
     </div>
   </div>
 </template>
 
 <script>
-import CatalogNavbar from '../components/CatalogNavbar.vue'
-import Search from '../components/Search.vue'
+import TheCatalogContent from '../components/TheCatalogContent.vue'
+import TheCatalogNavbar from '../components/TheCatalogNavbar.vue'
+import TheSearch from '../components/TheSearch.vue'
+
 export default {
-  components: { CatalogNavbar, Search },
+  components: { TheCatalogNavbar, TheSearch, TheCatalogContent },
 
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

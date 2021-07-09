@@ -1,26 +1,29 @@
 <template>
   <div class="home">
     <div class="container">
-      <Slider/>
-      <Products/>
-      <About/>
-      <Footer/>
+      <TheSlider/>
+      <TheProducts  
+        v-for="item in $store.state.products"
+        :products="item.content"
+        :title="item.title"
+        :key="item"
+      />
+      <TheAbout/>
     </div>
   </div>
 </template>
 
 <script>
-import About from '../components/About.vue';
-import Footer from '../components/Footer.vue';
-import Products from '../components/Products.vue';
-import Slider from '../components/Slider.vue';
+import TheAbout from '../components/TheAbout.vue';
+import TheProducts from '../components/TheProducts.vue';
+import TheSlider from '../components/TheSlider.vue';
 
 
 export default {
-  components: { Products, About, Footer, Slider }
+  components: { TheProducts, TheAbout, TheSlider }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>

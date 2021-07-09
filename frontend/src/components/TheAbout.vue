@@ -23,7 +23,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .about-title {
   padding-top: 50px;
   margin-bottom: 20px;
