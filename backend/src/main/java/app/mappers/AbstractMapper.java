@@ -14,7 +14,7 @@ import java.util.List;
  * @author Александров Илья
  */
 @Mapper
-public interface AbstractMapper<E extends AbstractEntity, D extends DTO> {
+public interface AbstractMapper<E extends AbstractEntity, D> {
 
     E toEntity(D dto);
     List<E> toEntityList(List<D> dtoList);
