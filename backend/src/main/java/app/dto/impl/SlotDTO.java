@@ -1,6 +1,6 @@
-package app.controllers.dto.impl;
+package app.dto.impl;
 
-import app.controllers.dto.DTO;
+import app.dto.DTO;
 import lombok.Data;
 import lombok.Value;
 

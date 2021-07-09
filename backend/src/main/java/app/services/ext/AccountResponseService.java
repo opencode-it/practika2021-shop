@@ -1,6 +1,6 @@
 package app.services.ext;
 
-import app.controllers.dto.impl.AccountDTO;
+import app.dto.impl.AccountDTO;
 import app.entities.Account;
 import app.mappers.impl.AccountResponseMapper;
 import app.repositories.impl.AccountRepository;

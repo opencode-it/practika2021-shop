@@ -1,6 +1,5 @@
 package app.services;
 
-import app.controllers.dto.DTO;
 import app.entities.AbstractEntity;
 import app.mappers.AbstractMapper;
 import app.repositories.LongKeyRepository;
