@@ -39,7 +39,7 @@ public enum UnitsDTO implements DTO {;
          * мерочной характеристики по ее ID
          */
         @Data
-        public static class ChangeUnits implements Id, Measure {
+        public static class ChangeUnits implements DTO, Id, Measure {
             private Integer id;
             private Double measure;
         }
@@ -51,7 +51,7 @@ public enum UnitsDTO implements DTO {;
          * мерочно характеристики продукта
          */
         @Value
-        public static class Get implements Name, Measure {
+        public static class Get implements DTO, Name, Measure {
             String name;
             Double measure;
         }

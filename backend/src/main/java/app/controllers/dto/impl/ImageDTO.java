@@ -1,5 +1,6 @@
 package app.controllers.dto.impl;
 
+import app.controllers.dto.DTO;
 import lombok.Data;
 import lombok.Value;
 /**
@@ -17,7 +18,7 @@ public enum ImageDTO {;
 
     public enum Request {;
         @Data
-        public static class Get implements Path, ImageDuty {
+        public static class Get implements DTO, Path, ImageDuty {
             String path;
             String ImageDuty;
 
@@ -27,18 +28,17 @@ public enum ImageDTO {;
          * Создает свое изображение
          */
         @Data
-        public static class CreateCustom implements Path, ImageDuty {
+        public static class CreateCustom implements DTO, Path, ImageDuty {
             private String path;
             private String ImageDuty;
 
         }
     }
 
-    public enum Response {
-        ;
+    public enum Response {;
 
         @Value
-        public static class GetImage implements Path, ImageDuty {
+        public static class GetImage implements DTO, Path, ImageDuty {
             String path;
             String ImageDuty;
         }
