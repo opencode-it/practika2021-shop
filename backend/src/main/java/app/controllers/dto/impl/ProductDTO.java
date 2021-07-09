@@ -126,7 +126,7 @@ public enum ProductDTO implements DTO {;
          * (для вида из каталога)
          */
         @Value
-        public static class GetPreview implements DTO, Id, Name, Type, Image, Status, BasePrice {
+        public static class GetBase implements DTO, Id, Name, Type, Image, Status, BasePrice {
             Integer id;
             String name;
             String type;
