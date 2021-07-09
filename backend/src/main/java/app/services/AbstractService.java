@@ -1,6 +1,6 @@
 package app.services;
 
-import app.dto.AbstractDto;
+import app.controllers.dto.DTO;
 import app.entities.AbstractEntity;
 import app.mappers.AbstractMapper;
 import app.repositories.LongKeyRepository;
@@ -15,7 +15,7 @@ import java.util.Optional;
 /**
  * Абстрактный сервис с базовым CRUD-функционалом
  * @param <E> тип сущности, ограниченный {@link AbstractEntity}
- * @param <D> тип DTO, ограниченный {@link AbstractDto}
+ * @param <D> тип DTO, ограниченный {@link DTO}
  * @param <R> тип репоозитория, ограниченный {@link LongKeyRepository}
  * @param <M> тип маппера, ограниченный {@link AbstractMapper}
  *
@@ -25,7 +25,7 @@ import java.util.Optional;
 @Data
 @AllArgsConstructor
 public abstract class AbstractService<E extends AbstractEntity,
-                                      D extends AbstractDto,
+                                      D extends DTO,
                                       R extends LongKeyRepository<E>,
                                       M extends AbstractMapper<E, D>> {
 
