@@ -19,6 +19,7 @@ public enum SlotDTO {;
     public static class Get implements Product{
          private String product;
     }
+
     }
 
     public enum Response{;
@@ -27,5 +28,6 @@ public enum SlotDTO {;
         public static class GetAmount implements Amount{
         Integer amount;
     }
+
     }
 }
