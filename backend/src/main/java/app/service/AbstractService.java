@@ -9,6 +9,7 @@ import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Data
@@ -32,8 +33,9 @@ public abstract class AbstractService<E extends AbstractEntity,
         return mapper.toDtoList(savedEntities);
     }
 
-    public D findBy(Long id) {
-        return mapper.toDto(repository.getOne(id));
+    public Optional<D> findBy(Long id) {
+        D dto = mapper.toDto(repository.getOne(id));
+        return Optional.of(dto);
     }
 
     public List<D> findAll() {
