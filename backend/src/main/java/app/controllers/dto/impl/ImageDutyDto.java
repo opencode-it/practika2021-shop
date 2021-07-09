@@ -5,25 +5,28 @@ import lombok.Value;
 
 /**
  * @author SuvorovNikita
- * */
+ */
 
 public enum ImageDutyDto {;
 
     private interface Name {
         String getName();
     }
+
     private interface Id {
         Integer getId();
     }
 
     public enum Request {;
+
         @Data
         public static class Get implements Id {
             private Integer id;
         }
 
         @Data
-        public static class UpdateName implements Name {
+        public static class UpdateName implements Id, Name {
+            private Integer id;
             private String name;
         }
 
@@ -36,6 +39,7 @@ public enum ImageDutyDto {;
     }
 
     public enum Response {;
+
         @Value
         public static class getName implements Name {
             private String name;
