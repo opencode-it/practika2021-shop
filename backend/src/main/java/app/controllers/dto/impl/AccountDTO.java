@@ -1,12 +1,24 @@
-package app.controllers.dto;
+/*
+ * Uliana
+ */
+package app.controllers.dto.impl;
 
+import app.controllers.dto.DTO;
 import lombok.Data;
 import lombok.Value;
 
-public enum AccountDTO {;
+/**
+ * Общий енам для ДТО объектов класса продукта
+ * Содержит енамы для Запроса и Ответа
+ */
+public enum AccountDTO implements DTO {;
 
     private interface Id {
         Integer getId();
+    }
+
+    private interface Token {
+        String getToken();
     }
 
     private interface Rights {
@@ -21,6 +33,10 @@ public enum AccountDTO {;
         String getFullName();
     }
 
+    private interface Address {
+        String getAddress();
+    }
+
     public enum Request {;
 
         @Data
@@ -29,10 +45,12 @@ public enum AccountDTO {;
         }
 
         @Data
-        public static class Create implements Rights, Email, FullName {
-           private String rights;
-           private String email;
-           private String fullName;
+        public static class Create implements Rights, Email, FullName, Address, Token {
+            private String rights;
+            private String email;
+            private String fullName;
+            private String address;
+            private String token;
         }
 
         @Data
@@ -48,11 +66,15 @@ public enum AccountDTO {;
         }
 
         @Data
+        public static class UpdateAddress implements Id, Address {
+            private Integer id;
+            private String address;
+        }
+
+        @Data
         public static class Delete implements Id {
             private Integer id;
         }
-
-
     }
 
     public enum Response {;
@@ -64,11 +86,13 @@ public enum AccountDTO {;
         }
 
         @Value
-        public static class GetFullInfo implements Id, Rights, Email, FullName {
+        public static class GetFullInfo implements Id, Rights, Email, FullName, Token, Address {
             Integer id;
             String rights;
             String email;
             String fullName;
+            private String address;
+            private String token;
         }
 
     }
