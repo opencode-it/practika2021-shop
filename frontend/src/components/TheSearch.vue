@@ -9,7 +9,7 @@
     </div>
     <div class="search-place">
       <input type="search" placeholder="search" class="search-input">
-      <button type="submit" class="search-btn"><img src="../assets/search.svg"></button>
+      <button type="submit" class="search-btn"><img src="../../public/img/search.svg"></button>
     </div>
   </div>
 </template>
