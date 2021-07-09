@@ -5,24 +5,36 @@
         <h2 class="products-title">{{title}}</h2>
         <img src="../../public/img/title-element.svg" class="products-title__element">
       </router-link>
-      <div class="products-flex">
-        <router-link to="/" class="flex-item" v-for="product in products" :key="product.id">
-          <img :src='product.link' class="item">
-          <span class="product-name">{{product.name.substring(0, 12)}}</span>
-        </router-link>
-      </div>
     </div>
-
+      <div class="products-flex">
+        <App-product-card v-for="product in products" :item="product" :key="product"/>
+      </div>
   </div>
 </template>
 
 <script>
+import AppProductCard from './AppProductCard.vue'
 export default {
-  props: ['title', 'products']
+  components: { AppProductCard },
+  props: {
+    title: {
+      type: String,
+      default: () => ''
+    },
+    products: {
+      type: Array,
+      default: () => []
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+
+.products-flex {
+  display: flex;
+  justify-content: space-between;
+}
 
 .products{
   padding-top: 20px;
@@ -33,15 +45,6 @@ export default {
   padding-top: 40px;
 }
 
-.product-name{
-  display: block;
-  font-style: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 22px 24px;
-  color: black;
-}
 
 .products-sector{
   display: flex;
@@ -49,28 +52,6 @@ export default {
   margin-bottom: 39px;
 }
 
-.flex-item{
-  position: relative;
-  background-color: #e0dad2;
-  border-radius: 12px;
-  margin-left: 20px;
-  text-decoration: none;
-  &:first-child {
-    margin-left: 0;
-  }
-}
-
-.flex-item:hover {
-  background-color: #e79247;
-  box-shadow: -1px 1px 14px 19px rgba(34, 60, 80, 0.2);
-}
-
-.item{
-  position: relative;
-  top: -2px;
-  width: 100%;
-  height: auto;
-}
 
 .products-title{
   color: black;
@@ -80,19 +61,9 @@ export default {
   }
 }
 
-.products-flex{
-  display: flex;
-  justify-content: space-between;
-}
-
 .products-title__element {
   display: block;
 }
 
-@media (max-width: 1117px) {
-  .products-flex{
-
-  }
-}
 
 </style>
