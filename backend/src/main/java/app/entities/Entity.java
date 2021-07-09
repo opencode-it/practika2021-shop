@@ -1,10 +1,10 @@
-package app.enteties;
+package app.entities;
 
 
 import javax.persistence.*;
 
 @MappedSuperclass
-public class EntIty {
+public class Entity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
