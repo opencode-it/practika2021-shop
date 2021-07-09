@@ -6,7 +6,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
+/**
+ * @author ZubchenkoArtem
+ * */
 @Entity
 @Table(name = "slot")
 @Data
