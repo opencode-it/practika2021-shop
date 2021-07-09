@@ -1,6 +1,6 @@
 package app.controllers;
 
-import app.controllers.dto.DTO;
+import app.dto.DTO;
 import app.services.AbstractService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,5 @@
 package app.mappers;
 
-import app.controllers.dto.DTO;
 import app.entities.AbstractEntity;
 import org.mapstruct.Mapper;
 
