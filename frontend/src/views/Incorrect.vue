@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .incorrect{
   display: flex;
   justify-content: center;

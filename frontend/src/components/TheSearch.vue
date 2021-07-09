@@ -8,7 +8,7 @@
       </ul>
     </div>
     <div class="search-place">
-      <input type="search" placeholder="введите запрос" class="search-input">
+      <input type="search" placeholder="search" class="search-input">
       <button type="submit" class="search-btn"><img src="../assets/search.svg"></button>
     </div>
   </div>

@@ -9,7 +9,7 @@
           <router-link to="/catalog" class="navbar-menu__item">Каталог</router-link>
           <router-link to="/" class="navbar-menu__item">Домашняя</router-link>
           <router-link to="/constructor" class="navbar-menu__item">Конструктор</router-link>
-          <button class="navbar-menu__item login-btn" @click="$store.state.modalActive = true">
+          <button class="navbar-menu__item login-btn" @click="$store.state.modalLoginActive = true">
             Вход
           </button>
         </ul>
@@ -19,11 +19,17 @@
         </router-link>
       </div>
     </div>
+
+    <div v-if="$store.state.modalLoginActive">
+      <App-modal/>
+    </div>
   </div>
 </template>
 
 <script>
+import AppModal from './AppModal.vue'
 export default {
+  components: { AppModal },
   
 }
 </script>
@@ -79,7 +85,6 @@ export default {
 .navbar-line{
   padding: 27px 0;
   border-bottom: 1px solid #B8B3AD;
-  margin-bottom: 30px;
 }
 .navbar-menu {
 

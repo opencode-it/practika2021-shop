@@ -1,9 +1,9 @@
 <template>
-  <div class="modal" @click.prevent="$store.state.modalActive = false">
+  <div class="modal" @click.prevent="$store.state.modalLoginActive = false">
     <div class="modal-login">
       <h2>вход</h2>
       <!-- <router-link to="/registration">Регистрация</router-link> -->
-      <div class="modal-close" @click="$store.state.modalActive = false">
+      <div class="modal-close" @click="$store.state.modalLoginActive = false">
         &#10006;
       </div>
     </div>
@@ -16,7 +16,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .modal {
   position: absolute;

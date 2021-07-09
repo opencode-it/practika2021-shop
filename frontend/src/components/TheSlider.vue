@@ -16,7 +16,6 @@
         </h1>
       </div>
     </div>
-    {{sliderAuto()}}
   </div>
 </template>
 
@@ -38,22 +37,7 @@ export default {
       const slider = document.querySelector(".slider-place");
       this.right = this.right - 1070;
       slider.style.right = -this.right + "px";
-    },
-    sliderAuto() {
-      const time = setTimeout(() => {
-        this.counter++
-        if (this.counter <= 2) {
-          this.arrowRight()
-        } 
-        if (this.counter > 2) {
-          this.arrowLeft()
-        }
-        if (this.counter == 4) {
-          this.counter = 0
-        }
-      }, 3000)
-      time
-    },
+    }
   },
 };
 </script>
