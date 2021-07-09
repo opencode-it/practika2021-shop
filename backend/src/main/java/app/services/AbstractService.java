@@ -25,7 +25,7 @@ import java.util.Optional;
 @Data
 @AllArgsConstructor
 public abstract class AbstractService<E extends AbstractEntity,
-                                      D extends DTO,
+                                      D,
                                       R extends LongKeyRepository<E>,
                                       M extends AbstractMapper<E, D>> {
 
