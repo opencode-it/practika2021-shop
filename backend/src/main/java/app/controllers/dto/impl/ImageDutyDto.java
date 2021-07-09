@@ -1,4 +1,4 @@
-package app.controllers.dto;
+package app.controllers.dto.impl;
 
 import lombok.Data;
 import lombok.Value;
@@ -10,23 +10,20 @@ public enum ImageDutyDto {;
     }
 
     public enum Request {;
-    @Data
+
+        @Data
         public static class Get implements Name {
-        String name;
-    }
+            String name;
+        }
 
     }
 
     public enum Response {;
-
 
         @Value
         public static class getName implements Name {
             String name;
         }
     }
-
-
-
 
 }
