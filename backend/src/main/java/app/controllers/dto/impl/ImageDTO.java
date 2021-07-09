@@ -1,4 +1,4 @@
-package app.controllers.dto;
+package app.controllers.dto.impl;
 
 import lombok.Data;
 import lombok.Value;
