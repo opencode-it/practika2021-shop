@@ -11,7 +11,7 @@ import lombok.Value;
  * Содержит енамы классов, отвечающих за
  * запросы и ответы по аккаунту пользователя
  */
-public enum AccountDTO implements DTO {;
+public enum AccountDTO {;
 
     private interface Id {
         Integer getId();
@@ -28,7 +28,7 @@ public enum AccountDTO implements DTO {;
      * Для определения прав пользователя
      */
     private interface Rights {
-        String getRights();
+        RightsDTO.Response.Get getRights();
     }
 
     private interface Email {
@@ -49,7 +49,7 @@ public enum AccountDTO implements DTO {;
          * Получение пользователя по его ID
          */
         @Data
-        public static class Get implements Id {
+        public static class Get implements DTO, Id {
             private Integer id;
         }
 
@@ -57,8 +57,8 @@ public enum AccountDTO implements DTO {;
          * Используется при регистрации пользователя
          */
         @Data
-        public static class Create implements Rights, Email, FullName, Address, Token {
-            private String rights;
+        public static class Create implements DTO, Rights, Email, FullName, Address, Token {
+            private RightsDTO.Response.Get rights;
             private String email;
             private String fullName;
             private String address;
@@ -69,7 +69,7 @@ public enum AccountDTO implements DTO {;
          * Запрос пользователя на изменение имени
          */
         @Data
-        public static class UpdateName implements Id, FullName {
+        public static class UpdateName implements DTO, Id, FullName {
             private Integer id;
             private String fullName;
         }
@@ -78,7 +78,7 @@ public enum AccountDTO implements DTO {;
          * Запрос пользователя на изменение почты
          */
         @Data
-        public static class UpdateEmail implements Id, Email {
+        public static class UpdateEmail implements DTO, Id, Email {
             private Integer id;
             private String email;
         }
@@ -87,7 +87,7 @@ public enum AccountDTO implements DTO {;
          * Запрос пользователя на изменение адреса
          */
         @Data
-        public static class UpdateAddress implements Id, Address {
+        public static class UpdateAddress implements DTO, Id, Address {
             private Integer id;
             private String address;
         }
@@ -96,7 +96,7 @@ public enum AccountDTO implements DTO {;
          * Запрос пользователя на удаление своего аккаунта
          */
         @Data
-        public static class Delete implements Id {
+        public static class Delete implements DTO, Id {
             private Integer id;
         }
     }
@@ -107,7 +107,7 @@ public enum AccountDTO implements DTO {;
         * Основная информация о пользователе
         */
         @Value
-        public static class GetShortInfo implements Email, FullName {
+        public static class GetShortInfo implements DTO, Email, FullName {
             String email;
             String fullName;
         }
@@ -116,13 +116,13 @@ public enum AccountDTO implements DTO {;
          * Полная информация о пользователе
          */
         @Value
-        public static class GetFullInfo implements Id, Rights, Email, FullName, Token, Address {
+        public static class GetFullInfo implements DTO, Id, Rights, Email, FullName, Token, Address {
             Integer id;
-            String rights;
+            RightsDTO.Response.Get rights;
             String email;
             String fullName;
-            private String address;
-            private String token;
+            String address;
+            String token;
         }
 
     }

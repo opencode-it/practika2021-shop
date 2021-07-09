@@ -11,7 +11,7 @@ import lombok.Value;
  * Содержит енамы классов, отвечающих за
  * запросы и ответы по характеристикам конкретного продукта
  */
-public enum FeatureDTO implements DTO {;
+public enum FeatureDTO {;
 
     private interface Id {
         Integer getId();
@@ -57,7 +57,7 @@ public enum FeatureDTO implements DTO {;
         * Для получения характеристики с сервера по ее ID
         */
         @Data
-        public static class Get implements Id {
+        public static class Get implements DTO, Id {
             private Integer id;
         }
 
@@ -66,7 +66,7 @@ public enum FeatureDTO implements DTO {;
          * на новое значение
          */
         @Data
-        public static class UpdateUnits implements Id, ChangeUnits {
+        public static class UpdateUnits implements DTO, Id, ChangeUnits {
             private Integer Id;
             private UnitsDTO.Request.ChangeUnits changesUnits;
         }
@@ -76,7 +76,7 @@ public enum FeatureDTO implements DTO {;
          * на новое значение
          */
         @Data
-        public static class UpdateValue implements Id, FeatureValue {
+        public static class UpdateValue implements DTO, Id, FeatureValue {
             private Integer Id;
             private String featureValue;
         }
@@ -85,7 +85,7 @@ public enum FeatureDTO implements DTO {;
          * Для удаления характеристики товара по ее ID
          */
         @Data
-        public static class Delete implements Id {
+        public static class Delete implements DTO, Id {
             private Integer Id;
         }
 
@@ -97,7 +97,7 @@ public enum FeatureDTO implements DTO {;
          * продукта
          */
         @Value
-        public static class GetWithUnits implements Name, FeaturePrice, ResponseUnits {
+        public static class GetWithUnits implements DTO, Name, FeaturePrice, ResponseUnits {
             String name;
             UnitsDTO.Response.Get units;
             Integer featurePrice;
@@ -108,7 +108,7 @@ public enum FeatureDTO implements DTO {;
          * продукта
          */
         @Value
-        public static class GetUnitless implements Name, FeaturePrice, FeatureValue {
+        public static class GetUnitless implements DTO, Name, FeaturePrice, FeatureValue {
             String name;
             String featureValue;
             Integer featurePrice;
