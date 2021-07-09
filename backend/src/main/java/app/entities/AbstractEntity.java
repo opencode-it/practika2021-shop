@@ -8,7 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@MappedSuperclass
+@Inheritance(strategy = InheritanceType.JOINED)
 @AllArgsConstructor
 @NoArgsConstructor
 public abstract class AbstractEntity {
