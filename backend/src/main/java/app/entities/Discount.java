@@ -10,13 +10,13 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "rights")
+@Table(name = "discount")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Rights extends AbstractEntity {
+public class Discount extends AbstractEntity {
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "value")
+    private int value;
 }
