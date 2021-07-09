@@ -3,7 +3,7 @@
     <div class="products-place">
       <router-link to="/catalog/cups" class="products-sector">
         <h2 class="products-title">{{title}}</h2>
-        <img src="../assets/title-element.svg" class="products-title__element">
+        <img src="../../public/img/title-element.svg" class="products-title__element">
       </router-link>
       <div class="products-flex">
         <router-link to="/" class="flex-item" v-for="product in products" :key="product.id">
