@@ -5,9 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "slot")
@@ -19,4 +17,8 @@ public class Slot extends AbstractEntity{
 
     @Column
     private int amount;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @Column
+    Product product;
 }
