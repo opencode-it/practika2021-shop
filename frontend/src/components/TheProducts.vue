@@ -2,41 +2,47 @@
   <div class="products">
     <div class="products-place">
       <router-link to="/catalog/cups" class="products-sector">
-        <h2 class="products-title">{{title}}</h2>
-        <img src="../../public/img/title-element.svg" class="products-title__element">
+        <h2 class="products-title">{{ title }}</h2>
+        <img
+          src="../../public/img/title-element.svg"
+          class="products-title__element"
+        />
       </router-link>
     </div>
-      <div class="products-flex">
-        <App-product-card v-for="product in products" :item="product" :key="product"/>
-      </div>
+    <div class="products-flex">
+      <App-product-card
+        v-for="product in products"
+        :item="product"
+        :key="product"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import AppProductCard from './AppProductCard.vue'
+import AppProductCard from "./AppProductCard.vue";
 export default {
   components: { AppProductCard },
   props: {
     title: {
       type: String,
-      default: () => ''
+      default: () => "",
     },
     products: {
       type: Array,
-      default: () => []
-    }
-  }
-}
+      default: () => [],
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
 .products-flex {
   display: flex;
   justify-content: space-between;
 }
 
-.products{
+.products {
   padding-top: 20px;
   margin-bottom: 100px;
 }
@@ -45,25 +51,21 @@ export default {
   padding-top: 40px;
 }
 
-
-.products-sector{
+.products-sector {
   display: flex;
   text-decoration: none;
   margin-bottom: 39px;
 }
 
-
-.products-title{
+.products-title {
   color: black;
   margin-right: 38px;
   &:hover {
-    color: #ED7102;
+    color: #ed7102;
   }
 }
 
 .products-title__element {
   display: block;
 }
-
-
 </style>

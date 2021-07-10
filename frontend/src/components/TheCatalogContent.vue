@@ -9,63 +9,62 @@
         <div class="panel active">
           <h4 class="panel-text">Кружки</h4>
           <h4 class="panel-text">Высота от {} до {} мм</h4>
-          <input type="range" class="panel-height" step="1" min="0" max="130" @change.prevent="getValue">
+          <input
+            type="range"
+            class="panel-height"
+            step="1"
+            min="0"
+            max="130"
+            @change.prevent="getValue"
+          />
         </div>
-
         <button class="accordion" @click="move(1)">
           Основной цвет<span class="accordion-arrow">&lsaquo;</span>
         </button>
         <div class="panel"></div>
-
         <button class="accordion" @click="move(2)">
           Форма<span class="accordion-arrow">&lsaquo;</span>
         </button>
         <div class="panel"></div>
-
         <button class="accordion" @click="move(3)">
           Материал<span class="accordion-arrow">&lsaquo;</span>
         </button>
         <div class="panel"></div>
-
         <button class="accordion" @click="move(4)">
           Тематика<span class="accordion-arrow">&lsaquo;</span>
         </button>
         <div class="panel"></div>
       </div>
-      
     </div>
     <div class="content-products">
-      <App-add-card/>
-      <App-product-card 
-        v-for="(item, index) in mainCatalog" 
-        :item="item" 
+      <App-add-card />
+      <App-product-card
+        v-for="(item, index) in mainCatalog"
+        :item="item"
         :key="item"
         :index="index"
         :length="mainCatalog.length"
       />
-
     </div>
   </div>
 </template>
 
 <script>
-import AppProductCard from './AppProductCard.vue';
-import {mainCatalog} from '../mocks/data'
-import AppAddCard from './AppAddCard.vue'
+import AppProductCard from "./AppProductCard.vue";
+import { mainCatalog } from "../mocks/data";
+import AppAddCard from "./AppAddCard.vue";
 
 export default {
   data() {
     return {
-      mainCatalog
-    }
+      mainCatalog,
+    };
   },
   components: { AppProductCard, AppAddCard },
   methods: {
     move(id) {
       let acc = document.getElementsByClassName("accordion");
-
       acc[id].classList.toggle("active");
-
       let panel = acc[id].nextElementSibling;
       if (panel.style.display === "block") {
         panel.style.display = "none";
@@ -75,14 +74,13 @@ export default {
     },
     getValue(event) {
       console.log(event.target.value);
-    }
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
-.content-products{
+.content-products {
   padding: 40px 40px;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -91,15 +89,16 @@ export default {
   justify-items: end;
 }
 
-.panel-height{
+.panel-height {
   width: 100%;
 }
 
-.panel-text{
+.panel-text {
   margin-top: 12px;
   margin-bottom: 12px;
   font-size: 20px;
 }
+
 .accordion {
   border: none;
   position: relative;
@@ -136,13 +135,11 @@ export default {
   overflow: hidden;
 }
 
-
 .content {
   border-top: 1px solid #b8b3ad;
   margin-top: 34px;
   display: flex;
 }
-
 
 .content-products {
   border-left: 1px solid #b8b3ad;
@@ -171,7 +168,7 @@ export default {
 }
 
 @media (max-width: 1065px) {
-  .content-products{
+  .content-products {
     padding: 40px 40px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -182,7 +179,7 @@ export default {
 }
 
 @media (max-width: 871px) {
-  .content-products{
+  .content-products {
     padding: 40px 40px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;

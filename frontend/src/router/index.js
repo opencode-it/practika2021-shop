@@ -1,10 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import Constructor from "../views/Constructor.vue"
-import Catalog from "../views/Сatalog.vue"
-import Registration from "../views/Registration.vue"
-import Basket from "../views/Basket.vue" 
-import Incorrect from "../views/Incorrect.vue"
+import Constructor from "../views/Constructor.vue";
+import Catalog from "../views/Сatalog.vue";
+import Basket from "../views/Basket.vue";
+import Incorrect from "../views/Incorrect.vue";
 
 const routes = [
   {
@@ -15,35 +14,30 @@ const routes = [
   {
     path: "/constructor",
     name: "Constructor",
-    component: Constructor
+    component: Constructor,
   },
   {
     path: "/catalog",
     name: "Catalog",
-    component: Catalog
-  },
-  {
-    path: "/registration",
-    name: "Registration",
-    component: Registration
+    component: Catalog,
   },
   {
     path: "/basket",
     name: "Basket",
-    component: Basket
+    component: Basket,
   },
   {
-    path: "/:notFound(.*)", 
+    path: "/:notFound(.*)",
     name: "Incorrect",
-    component: Incorrect
-  }
+    component: Incorrect,
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-  linkActiveClass: 'active',
-  linkExactActiveClass: 'active'
-})
+  linkActiveClass: "active",
+  linkExactActiveClass: "active",
+});
 
 export default router;

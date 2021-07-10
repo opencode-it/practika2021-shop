@@ -1,7 +1,7 @@
 <template>
   <router-link to="/" class="flex-item">
     <div class="router-item">
-      <img :src="item.link" class="item" />
+      <img :src="item.link" class="item" alt="item" />
       <span class="product-name">{{ item.name.substring(0, 12) }}</span>
     </div>
   </router-link>
@@ -13,14 +13,13 @@ export default {
     item: {
       type: Object,
       default: () => {},
-    }
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .product-name {
-  display: block;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +34,7 @@ export default {
   height: auto;
 }
 
-.router-item{
+.router-item {
   text-decoration: none;
   position: relative;
 }

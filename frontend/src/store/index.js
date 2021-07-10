@@ -3,7 +3,8 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     modalActive: false,
-    modalLoginActive: false,
+    modalLoginActive: true,
+    modalRegisterActive: false,
     modalFollowActive: false,
     catalogMenu: false,
   },

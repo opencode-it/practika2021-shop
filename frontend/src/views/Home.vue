@@ -1,34 +1,32 @@
 <template>
   <div class="home">
     <div class="container">
-      <TheSlider/>
-      <TheProducts  
+      <TheSlider />
+      <TheProducts
         v-for="item in products"
         :products="item.content"
         :title="item.title"
         :key="item"
       />
-      <TheAbout/>
+      <TheAbout />
     </div>
   </div>
 </template>
 
 <script>
-import TheAbout from '../components/TheAbout.vue';
-import TheProducts from '../components/TheProducts.vue';
-import TheSlider from '../components/TheSlider.vue';
-import {products} from '../mocks/data'
+import TheAbout from "../components/TheAbout.vue";
+import TheProducts from "../components/TheProducts.vue";
+import TheSlider from "../components/TheSlider.vue";
+import { products } from "../mocks/data";
 
 export default {
   data() {
     return {
-      products
-    }
+      products,
+    };
   },
-  components: { TheProducts, TheAbout, TheSlider}
+  components: { TheProducts, TheAbout, TheSlider },
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

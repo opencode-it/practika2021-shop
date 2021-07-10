@@ -2,25 +2,19 @@
   <router-link to="/constructor" class="add-card">
     <div class="add-top">
       <div class="add-circle">
-        <span class="add-plus">
-          +
-        </span>
+        <span class="add-plus"> + </span>
       </div>
     </div>
-    <div class="add-bottom">
-      Сделай сам!
-    </div>
+    <div class="add-bottom">Сделай сам!</div>
   </router-link>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style lang="scss" scoped>
-.add-card{
+.add-card {
   color: black;
   text-decoration: none;
   background-color: #e0dad2;
@@ -29,7 +23,7 @@ export default {
   height: 238px;
 }
 
-.add-bottom{
+.add-bottom {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +49,7 @@ export default {
   margin-bottom: 15px;
 }
 
-.add-circle{
+.add-circle {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,5 +58,4 @@ export default {
   border: 2px solid black;
   border-radius: 50%;
 }
-
 </style>

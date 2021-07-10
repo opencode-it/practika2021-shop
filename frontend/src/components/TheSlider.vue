@@ -1,9 +1,19 @@
 <template>
   <div class="slider">
-    <button type="button" v-if="right!=0" class="slider-control-left" @click="arrowLeft">
+    <button
+      type="button"
+      v-if="right != 0"
+      class="slider-control-left"
+      @click="arrowLeft"
+    >
       <span class="slider-arrow">&lsaquo;</span>
     </button>
-    <button type="button" v-if="right!=-2140" class="slider-control-right" @click="arrowRight">
+    <button
+      type="button"
+      v-if="right != -2140"
+      class="slider-control-right"
+      @click="arrowRight"
+    >
       <span class="slider-arrow">&rsaquo;</span>
     </button>
 
@@ -37,7 +47,7 @@ export default {
       const slider = document.querySelector(".slider-place");
       this.right = this.right - 1070;
       slider.style.right = -this.right + "px";
-    }
+    },
   },
 };
 </script>
@@ -50,7 +60,6 @@ export default {
   width: 100%;
   overflow: hidden;
 }
-
 
 .slider-place {
   position: relative;

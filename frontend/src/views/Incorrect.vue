@@ -5,13 +5,11 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style scoped>
-.incorrect{
+.incorrect {
   display: flex;
   justify-content: center;
   align-items: center;
