@@ -35,7 +35,15 @@
       
     </div>
     <div class="content-products">
-      <App-product-card v-for="item in mainCatalog" :item="item" :key="item"/>
+      <App-add-card/>
+      <App-product-card 
+        v-for="(item, index) in mainCatalog" 
+        :item="item" 
+        :key="item"
+        :index="index"
+        :length="mainCatalog.length"
+      />
+
     </div>
   </div>
 </template>
@@ -43,13 +51,15 @@
 <script>
 import AppProductCard from './AppProductCard.vue';
 import {mainCatalog} from '../mocks/data'
+import AppAddCard from './AppAddCard.vue'
+
 export default {
   data() {
     return {
       mainCatalog
     }
   },
-  components: { AppProductCard },
+  components: { AppProductCard, AppAddCard },
   methods: {
     move(id) {
       let acc = document.getElementsByClassName("accordion");
@@ -78,6 +88,7 @@ export default {
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 2vw;
+  justify-items: end;
 }
 
 .panel-height{
@@ -95,6 +106,7 @@ export default {
   color: black;
   cursor: pointer;
   padding: 18px;
+  margin-right: 40px;
   width: 100%;
   text-align: left;
   background-color: white;
@@ -158,4 +170,25 @@ export default {
   position: relative;
 }
 
+@media (max-width: 1065px) {
+  .content-products{
+    padding: 40px 40px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2vw;
+    justify-items: end;
+  }
+}
+
+@media (max-width: 871px) {
+  .content-products{
+    padding: 40px 40px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2vw;
+    justify-items: end;
+  }
+}
 </style>

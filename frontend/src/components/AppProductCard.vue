@@ -1,7 +1,9 @@
 <template>
   <router-link to="/" class="flex-item">
-    <img :src="item.link" class="item" />
-    <span class="product-name">{{ item.name.substring(0, 12) }}</span>
+    <div class="router-item">
+      <img :src="item.link" class="item" />
+      <span class="product-name">{{ item.name.substring(0, 12) }}</span>
+    </div>
   </router-link>
 </template>
 
@@ -11,23 +13,20 @@ export default {
     item: {
       type: Object,
       default: () => {},
-    },
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
-.product-name{
+.product-name {
   display: block;
-  font-style: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 22px 24px;
   color: black;
 }
-
 
 .item {
   position: relative;
@@ -36,12 +35,16 @@ export default {
   height: auto;
 }
 
-.flex-item {
+.router-item{
+  text-decoration: none;
   position: relative;
+}
+
+.flex-item {
+  text-decoration: none;
   background-color: #e0dad2;
   border-radius: 12px;
   margin-left: 20px;
-  text-decoration: none;
 }
 
 .flex-item:hover {
