@@ -26,17 +26,26 @@
             type="text"
             v-model="entranceForm.login"
             class="auth-login"
-            placeholder="Введие login"
+            placeholder="Введите login"
           />
           <input
             v-model="entranceForm.password"
             type="password"
             class="auth-pass"
-            placeholder="Введие пароль"
+            placeholder="Введите пароль"
           />
           <div class="btn-center">
             <button type="submit" class="btn-send">Войти</button>
-            <h5>Место для гугл входа</h5>
+          </div>
+          <div class="btn-center">
+            <button type="button" class="google-auth">
+              <img
+                src="../../public/img/google.png"
+                alt="google"
+                class="google"
+              />
+              <h2 class="google-text">Войти с помощью Google</h2>
+            </button>
           </div>
         </form>
       </div>
@@ -55,7 +64,7 @@
           />
           <input
             type="email"
-            placeholder="Введие почту"
+            placeholder="Введите почту"
             v-model="register.email"
           />
           <input
@@ -64,29 +73,45 @@
             v-model="register.phone"
           />
           <input
-            type="password"
-            placeholder="Введите пароль"
-            v-model="register.theFirstPass"
-          />
-          <input
             type="text"
             placeholder="Придумайте логин"
             v-model="register.login"
           />
-          <input
-            type="password"
-            placeholder="Повторите пароль"
-            v-model="register.theSecondPass"
-          />
+          <div class="input-pass">
+            <input
+              type="password"
+              placeholder="Введите пароль"
+              v-model="register.theFirstPass"
+              class="password-input"
+            />
+            <a href="#" class="password-control" @click="lookAtMyPass"></a>
+          </div>
+          <div class="input-pass">
+            <input
+              type="password"
+              placeholder="Повторите пароль"
+              v-model="register.theSecondPass"
+              class="password-input"
+            />
+            <a href="#" class="password-control" @click="lookAtMyPass"></a>
+          </div>
           <div class="btn-center">
             <button type="submit" class="btn-send">Создать аккаунт</button>
-            <h5>Место для гугл регистрации</h5>
+          </div>
+
+          <div class="btn-center">
+            <button type="button" class="google-auth">
+              <img
+                src="../../public/img/google.png"
+                alt="google"
+                class="google"
+              />
+              <h2 class="google-text">Войти с помощью Google</h2>
+            </button>
           </div>
         </form>
       </div>
-      <div class="modal-close" @click="$store.state.modalActive = false">
-        &#10006;
-      </div>
+      <div class="modal-close" @click="closeModalButton">&#10006;</div>
     </div>
   </div>
 </template>
@@ -117,11 +142,28 @@ export default {
     };
   },
   methods: {
+    lookAtMyPass() {
+      const eye = document.querySelectorAll(".password-control");
+      const input = document.querySelectorAll(".password-input");
+      eye.forEach((item, index) => {
+        if (input[index].getAttribute("type") == "password") {
+          item.classList.add("view");
+          input[index].setAttribute("type", "text");
+        } else {
+          item.classList.remove("view");
+          input[index].setAttribute("type", "password");
+        }
+      });
+    },
     closeModalWindow(event) {
       if (event.target.className === "modal") {
         this.$store.state.modalActive = false;
         document.querySelector("body").style.overflow = "visible";
       }
+    },
+    closeModalButton() {
+      this.$store.state.modalActive = false;
+      document.querySelector("body").style.overflow = "visible";
     },
     entrance() {
       this.$store.state.modalLoginActive = true;
@@ -153,6 +195,23 @@ input {
   font-size: 15px;
 }
 
+.input-pass {
+  position: relative;
+}
+.password-control {
+  position: absolute;
+  right: 110px;
+  top: 20px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url("../../public/img/view.svg") 0 0 no-repeat;
+}
+
+.password-control.view {
+  background: url("../../public/img/no-view.svg") 0 0 no-repeat;
+}
+
 .form-auth {
   display: flex;
   flex-direction: column;
@@ -160,10 +219,34 @@ input {
   padding-top: 60px;
 }
 
+.google {
+  width: 60px;
+  height: 60px;
+}
+
+.google-auth {
+  padding: 4px;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #b8b3ad;
+  border-radius: 7px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  &:focus {
+    color: #ed7102;
+  }
+}
+
 .btn-send {
   background-color: #ed7102;
   color: white;
-  font-size: 25px;
+  font-size: 22px;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
@@ -187,7 +270,7 @@ input {
   position: relative;
   background-color: white;
   min-width: 600px;
-  min-height: 500px;
+  min-height: 450px;
   width: auto;
   border-radius: 10px;
   padding: 15px;
@@ -233,7 +316,6 @@ input {
 .btn-center {
   text-align: center;
   padding-top: 15px;
-  padding-bottom: 15px;
 }
 
 .registration-form {

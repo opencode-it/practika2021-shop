@@ -7,6 +7,8 @@ export default createStore({
     modalRegisterActive: false,
     modalFollowActive: false,
     catalogMenu: false,
+    isAdmin: false,
+    isAuth: false,
   },
   mutations: {},
   actions: {},
