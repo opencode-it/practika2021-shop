@@ -51,4 +51,23 @@ export default {};
 .footer-line {
   border-top: 1px solid #b8b3ad;
 }
+
+@media (max-width: 930px) {
+  .footer-logo {
+    display: none;
+  }
+  .footer {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .footer-phone {
+    font-size: 20px;
+  }
+
+  .footer-social {
+    width: 200px;
+    height: 50px;
+  }
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="accordions">
+    <div class="accordions" id="catalog-menu">
       <div class="content-accordion">
         <div class="arrow">&lsaquo;</div>
         <button class="accordion" @click="move(0)">
@@ -119,7 +119,18 @@ export default {
 }
 
 .accordion.active {
+  display: none;
   .accordion-arrow {
+    color: #b8b3ad;
+    transform: rotate(270deg);
+    transition-property: transform;
+    transition-duration: 0.8s;
+  }
+}
+
+.accordions.active {
+  display: none;
+  .arrow {
     color: #b8b3ad;
     transform: rotate(270deg);
     transition-property: transform;
@@ -139,10 +150,7 @@ export default {
   border-top: 1px solid #b8b3ad;
   margin-top: 34px;
   display: flex;
-}
-
-.content-products {
-  border-left: 1px solid #b8b3ad;
+  justify-content: center;
 }
 
 .arrow {
@@ -165,6 +173,7 @@ export default {
 
 .content-accordion {
   position: relative;
+  border-right: 1px solid #b8b3ad;
 }
 
 @media (max-width: 1065px) {

@@ -60,6 +60,7 @@ export default {
 
 .basket {
   position: relative;
+  margin-right: 10px;
   // &:hover {
   //   // добавить эффекты
   // }
