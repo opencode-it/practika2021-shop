@@ -21,7 +21,11 @@ export default {
   methods: {
     burgerActive() {
       const burger = document.getElementById("burger");
+      const menu = document.getElementById("catalog-menu");
+      const add = document.getElementById("add-card");
       burger.classList.toggle("active");
+      add.classList.toggle("full");
+      menu.classList.toggle("active");
     },
   },
 };
@@ -34,7 +38,6 @@ ul {
   position: absolute;
   width: 42px;
   height: 42px;
-  background: #fff;
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;

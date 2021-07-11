@@ -251,6 +251,13 @@ input {
   border: none;
   border-radius: 5px;
   margin-bottom: 10px;
+  border: 3px solid white;
+  transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out,
+    border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  &:focus {
+    color: #b8b3ad;
+    border: 3px solid rgb(229, 196, 134);
+  }
 }
 
 .modal {
