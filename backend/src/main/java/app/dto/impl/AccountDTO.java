@@ -4,6 +4,8 @@
 package app.dto.impl;
 
 import app.dto.DTO;
+import app.dto.RequestDTO;
+import app.dto.ResponseDTO;
 import lombok.Data;
 import lombok.Value;
 
@@ -57,7 +59,7 @@ public enum AccountDTO {;
          * Используется при регистрации пользователя
          */
         @Data
-        public static class Create implements DTO, Rights, Email, FullName, Address, Token {
+        public static class Create implements DTO, Rights, Email, FullName, Address, Token, RequestDTO {
             private RightsDTO.Response.Get rights;
             private String email;
             private String fullName;
@@ -116,7 +118,7 @@ public enum AccountDTO {;
          * Полная информация о пользователе
          */
         @Value
-        public static class GetFullInfo implements DTO, Id, Rights, Email, FullName, Token, Address {
+        public static class GetFullInfo implements DTO, Id, Rights, Email, FullName, Token, Address, ResponseDTO {
             Integer id;
             RightsDTO.Response.Get rights;
             String email;

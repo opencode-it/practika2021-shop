@@ -1,6 +1,8 @@
 package app.controllers;
 
 import app.dto.DTO;
+import app.dto.RequestDTO;
+import app.dto.ResponseDTO;
 import app.services.AbstractService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -18,22 +20,23 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class RESTController<D extends DTO, S extends AbstractService<?, D, ?, ?>> {
-
+public abstract class RESTController<I extends RequestDTO,
+                                     O extends ResponseDTO,
+                                     S extends AbstractService<?, I, O, ?, ?>> {
 
     @Autowired
     protected S Service;
 
     @GetMapping
-    public List<D> findAll() {
+    public List<O> findAll() {
         return Service.findAll();
     }
     @GetMapping("/{id}")
-    public Optional<D> getBy(@PathVariable("id") Long id) {
+    public Optional<O> getBy(@PathVariable("id") Long id) {
         return Service.findBy(id);
     }
     @PostMapping
-    public D save(@RequestBody D inputAcc ) {
+    public I save(@RequestBody I inputAcc ) {
         try{
             Service.save(inputAcc);
             return inputAcc;
@@ -42,7 +45,7 @@ public abstract class RESTController<D extends DTO, S extends AbstractService<?,
         }
     }
     @PutMapping("/{id}")
-    public D edit(@PathVariable("id") String id,   D edited) {
+    public I edit(@PathVariable("id") String id, I edited) {
 
         try{
             Service.save(edited);
