@@ -71,33 +71,21 @@ public enum AccountDTO {;
         }
 
         /**
-         * Запрос пользователя на изменение имени
+         * Запрос пользователя на изменение своих данных
          */
         @Data
         @AllArgsConstructor
-        public static class UpdateName implements Id, FullName, RequestDTO {
+        public static class UpdateInfo implements Id, FullName, Email, Address, RequestDTO {
             private Integer id;
+
             private String fullName;
-        }
+            private boolean isNewFullName;
 
-        /**
-         * Запрос пользователя на изменение почты
-         */
-        @Data
-        @AllArgsConstructor
-        public static class UpdateEmail implements Id, Email, RequestDTO {
-            private Integer id;
             private String email;
-        }
+            private boolean isNewEmail;
 
-        /**
-         * Запрос пользователя на изменение адреса
-         */
-        @Data
-        @AllArgsConstructor
-        public static class UpdateAddress implements Id, Address, RequestDTO {
-            private Integer id;
             private String address;
+            private boolean isNewAddress;
         }
 
         /**
