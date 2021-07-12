@@ -3,12 +3,10 @@
 */
 package app.dto.impl;
 
-import app.dto.DTO;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
 import lombok.Data;
 import lombok.Value;
-import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -95,22 +93,16 @@ public enum OrdersDTO {;
         }
 
         /**
-         * Запрос на уменьшение конкретного продукта в заказе на одну единицу
+         * Запрос на изменение количества
+         * конкретного продукта в заказе на одну единицу
          */
         @Data
-        public static class DecreaseProductAmount implements Id, Product, RequestDTO  {
+        public static class ChangeProductAmount implements Id, Product, RequestDTO  {
             private Integer Id;
             private Integer productId;
+            private boolean increase;
         }
 
-        /**
-         * Запрос на увеличение конкретного продукта в заказе на одну единицу
-         */
-        @Data
-        public static class IncreaseProductAmount implements Id, Product, RequestDTO  {
-            private Integer Id;
-            private Integer productId;
-        }
 
         /**
          * Запрос на применение скидки к заказу
@@ -127,6 +119,26 @@ public enum OrdersDTO {;
         public static class ConfirmOrder implements AccountId, ProductsId, RequestDTO {
             private Integer accountId;
             private Map<Integer, Integer> orderedProductIds;
+        }
+
+        /**
+         * Чтобы удалить все товары из корзины
+         */
+        @Data
+        public static class ClearCart implements AccountId, ProductsId, RequestDTO {
+            private Integer accountId;
+            private Map<Integer, Integer> orderedProductIds;
+        }
+
+        /**
+         * Чтобы удалить/отменить оформленный заказ
+         */
+        @Data
+        public static class DeleteOrder implements Id, AccountId, ProductsId, Status, RequestDTO {
+            private Integer id;
+            private Integer accountId;
+            private Map<Integer, Integer> orderedProductIds;
+            private String status;
         }
     }
 
