@@ -134,7 +134,7 @@ public enum ProductDTO implements DTO {;
             String type;
             ImageDTO.Response.GetImage image;
             String status;
-            Integer basePrice;
+            BigDecimal basePrice;
         }
 
         /**
@@ -152,9 +152,9 @@ public enum ProductDTO implements DTO {;
             String type;
             Set<ImageDTO.Response.GetImage> images;
             String status;
-            Integer basePrice;
-            Integer additionalPrice;
-            Integer fullPrice;
+            BigDecimal basePrice;
+            BigDecimal additionalPrice;
+            BigDecimal fullPrice;
             Set<FeatureDTO.Response.GetUnitless> features;
             Set<FeatureDTO.Response.GetWithUnits> unitsFeatures;
         }

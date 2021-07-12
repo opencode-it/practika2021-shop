@@ -67,5 +67,4 @@ public abstract class RESTController<I extends RequestDTO,
         }
     }
 
-
 }

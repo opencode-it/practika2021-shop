@@ -8,6 +8,7 @@ import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
 import lombok.Data;
 import lombok.Value;
+import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -114,10 +115,10 @@ public enum OrdersDTO {;
         /**
          * Запрос на применение скидки к заказу
          */
-        @Data
+        /*@Data
         public static class ApplyDiscount implements Id, Discount, RequestDTO  {
             //TODO и че с этим делать
-        }
+        }*/
 
         /**
          * Запрос на формирование заказа из товаров в корзине

@@ -15,7 +15,6 @@ import java.util.List;
  *
  * @author Александров Илья
  */
-@Mapper
 public interface AbstractMapper<E extends AbstractEntity,
                                 I extends RequestDTO,
                                 O extends ResponseDTO> {
