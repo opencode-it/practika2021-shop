@@ -1,7 +1,7 @@
 package app.controllers;
 
 
-import app.services.AbstractService;
+import app.services.CRUDService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("rights")
 public class RightsController extends RESTController{
-    public RightsController(AbstractService Service) {
+    public RightsController(CRUDService Service) {
         super(Service);
     }
 }
