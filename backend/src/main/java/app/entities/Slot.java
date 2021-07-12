@@ -21,6 +21,5 @@ public class Slot extends AbstractEntity{
     private Integer amount;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column
     Product product;
 }
