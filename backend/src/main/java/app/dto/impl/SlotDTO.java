@@ -35,7 +35,7 @@ public enum SlotDTO {;
 
         @Data
         public static class SetAmountOnId implements Id, Amount, RequestDTO {
-            private String id;
+            private Integer id;
             private Integer amount;
         }
     }
