@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/constructor" class="add-card" id="add-card">
+  <router-link to="/" class="add-card" id="add-card">
     <div class="add-top">
       <div class="add-circle">
         <span class="add-plus"> + </span>
@@ -19,8 +19,8 @@ export default {};
   text-decoration: none;
   background-color: #e0dad2;
   border-radius: 12px;
-  width: 154px;
-  height: 238px;
+  width: 186px;
+  height: 252px;
 }
 
 .add-card.full {
