@@ -57,25 +57,9 @@ public class OrdersController {
         //TODO
     }
 
-    /**
-     * Запрос на увеличение или уменьшение продукта в заказе на одну единицу
-     * Увеличить или уменьшить вкладывается со стороны клиента
-     */
-    @PutMapping("/cart")
-    public OrdersDTO.Response.GetFormed editAmountOf(@RequestBody OrdersDTO.Request.ChangeProductAmount request) {
-        //TODO
-    }
 
     /**
-     * Удалить все продукты из корзины
-     */
-    @DeleteMapping("/cart")
-    public OrdersDTO.Response.GetFormed clearCart(@RequestBody OrdersDTO.Request.ClearCart request) {
-        //TODO
-    }
-
-    /**
-     * Удалить/отменить выбранный заказ
+     * Удалить/отменить выбранный уже оформленный заказ
      */
     @DeleteMapping("/{id}")
     public void delete(@RequestBody OrdersDTO.Request.DeleteOrder request) {

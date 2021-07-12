@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * Контроллер для обработки CRUD запросов для продуктов
- * */
+ */
 @RestController
 @RequestMapping("/products")
 public class ProductsController {

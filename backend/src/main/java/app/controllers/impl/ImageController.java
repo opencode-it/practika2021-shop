@@ -31,7 +31,7 @@ public class ImageController {
      * Загрузить новое изображение на сервер
      */
     @PostMapping("/load")
-    public void confirmOrder(@RequestBody ImageDTO.Request.CreateCustom request) {
+    public void confirmOrder(@RequestBody ImageDTO.Request.LoadCustom request) {
         //TODO
     }
 
