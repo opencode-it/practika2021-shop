@@ -27,7 +27,7 @@ public class Product extends AbstractEntity{
     private List<Image> images;
 
     @Column
-    private ProductStatus prod_status;
+    private ProductStatus prodStatus;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_type_ID")
