@@ -18,8 +18,8 @@ import javax.persistence.*;
 public abstract class AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     @Getter
     @Setter
-    private long id;
+    protected Long id;
 }

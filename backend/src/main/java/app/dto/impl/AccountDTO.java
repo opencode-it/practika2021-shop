@@ -45,7 +45,7 @@ public enum AccountDTO {;
         String getAddress();
     }
 
-    public enum Request {;
+    public enum Request implements RequestDTO {;
 
         /**
          * Получение пользователя по его ID
@@ -103,7 +103,7 @@ public enum AccountDTO {;
         }
     }
 
-    public enum Response {;
+    public enum Response implements ResponseDTO{;
 
         /**
         * Основная информация о пользователе

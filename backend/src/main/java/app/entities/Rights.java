@@ -17,6 +17,6 @@ import javax.persistence.Table;
 @NoArgsConstructor
 public class Rights extends AbstractEntity {
 
-    @Column(name = "name")
+    @Column
     private String name;
 }

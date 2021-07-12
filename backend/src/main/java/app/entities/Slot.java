@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class Slot extends AbstractEntity{
 
     @Column
-    private int amount;
+    private Integer amount;
 
     @OneToOne(cascade = CascadeType.ALL)
     @Column
