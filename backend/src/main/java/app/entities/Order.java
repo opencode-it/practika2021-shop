@@ -30,7 +30,7 @@ public class Order extends AbstractEntity {
     private Discount discount;
 
     @Column(name = "count")
-    private int count;
+    private Integer count;
 
     @Column(name = "date")
     private LocalDateTime date;

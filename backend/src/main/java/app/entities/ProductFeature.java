@@ -25,6 +25,6 @@ public class ProductFeature extends AbstractEntity{
     private String value;
 
     @Column
-    private int additionalPrice;
+    private Integer additionalPrice;
 
 }

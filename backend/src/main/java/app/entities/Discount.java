@@ -16,5 +16,5 @@ import javax.persistence.Table;
 public class Discount extends AbstractEntity {
 
     @Column(name = "value")
-    private int value;
+    private Integer value;
 }
