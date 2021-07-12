@@ -4,7 +4,6 @@ import app.dto.impl.AccountDTO;
 import app.entities.Account;
 import app.mappers.impl.AccountCreateAndGetMapper;
 import app.repositories.impl.AccountRepository;
-import app.services.AbstractService;
 import app.services.CRUDService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,11 +11,9 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class AccountCreateAndGetService extends CRUDService<Account,
-                                                                AccountDTO.Request.Create,
-                                                                AccountDTO.Response.GetFullInfo,
-                                                                AccountRepository,
-                                                                AccountCreateAndGetMapper>
-                                        implements AbstractService<AccountDTO.Request.Create,
-                                                                    AccountDTO.Response.GetFullInfo> {
+                                                            AccountDTO.Request.Create,
+                                                            AccountDTO.Response.GetFullInfo,
+                                                            AccountRepository,
+                                                            AccountCreateAndGetMapper> {
 
 }
