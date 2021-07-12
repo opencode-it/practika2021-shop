@@ -2,6 +2,7 @@ package app.controllers.impl;
 
 import app.controllers.RESTController;
 import app.dto.impl.AccountDTO;
+import app.dto.impl.RightsDTO;
 import app.services.ext.AccountCreateAndGetService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,5 +19,16 @@ public class AccountsController extends RESTController<AccountDTO.Request.Create
                                                        AccountCreateAndGetService> {
     public AccountsController(AccountCreateAndGetService Service) {
         super(Service);
+    }
+
+
+    @RequestMapping("/try")
+    public String tryAdd(){
+        AccountDTO.Request.Create save = new AccountDTO.Request.Create();
+        save.setRights(Service.findBy(Long.valueOf(3) ).get().getRights());
+        System.out.println(save.getRights().getName());
+
+        Service.save(save);
+        return "Hell";
     }
 }

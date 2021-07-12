@@ -1,6 +1,8 @@
 package app.entities;
 
+import com.sun.istack.NotNull;
 import lombok.*;
+import org.springframework.context.annotation.Primary;
 
 import javax.persistence.*;
 
@@ -12,18 +14,18 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductFeature extends AbstractEntity{
-
+    @NotNull
+    @PrimaryKeyJoinColumn(name = "feture_ID")
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "feture_ID")
     private Feature feature;
-
+    @NotNull
+    @PrimaryKeyJoinColumn(name = "product_ID")
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_ID")
     private Product product;
-
+    @NotNull
     @Column
     private String value;
-
+    @NotNull
     @Column
     private Integer additionalPrice;
 
