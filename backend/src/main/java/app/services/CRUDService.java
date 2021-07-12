@@ -35,10 +35,10 @@ public abstract class CRUDService<E extends AbstractEntity,
                                   M extends AbstractMapper<E, I, O>> implements AbstractService<I, O> {
 
     @Autowired
-    R repository;
+    protected R repository;
 
     @Autowired
-    M mapper;
+    protected M mapper;
 
     /**
      *
