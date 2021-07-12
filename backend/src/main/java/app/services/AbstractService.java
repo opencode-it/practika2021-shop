@@ -32,7 +32,7 @@ public abstract class AbstractService<E extends AbstractEntity,
                                       I extends RequestDTO,
                                       O extends ResponseDTO,
                                       R extends LongKeyRepository<E>,
-                                      M extends AbstractMapper<E, I, O>> {
+                                      M extends AbstractMapper<E, I, O>> implements BlankService {
 
     @Autowired
     R repository;
