@@ -138,6 +138,28 @@ public enum ProductDTO implements DTO {;
             private BigDecimal basePrice;
         }
 
+        @Data
+        public static class EditProduct implements Id, Name, Description,
+                                                   FeaturesRequests, LoadedImagesSet,
+                                                   BasePrice, RequestDTO {
+            private Integer id;
+
+            private String name;
+            private boolean isNewName;
+
+            private String description;
+            private boolean isNewDescription;
+
+            private Set<FeatureDTO.Request.Get> requestedFeatures;
+            private boolean isNewFeatures;
+
+            private Set<ImageDTO.Request.Get> images;
+            private boolean newImages;
+
+            private BigDecimal basePrice;
+            private boolean isNewPrice;
+        }
+
     }
 
     public enum Response {;
