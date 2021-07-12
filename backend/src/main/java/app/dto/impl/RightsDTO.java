@@ -35,8 +35,9 @@ public enum RightsDTO {;
          * Для смены прав пользователя
          */
         @Data
-        public static class ChangeRights implements DTO, Id, RequestDTO {
+        public static class ChangeRights implements DTO, Id, Name, RequestDTO {
             private Integer id;
+            private String name;
         }
     }
 
