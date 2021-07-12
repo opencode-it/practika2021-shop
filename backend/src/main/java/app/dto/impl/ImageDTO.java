@@ -21,6 +21,16 @@ public enum ImageDTO {;
         Integer getProductId();
     }
 
+    private interface ImageSize {
+        Integer getLength();
+        Integer getWidth();
+    }
+
+    private interface ImagePosition {
+        Double getX();
+        Double getY();
+    }
+
     private interface ImageFile {}
 
 
@@ -38,10 +48,21 @@ public enum ImageDTO {;
          * Создает свое изображение
          */
         @Data
-        public static class CreateCustom implements ImageFile, ImageDuty, RequestDTO {
+        public static class LoadCustom implements ImageFile, ImageDuty, RequestDTO {
             //TODO в чем грузятся изображения на сервер?
 
-            private String ImageDuty;
+            private String imageDuty;
+        }
+
+        @Data
+        public static class CustomizeImage implements Path, ImageSize, ImagePosition,
+                                                      ImageDuty, RequestDTO {
+            private String path;
+            private Integer length;
+            private Integer width;
+            private Double x;
+            private Double y;
+            private String imageDuty;
 
         }
 
