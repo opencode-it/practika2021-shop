@@ -24,7 +24,6 @@ import java.util.Optional;
  *
  * @author Александров Илья
  */
-@Service
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

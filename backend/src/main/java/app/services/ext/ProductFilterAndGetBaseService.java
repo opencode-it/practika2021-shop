@@ -15,6 +15,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Сервис для получения базовой информации о продуктах по фильтру
+ *
+ * @author Александров Илья
+ */
 @Service
 @AllArgsConstructor
 public class ProductFilterAndGetBaseService extends CRUDService<Product,
