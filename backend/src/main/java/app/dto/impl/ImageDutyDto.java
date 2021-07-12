@@ -1,6 +1,8 @@
 package app.dto.impl;
 
 import app.dto.DTO;
+import app.dto.RequestDTO;
+import app.dto.ResponseDTO;
 import lombok.Data;
 import lombok.Value;
 
@@ -21,18 +23,18 @@ public enum ImageDutyDto {;
     public enum Request {;
 
         @Data
-        public static class Get implements DTO, Id {
+        public static class Get implements Id, RequestDTO {
             private Integer id;
         }
 
         @Data
-        public static class UpdateName implements DTO, Id, Name {
+        public static class UpdateName implements Id, Name, RequestDTO {
             private Integer id;
             private String name;
         }
 
         @Data
-        public static class Delete implements DTO, Id {
+        public static class Delete implements Id, RequestDTO {
             private Integer id;
         }
 
@@ -42,7 +44,7 @@ public enum ImageDutyDto {;
     public enum Response {;
 
         @Value
-        public static class getName implements DTO, Name {
+        public static class getName implements Name, ResponseDTO {
             private String name;
         }
 

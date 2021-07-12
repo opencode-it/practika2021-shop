@@ -4,6 +4,8 @@
 package app.dto.impl;
 
 import app.dto.DTO;
+import app.dto.RequestDTO;
+import app.dto.ResponseDTO;
 import lombok.Data;
 import lombok.Value;
 
@@ -57,7 +59,7 @@ public enum FeatureDTO {;
         * Для получения характеристики с сервера по ее ID
         */
         @Data
-        public static class Get implements DTO, Id {
+        public static class Get implements Id, RequestDTO {
             private Integer id;
         }
 
@@ -66,7 +68,7 @@ public enum FeatureDTO {;
          * на новое значение
          */
         @Data
-        public static class UpdateUnits implements DTO, Id, ChangeUnits {
+        public static class UpdateUnits implements Id, ChangeUnits, RequestDTO  {
             private Integer Id;
             private UnitsDTO.Request.ChangeUnits changesUnits;
         }
@@ -76,7 +78,7 @@ public enum FeatureDTO {;
          * на новое значение
          */
         @Data
-        public static class UpdateValue implements DTO, Id, FeatureValue {
+        public static class UpdateValue implements Id, FeatureValue, RequestDTO  {
             private Integer Id;
             private String featureValue;
         }
@@ -85,7 +87,7 @@ public enum FeatureDTO {;
          * Для удаления характеристики товара по ее ID
          */
         @Data
-        public static class Delete implements DTO, Id {
+        public static class Delete implements Id, RequestDTO  {
             private Integer Id;
         }
 
@@ -97,7 +99,7 @@ public enum FeatureDTO {;
          * продукта
          */
         @Value
-        public static class GetWithUnits implements DTO, Name, FeaturePrice, ResponseUnits {
+        public static class GetWithUnits implements Name, FeaturePrice, ResponseUnits, ResponseDTO {
             String name;
             UnitsDTO.Response.Get units;
             Integer featurePrice;
@@ -108,7 +110,7 @@ public enum FeatureDTO {;
          * продукта
          */
         @Value
-        public static class GetUnitless implements DTO, Name, FeaturePrice, FeatureValue {
+        public static class GetUnitless implements Name, FeaturePrice, FeatureValue, ResponseDTO  {
             String name;
             String featureValue;
             Integer featurePrice;

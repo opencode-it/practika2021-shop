@@ -4,6 +4,8 @@
 package app.dto.impl;
 
 import app.dto.DTO;
+import app.dto.RequestDTO;
+import app.dto.ResponseDTO;
 import lombok.Data;
 import lombok.Value;
 
@@ -39,7 +41,7 @@ public enum UnitsDTO implements DTO {;
          * мерочной характеристики по ее ID
          */
         @Data
-        public static class ChangeUnits implements DTO, Id, Measure {
+        public static class ChangeUnits implements Id, Measure, RequestDTO {
             private Integer id;
             private Double measure;
         }
@@ -51,7 +53,7 @@ public enum UnitsDTO implements DTO {;
          * мерочно характеристики продукта
          */
         @Value
-        public static class Get implements DTO, Name, Measure {
+        public static class Get implements Name, Measure, ResponseDTO {
             String name;
             Double measure;
         }
