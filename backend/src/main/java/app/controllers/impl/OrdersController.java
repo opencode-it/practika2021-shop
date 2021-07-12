@@ -28,26 +28,26 @@ public class OrdersController {
     /**
      * Список всех совершенных пользователем заказов
      */
-    @GetMapping
+   /* @GetMapping
     public List<OrdersDTO.Response.GetFormed> findAll() {
         //TODO
-    }
+    }*/
 
     /**
      * Просмотр одного конкретного заказа в истории
      */
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public OrdersDTO.Response.GetFull getBy(@PathVariable("id") Long id) {
         //TODO
-    }
+    }*/
 
     /**
      * Просмотр корзины.
      */
-    @GetMapping("/cart")
+    /*@GetMapping("/cart")
     public OrdersDTO.Response.GetFormed showCart() {
         //TODO
-    }
+    }*/
 
     /**
      * Подтвердить и сохранить оформленный заказ

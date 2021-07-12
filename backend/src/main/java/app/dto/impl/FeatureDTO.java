@@ -6,6 +6,7 @@ package app.dto.impl;
 import app.dto.DTO;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
 
@@ -59,6 +60,7 @@ public enum FeatureDTO {;
         * Для получения характеристики с сервера по ее ID
         */
         @Data
+        @AllArgsConstructor
         public static class Get implements Id, RequestDTO {
             private Integer id;
         }
@@ -68,6 +70,7 @@ public enum FeatureDTO {;
          * на новое значение
          */
         @Data
+        @AllArgsConstructor
         public static class UpdateUnits implements Id, ChangeUnits, RequestDTO  {
             private Integer Id;
             private UnitsDTO.Request.ChangeUnits changesUnits;
@@ -78,6 +81,7 @@ public enum FeatureDTO {;
          * на новое значение
          */
         @Data
+        @AllArgsConstructor
         public static class UpdateValue implements Id, FeatureValue, RequestDTO  {
             private Integer Id;
             private String featureValue;
@@ -87,6 +91,7 @@ public enum FeatureDTO {;
          * Для удаления характеристики товара по ее ID
          */
         @Data
+        @AllArgsConstructor
         public static class Delete implements Id, RequestDTO  {
             private Integer Id;
         }

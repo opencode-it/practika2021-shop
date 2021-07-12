@@ -2,6 +2,7 @@ package app.dto.impl;
 
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
 /**
@@ -39,6 +40,7 @@ public enum ImageDTO {;
         * Для запроса изображений конкретного продукта
         */
         @Data
+        @AllArgsConstructor
         public static class Get implements ImageDuty, RequestForProduct, RequestDTO  {
             Integer productId;
             String imageDuty;
@@ -48,6 +50,7 @@ public enum ImageDTO {;
          * Создает свое изображение
          */
         @Data
+        @AllArgsConstructor
         public static class LoadCustom implements ImageFile, ImageDuty, RequestDTO {
             //TODO в чем грузятся изображения на сервер?
 
@@ -55,6 +58,7 @@ public enum ImageDTO {;
         }
 
         @Data
+        @AllArgsConstructor
         public static class CustomizeImage implements Path, ImageSize, ImagePosition,
                                                       ImageDuty, RequestDTO {
             private String path;
@@ -70,6 +74,7 @@ public enum ImageDTO {;
          * Удалить изображение по указанному пути
          */
         @Data
+        @AllArgsConstructor
         public static class DeleteImage implements Path, RequestDTO {
             private String path;
         }

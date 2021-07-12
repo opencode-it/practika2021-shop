@@ -23,17 +23,17 @@ public class ConstructorController {
      * Открывает страницу конструктора для редактирования существующего
      * в каталоге товара
      */
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public ProductDTO.Response.GetFull editProduct(@PathVariable Integer id) {
         //TODO
-    }
+    }*/
 
     /**
      * Для обработки изображения?
      */
-    @PostMapping("/{id}")
+    /*@PostMapping("/{id}")
     public ImageDTO.Response.GetRequestedImage updateProductImage(
             @RequestBody ImageDTO.Request.CustomizeImage request) {
         //TODO
-    }
+    }*/
 }
