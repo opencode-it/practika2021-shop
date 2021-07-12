@@ -4,6 +4,8 @@
 package app.dto.impl;
 
 import app.dto.DTO;
+import app.dto.RequestDTO;
+import app.dto.ResponseDTO;
 import lombok.Data;
 import lombok.Value;
 
@@ -104,7 +106,7 @@ public enum ProductDTO implements DTO {;
         * Запрос на продукт по его ID
         */
         @Data
-        public static class Get implements DTO, Id {
+        public static class Get implements Id, RequestDTO {
             private Integer id;
         }
 
@@ -113,7 +115,7 @@ public enum ProductDTO implements DTO {;
          * по конкретным характеристикам
          */
         @Data
-        public static class FilterByFeatures implements DTO, GetFeatures {
+        public static class FilterByFeatures implements GetFeatures, RequestDTO  {
             private Set<FeatureDTO.Request.Get> featuresFilter;
         }
 
@@ -126,7 +128,7 @@ public enum ProductDTO implements DTO {;
          * (для вида из каталога)
          */
         @Value
-        public static class GetBase implements DTO, Id, Name, Type, Image, Status, BasePrice {
+        public static class GetBase implements Id, Name, Type, Image, Status, BasePrice, ResponseDTO {
             Integer id;
             String name;
             String type;
@@ -140,10 +142,10 @@ public enum ProductDTO implements DTO {;
          * (для вида со страницы продукта или конструктора)
          */
         @Value
-        public static class GetFull implements DTO, Id, Name, Type,
+        public static class GetFull implements Id, Name, Type,
                                     Description, Status, BasePrice,
                                     AdditionalPrice, FullPrice, Features,
-                                    UnitsFeatures, ImagesSet {
+                                    UnitsFeatures, ImagesSet, ResponseDTO {
             Integer id;
             String name;
             String description;

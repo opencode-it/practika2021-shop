@@ -1,6 +1,8 @@
 package app.dto.impl;
 
 import app.dto.DTO;
+import app.dto.RequestDTO;
+import app.dto.ResponseDTO;
 import lombok.Data;
 import lombok.Value;
 
@@ -21,18 +23,18 @@ public enum SlotDTO {;
     public enum Request {;
 
         @Data
-        public static class Get implements DTO, Id {
+        public static class Get implements Id, RequestDTO {
             private Integer id;
         }
 
         @Data
-        public static class SetAmount implements DTO, Product, Amount {
+        public static class SetAmount implements DTO, Product, Amount, RequestDTO {
             private String product;
             private Integer amount;
         }
 
         @Data
-        public static class SetAmountOnId implements DTO, Id, Amount {
+        public static class SetAmountOnId implements Id, Amount, RequestDTO {
             private String id;
             private Integer amount;
         }
@@ -41,13 +43,13 @@ public enum SlotDTO {;
     public enum Response {;
 
         @Value
-        public static class GetAmountOnId implements DTO, Amount, Id {
+        public static class GetAmountOnId implements Amount, Id, ResponseDTO {
             Integer id;
             Integer amount;
         }
 
         @Value
-        public static class GetFullInfo implements DTO, Amount, Product {
+        public static class GetFullInfo implements Amount, Product, ResponseDTO {
             Integer amount;
             String product;
         }

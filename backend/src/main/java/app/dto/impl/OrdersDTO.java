@@ -4,6 +4,8 @@
 package app.dto.impl;
 
 import app.dto.DTO;
+import app.dto.RequestDTO;
+import app.dto.ResponseDTO;
 import lombok.Data;
 import lombok.Value;
 
@@ -87,7 +89,7 @@ public enum OrdersDTO {;
          * Запрос на получение информации по одному закзу
          */
         @Data
-        public static class Get implements DTO, Id {
+        public static class Get implements Id, RequestDTO  {
             private Integer id;
         }
 
@@ -95,7 +97,7 @@ public enum OrdersDTO {;
          * Запрос на уменьшение конкретного продукта в заказе на одну единицу
          */
         @Data
-        public static class DecreaseProductAmount implements DTO, Id, Product {
+        public static class DecreaseProductAmount implements Id, Product, RequestDTO  {
             private Integer Id;
             private Integer productId;
         }
@@ -104,7 +106,7 @@ public enum OrdersDTO {;
          * Запрос на увеличение конкретного продукта в заказе на одну единицу
          */
         @Data
-        public static class IncreaseProductAmount implements DTO, Id, Product {
+        public static class IncreaseProductAmount implements Id, Product, RequestDTO  {
             private Integer Id;
             private Integer productId;
         }
@@ -113,7 +115,7 @@ public enum OrdersDTO {;
          * Запрос на применение скидки к заказу
          */
         @Data
-        public static class ApplyDiscount implements DTO, Id, Discount {
+        public static class ApplyDiscount implements Id, Discount, RequestDTO  {
             //TODO и че с этим делать
         }
 
@@ -121,7 +123,7 @@ public enum OrdersDTO {;
          * Запрос на формирование заказа из товаров в корзине
          */
         @Data
-        public static class ConfirmOrder implements DTO, AccountId, ProductsId {
+        public static class ConfirmOrder implements AccountId, ProductsId, RequestDTO {
             private Integer accountId;
             private Map<Integer, Integer> orderedProductIds;
         }
@@ -133,7 +135,7 @@ public enum OrdersDTO {;
         * Запрос на отображение корзины перед окончательным оформлением заказа в системе
         */
         @Value
-        public static class GetFormed implements DTO, Id, AccountId, ProductsInfo, GrandTotal {
+        public static class GetFormed implements Id, AccountId, ProductsInfo, GrandTotal, ResponseDTO {
             Integer id;
             Integer accountId;
             Set<ProductDTO.Response.GetBase> productsInOrder;
@@ -144,7 +146,7 @@ public enum OrdersDTO {;
          * Запрос на отображение полной информации о совершенном заказе
          */
         @Value
-        public static class GetFull implements DTO, Id, AccountId, ProductsInfo, GrandTotal, Date, Status {
+        public static class GetFull implements Id, AccountId, ProductsInfo, GrandTotal, Date, Status, ResponseDTO {
             Integer id;
             Integer accountId;
             Set<ProductDTO.Response.GetBase> productsInOrder;

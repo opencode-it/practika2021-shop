@@ -3,7 +3,6 @@
  */
 package app.dto.impl;
 
-import app.dto.DTO;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
 import lombok.Data;
@@ -27,7 +26,7 @@ public enum RightsDTO {;
         * На проверку прав пользователя
         */
         @Data
-        public static class CheckRights implements DTO, Id {
+        public static class CheckRights implements Id, RequestDTO {
             private Integer id;
         }
 
@@ -35,7 +34,7 @@ public enum RightsDTO {;
          * Для смены прав пользователя
          */
         @Data
-        public static class ChangeRights implements DTO, Id, Name, RequestDTO {
+        public static class ChangeRights implements Id, Name, RequestDTO {
             private Integer id;
             private String name;
         }
@@ -46,7 +45,7 @@ public enum RightsDTO {;
          * Получение информации о правах пользователя
          */
         @Value
-        public static class Get implements DTO, Id, Name, ResponseDTO {
+        public static class Get implements Id, Name, ResponseDTO {
             Integer id;
             String name;
         }

@@ -51,7 +51,7 @@ public enum AccountDTO {;
          * Получение пользователя по его ID
          */
         @Data
-        public static class Get implements DTO, Id {
+        public static class Get implements Id, RequestDTO  {
             private Integer id;
         }
 
@@ -59,7 +59,7 @@ public enum AccountDTO {;
          * Используется при регистрации пользователя
          */
         @Data
-        public static class Create implements DTO, Rights, Email, FullName, Address, Token, RequestDTO {
+        public static class Create implements Rights, Email, FullName, Address, Token, RequestDTO {
             private RightsDTO.Response.Get rights;
             private String email;
             private String fullName;
@@ -71,7 +71,7 @@ public enum AccountDTO {;
          * Запрос пользователя на изменение имени
          */
         @Data
-        public static class UpdateName implements DTO, Id, FullName {
+        public static class UpdateName implements Id, FullName, RequestDTO {
             private Integer id;
             private String fullName;
         }
@@ -80,7 +80,7 @@ public enum AccountDTO {;
          * Запрос пользователя на изменение почты
          */
         @Data
-        public static class UpdateEmail implements DTO, Id, Email {
+        public static class UpdateEmail implements Id, Email, RequestDTO {
             private Integer id;
             private String email;
         }
@@ -89,7 +89,7 @@ public enum AccountDTO {;
          * Запрос пользователя на изменение адреса
          */
         @Data
-        public static class UpdateAddress implements DTO, Id, Address {
+        public static class UpdateAddress implements Id, Address, RequestDTO {
             private Integer id;
             private String address;
         }
@@ -98,7 +98,7 @@ public enum AccountDTO {;
          * Запрос пользователя на удаление своего аккаунта
          */
         @Data
-        public static class Delete implements DTO, Id {
+        public static class Delete implements Id, RequestDTO {
             private Integer id;
         }
     }
@@ -109,7 +109,7 @@ public enum AccountDTO {;
         * Основная информация о пользователе
         */
         @Value
-        public static class GetShortInfo implements DTO, Email, FullName {
+        public static class GetShortInfo implements Email, FullName, ResponseDTO  {
             String email;
             String fullName;
         }
@@ -118,7 +118,7 @@ public enum AccountDTO {;
          * Полная информация о пользователе
          */
         @Value
-        public static class GetFullInfo implements DTO, Id, Rights, Email, FullName, Token, Address, ResponseDTO {
+        public static class GetFullInfo implements Id, Rights, Email, FullName, Token, Address, ResponseDTO {
             Integer id;
             RightsDTO.Response.Get rights;
             String email;
