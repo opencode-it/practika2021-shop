@@ -40,8 +40,8 @@ public enum ProductDTO implements DTO {;
      * Для фильтрации общего списка продуктов
      * по конкретным характеристикам
      */
-    private interface GetFeatures {
-        Set<FeatureDTO.Request.Get> getFeaturesFilter();
+    private interface FeaturesRequests {
+        Set<FeatureDTO.Request.Get> getRequestedFeatures();
     }
 
     /**
@@ -69,7 +69,14 @@ public enum ProductDTO implements DTO {;
      * Все доступные изображения продукта
      */
     private interface ImagesSet {
-        Set<ImageDTO.Response.GetImage> getImages();
+        Set<ImageDTO.Response.GetImage> getImagesSet();
+    }
+
+    /**
+     * Все доступные изображения продукта
+     */
+    private interface LoadedImagesSet {
+        Set<ImageDTO.Request.Get> getImages();
     }
 
     /**
@@ -115,8 +122,20 @@ public enum ProductDTO implements DTO {;
          * по конкретным характеристикам
          */
         @Data
-        public static class FilterByFeatures implements GetFeatures, RequestDTO  {
-            private Set<FeatureDTO.Request.Get> featuresFilter;
+        public static class FilterByFeatures implements FeaturesRequests, RequestDTO  {
+            private Set<FeatureDTO.Request.Get> requestedFeatures;
+        }
+
+        @Data
+        public static class CreateProduct implements Name, Description, Type,
+                                                     FeaturesRequests, LoadedImagesSet,
+                                                     BasePrice, RequestDTO {
+            private String name;
+            private String description;
+            private String type;
+            private Set<FeatureDTO.Request.Get> requestedFeatures;
+            private Set<ImageDTO.Request.Get> images;
+            private BigDecimal basePrice;
         }
 
     }
@@ -150,7 +169,7 @@ public enum ProductDTO implements DTO {;
             String name;
             String description;
             String type;
-            Set<ImageDTO.Response.GetImage> images;
+            Set<ImageDTO.Response.GetImage> imagesSet;
             String status;
             BigDecimal basePrice;
             BigDecimal additionalPrice;
