@@ -15,6 +15,5 @@ spring:
     hibernate:
       ddl-auto: 'validate'
     show-sql: true
-  security:
-    enabled: false
+
 
