@@ -3,7 +3,6 @@ package app.mappers;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
 import app.entities.AbstractEntity;
-import org.mapstruct.Mapper;
 
 import java.util.List;
 
