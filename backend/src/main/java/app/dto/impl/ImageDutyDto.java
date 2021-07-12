@@ -1,6 +1,5 @@
 package app.dto.impl;
 
-import app.dto.DTO;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
 import lombok.Data;
