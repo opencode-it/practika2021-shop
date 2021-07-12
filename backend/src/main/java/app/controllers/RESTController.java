@@ -1,9 +1,8 @@
 package app.controllers;
 
-import app.dto.DTO;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
-import app.services.AbstractService;
+import app.services.CRUDService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ import java.util.Optional;
 @NoArgsConstructor
 public abstract class RESTController<I extends RequestDTO,
                                      O extends ResponseDTO,
-                                     S extends AbstractService<?, I, O, ?, ?>> {
+                                     S extends CRUDService<?, I, O, ?, ?>> {
 
     @Autowired
     protected S Service;

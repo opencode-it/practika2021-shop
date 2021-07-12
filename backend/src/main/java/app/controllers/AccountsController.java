@@ -1,6 +1,6 @@
 package app.controllers;
 
-import app.services.AbstractService;
+import app.services.CRUDService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("accounts")
 public class AccountsController extends RESTController{
-    public AccountsController(AbstractService Service) {
+    public AccountsController(CRUDService Service) {
         super(Service);
     }
 }
