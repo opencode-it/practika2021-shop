@@ -5,11 +5,11 @@ import app.entities.Product;
 import app.entities.ProductType;
 import app.mappers.AbstractMapper;
 import app.mappers.qualifiers.ProductTypeToString;
-import app.mappers.qualifiers.StringToProductType;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 
-@Mapper(uses = FeatureUpdateAndGetUnitsMapper.class)
+@Mapper(uses = FeatureGetUnitsMapper.class)
 public interface ProductFilterAndGetBaseMapper extends AbstractMapper<Product,
                                                                       ProductDTO.Request.FilterByFeatures,
                                                                       ProductDTO.Response.GetBase> {
@@ -18,19 +18,19 @@ public interface ProductFilterAndGetBaseMapper extends AbstractMapper<Product,
     @Override
     ProductDTO.Response.GetBase toDto(Product entity);
 
-    @Mapping(target = "type", qualifiedBy = StringToProductType.class)
+    @Mappings({
+        @Mapping(target = "name", ignore = true),
+        @Mapping(target = "desription", ignore = true),
+        @Mapping(target = "price", ignore = true),
+        @Mapping(target = "images", ignore = true),
+        @Mapping(target = "prodStatus", ignore = true),
+        @Mapping(target = "type", ignore = true)
+    })
     @Override
     Product toEntity(ProductDTO.Request.FilterByFeatures dto);
 
     @ProductTypeToString
-    static String toString(ProductType productType) {
+    static String productTypeToString(ProductType productType) {
         return productType.getName();
-    }
-
-    @StringToProductType
-    static ProductType toProductType(String name) {
-        return ProductType.builder()
-                .name(name)
-                .build();
     }
 }
