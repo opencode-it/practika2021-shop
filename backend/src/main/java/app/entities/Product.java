@@ -31,6 +31,9 @@ public class Product extends AbstractEntity{
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_type_ID")
-    private ProductType feature;
+    private ProductType type;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "feature_ID")
+    private List<Feature> features;
 }
