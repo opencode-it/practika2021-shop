@@ -1,13 +1,15 @@
 package app.entities;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "discount")
+@Table(name = "discount", uniqueConstraints= @UniqueConstraint(columnNames={"value"}))
 @Data
 @Builder
 @EqualsAndHashCode(callSuper = true)
@@ -15,6 +17,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 public class Discount extends AbstractEntity {
 
+    @NotNull
     @Column(name = "value")
     private Integer value;
 }

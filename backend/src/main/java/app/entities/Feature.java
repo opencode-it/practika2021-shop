@@ -1,6 +1,7 @@
 package app.entities;
 
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Feature extends AbstractEntity{
+    @NotNull
     @Column
     private String name;
 

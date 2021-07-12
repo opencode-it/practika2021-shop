@@ -61,6 +61,11 @@
             <version>1.4.1.Final</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.jlefebure</groupId>
+            <artifactId>spring-boot-starter-minio</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
