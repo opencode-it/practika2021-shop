@@ -13,12 +13,22 @@
           <router-link to="/constructor" class="navbar-menu__item"
             >Конструктор</router-link
           >
-          <button class="navbar-menu__item login-btn" @click="checkModal">
+          <button
+            v-if="!$store.state.isAuth"
+            class="navbar-menu__item login-btn"
+            @click="checkModal"
+          >
             Вход
+          </button>
+          <button
+            v-if="$store.state.isAuth"
+            class="navbar-menu__item login-btn"
+          >
+            <img src="../../public/img/out.svg" alt="out" />
           </button>
         </ul>
         <router-link to="/basket" class="basket">
-          <div class="counter">0</div>
+          <div class="counter">{{ $store.state.basketCounter }}</div>
           <img src="../../public/img/basket.png" alt="basket" />
         </router-link>
       </div>
@@ -61,6 +71,7 @@ export default {
 .basket {
   position: relative;
   margin-right: 10px;
+  margin-bottom: 9px;
   // &:hover {
   //   // добавить эффекты
   // }
@@ -98,6 +109,8 @@ export default {
   border-bottom: 1px solid #b8b3ad;
 }
 .navbar-menu {
+  display: flex;
+  align-items: center;
   &__item {
     text-decoration: none;
     color: black;
