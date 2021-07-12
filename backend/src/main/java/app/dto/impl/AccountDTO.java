@@ -6,6 +6,7 @@ package app.dto.impl;
 import app.dto.DTO;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
 
@@ -51,6 +52,7 @@ public enum AccountDTO {;
          * Получение пользователя по его ID
          */
         @Data
+        @AllArgsConstructor
         public static class Get implements Id, RequestDTO  {
             private Integer id;
         }
@@ -59,6 +61,7 @@ public enum AccountDTO {;
          * Используется при регистрации пользователя
          */
         @Data
+        @AllArgsConstructor
         public static class Create implements Rights, Email, FullName, Address, Token, RequestDTO {
             private RightsDTO.Response.Get rights;
             private String email;
@@ -71,6 +74,7 @@ public enum AccountDTO {;
          * Запрос пользователя на изменение имени
          */
         @Data
+        @AllArgsConstructor
         public static class UpdateName implements Id, FullName, RequestDTO {
             private Integer id;
             private String fullName;
@@ -80,6 +84,7 @@ public enum AccountDTO {;
          * Запрос пользователя на изменение почты
          */
         @Data
+        @AllArgsConstructor
         public static class UpdateEmail implements Id, Email, RequestDTO {
             private Integer id;
             private String email;
@@ -89,6 +94,7 @@ public enum AccountDTO {;
          * Запрос пользователя на изменение адреса
          */
         @Data
+        @AllArgsConstructor
         public static class UpdateAddress implements Id, Address, RequestDTO {
             private Integer id;
             private String address;
@@ -98,6 +104,7 @@ public enum AccountDTO {;
          * Запрос пользователя на удаление своего аккаунта
          */
         @Data
+        @AllArgsConstructor
         public static class Delete implements Id, RequestDTO {
             private Integer id;
         }

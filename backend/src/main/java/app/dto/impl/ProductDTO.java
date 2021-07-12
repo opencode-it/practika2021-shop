@@ -6,6 +6,7 @@ package app.dto.impl;
 import app.dto.DTO;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
 
@@ -113,6 +114,7 @@ public enum ProductDTO implements DTO {;
         * Запрос на продукт по его ID
         */
         @Data
+        @AllArgsConstructor
         public static class Get implements Id, RequestDTO {
             private Integer id;
         }
@@ -122,11 +124,13 @@ public enum ProductDTO implements DTO {;
          * по конкретным характеристикам
          */
         @Data
+        @AllArgsConstructor
         public static class FilterByFeatures implements FeaturesRequests, RequestDTO  {
             private Set<FeatureDTO.Request.Get> requestedFeatures;
         }
 
         @Data
+        @AllArgsConstructor
         public static class CreateProduct implements Name, Description, Type,
                                                      FeaturesRequests, LoadedImagesSet,
                                                      BasePrice, RequestDTO {
@@ -139,6 +143,7 @@ public enum ProductDTO implements DTO {;
         }
 
         @Data
+        @AllArgsConstructor
         public static class EditProduct implements Id, Name, Description,
                                                    FeaturesRequests, LoadedImagesSet,
                                                    BasePrice, RequestDTO {

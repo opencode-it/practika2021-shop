@@ -5,6 +5,7 @@ package app.dto.impl;
 
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
 
@@ -26,6 +27,7 @@ public enum RightsDTO {;
         * На проверку прав пользователя
         */
         @Data
+        @AllArgsConstructor
         public static class CheckRights implements Id, RequestDTO {
             private Integer id;
         }
@@ -34,6 +36,7 @@ public enum RightsDTO {;
          * Для смены прав пользователя
          */
         @Data
+        @AllArgsConstructor
         public static class ChangeRights implements Id, Name, RequestDTO {
             private Integer id;
             private String name;

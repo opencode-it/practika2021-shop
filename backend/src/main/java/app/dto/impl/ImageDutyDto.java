@@ -2,6 +2,7 @@ package app.dto.impl;
 
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
 
@@ -22,17 +23,20 @@ public enum ImageDutyDto {;
     public enum Request {;
 
         @Data
+        @AllArgsConstructor
         public static class Get implements Id, RequestDTO {
             private Integer id;
         }
 
         @Data
+        @AllArgsConstructor
         public static class UpdateName implements Id, Name, RequestDTO {
             private Integer id;
             private String name;
         }
 
         @Data
+        @AllArgsConstructor
         public static class Delete implements Id, RequestDTO {
             private Integer id;
         }

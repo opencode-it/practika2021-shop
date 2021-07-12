@@ -4,6 +4,10 @@
 package app.controllers.impl;
 
 import app.dto.impl.ProductDTO;
+import app.services.ext.ProductCreateAndGetBaseService;
+import app.services.ext.ProductEditAndGetFullService;
+import app.services.ext.ProductFilterAndGetBaseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,24 +25,36 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 public class ProductsController {
-    /*@Autowired
-    protected S Service;*/
+    @Autowired
+    private ProductFilterAndGetBaseService filterBaseProducts;
+
+    @Autowired
+    private ProductEditAndGetFullService editFullProduct;
+
+    @Autowired
+    private ProductCreateAndGetBaseService createBaseProduct;
 
     /**
      * Запрос на отображение товаров в каталоге
      */
-    @GetMapping
+    /*@GetMapping
     public List<ProductDTO.Response.GetBase> findAll() {
         //TODO
-    }
+    }*/
+
+    /*@GetMapping("/filtered")
+    public List<ProductDTO.Response.GetBase> findAllFiltered(
+            @RequestBody ProductDTO.Request.FilterByFeatures request) {
+
+    }*/
 
     /**
      * Запрос на открытие страницы конкретного товара
      */
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public ProductDTO.Response.GetFull getBy(@PathVariable("id") Long id) {
         //TODO
-    }
+    }*/
 
     /**
      * Запрос на добавление нового продукта
@@ -51,11 +67,11 @@ public class ProductsController {
     /**
      * Запрос на изменение существующего продукта
      */
-    @PutMapping("/{id}/edit")
+    /*@PutMapping("/{id}/edit")
     public ProductDTO.Response.GetFull edit(@PathVariable("id") String id,
                                             @RequestBody ProductDTO.Request.EditProduct request) {
         //TODO
-    }
+    }*/
 
     /**
      * Запрос на удаление существующего продукта

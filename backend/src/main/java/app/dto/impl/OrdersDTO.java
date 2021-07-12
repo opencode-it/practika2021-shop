@@ -5,6 +5,7 @@ package app.dto.impl;
 
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
 
@@ -88,6 +89,7 @@ public enum OrdersDTO {;
          * Запрос на получение информации по одному закзу
          */
         @Data
+        @AllArgsConstructor
         public static class Get implements Id, RequestDTO  {
             private Integer id;
         }
@@ -97,6 +99,7 @@ public enum OrdersDTO {;
          * конкретного продукта в заказе на одну единицу
          */
         @Data
+        @AllArgsConstructor
         public static class ChangeProductAmount implements Id, Product, RequestDTO  {
             private Integer Id;
             private Integer productId;
@@ -116,6 +119,7 @@ public enum OrdersDTO {;
          * Запрос на формирование заказа из товаров в корзине
          */
         @Data
+        @AllArgsConstructor
         public static class ConfirmOrder implements AccountId, ProductsId, RequestDTO {
             private Integer accountId;
             private Map<Integer, Integer> orderedProductIds;
@@ -125,6 +129,7 @@ public enum OrdersDTO {;
          * Чтобы удалить все товары из корзины
          */
         @Data
+        @AllArgsConstructor
         public static class ClearCart implements AccountId, ProductsId, RequestDTO {
             private Integer accountId;
             private Map<Integer, Integer> orderedProductIds;
@@ -134,6 +139,7 @@ public enum OrdersDTO {;
          * Чтобы удалить/отменить оформленный заказ
          */
         @Data
+        @AllArgsConstructor
         public static class DeleteOrder implements Id, AccountId, ProductsId, Status, RequestDTO {
             private Integer id;
             private Integer accountId;
