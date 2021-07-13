@@ -20,14 +20,4 @@ public class AccountsController extends RESTController<AccountDTO.Request.Create
         super(Service);
     }
 
-
-    @RequestMapping("/try")
-    public String tryAdd(){
-        AccountDTO.Request.Create save = new AccountDTO.Request.Create();
-        save.setRights(Service.find(Long.valueOf(3) ).get().getRights());
-        System.out.println(save.getRights().getName());
-
-        Service.create(save);
-        return "Hell";
-    }
 }
