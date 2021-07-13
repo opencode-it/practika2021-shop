@@ -1,6 +1,6 @@
 /*
-* Uliana
-*/
+ * Uliana
+ */
 package app.controllers.impl;
 
 import app.dto.impl.ProductDTO;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,7 +40,7 @@ public class ProductsController {
      */
     @GetMapping
     public List<ProductDTO.Response.GetBase> findAll() {
-
+        return filterBaseProducts.findAll();
     }
 
     @GetMapping("/filtered")
@@ -51,33 +52,34 @@ public class ProductsController {
     /**
      * Запрос на открытие страницы конкретного товара
      */
-    /*@GetMapping("/{id}")
-    public ProductDTO.Response.GetFull getBy(@PathVariable("id") Long id) {
-        //TODO
-    }*/
+    @GetMapping("/{id}")
+    public Optional<ProductDTO.Response.GetFull> getBy(@PathVariable("id") Long id) {
+        return editFullProduct.findBy(id);
+    }
 
     /**
      * Запрос на добавление нового продукта
      */
     @PostMapping("/newProduct")
-    public void save(@RequestBody ProductDTO.Request.CreateProduct newProduct ) {
-        //TODO
+    public void save(@RequestBody ProductDTO.Request.CreateProduct newProduct) {
+        createBaseProduct.save(newProduct);
     }
 
     /**
      * Запрос на изменение существующего продукта
      */
-    /*@PutMapping("/{id}/edit")
-    public ProductDTO.Response.GetFull edit(@PathVariable("id") String id,
-                                            @RequestBody ProductDTO.Request.EditProduct request) {
-        //TODO
-    }*/
+    @PutMapping("/{id}/edit")
+    public Optional<ProductDTO.Response.GetFull> edit(@PathVariable("id") Long id,
+                                                      @RequestBody ProductDTO.Request.EditProduct request) {
+        editFullProduct.save(request);
+        return editFullProduct.findBy(id);
+    }
 
     /**
      * Запрос на удаление существующего продукта
      */
     @DeleteMapping("/{id}/delete")
-    public void delete(@PathVariable("id") Integer id) {
-        //TODO
+    public void delete(@PathVariable("id") Long id) {
+        editFullProduct.deleteBy(id);
     }
 }

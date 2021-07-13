@@ -1,10 +1,8 @@
-package app.controllers;
+package app.controllers.impl;
 
 
-import app.dto.impl.AccountDTO;
+import app.controllers.RESTController;
 import app.dto.impl.RightsDTO;
-import app.services.CRUDService;
-import app.services.ext.AccountCreateAndGetService;
 import app.services.ext.RightsChangeAndGetService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * */
 @RestController
 @RequestMapping("rights")
-public class RightsController extends RESTController<RightsDTO.Request.ChangeRights, RightsDTO.Response.Get, RightsChangeAndGetService>{
+public class RightsController extends RESTController<RightsDTO.Request.ChangeRights, RightsDTO.Response.Get, RightsChangeAndGetService> {
     public RightsController(RightsChangeAndGetService Service) {
         super(Service);
     }
