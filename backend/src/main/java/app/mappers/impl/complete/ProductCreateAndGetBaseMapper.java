@@ -5,11 +5,9 @@ import app.entities.Product;
 import app.mappers.CompleteMapper;
 import org.mapstruct.Mapper;
 
-@Mapper(uses = FeatureGetUnitsMapper.class)
+@Mapper(uses = FeatureGetAndGetUnitsMapper.class)
 public interface ProductCreateAndGetBaseMapper extends CompleteMapper<Product,
                                                                       ProductDTO.Request.CreateProduct,
                                                                       ProductDTO.Response.GetBase> {
-
-
 
 }

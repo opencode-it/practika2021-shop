@@ -1,13 +1,8 @@
 package app.mappers.impl.complete;
 
-import app.dto.impl.FeatureDTO;
-import app.entities.Feature;
-import app.mappers.CompleteMapper;
-import org.mapstruct.Mapper;
+import app.mappers.impl.unidirectional.request.FeatureUpdateUnitsMapper;
+import app.mappers.impl.unidirectional.response.FeatureGetWithUnitsMapper;
 
-@Mapper(uses = UnitsMapper.class)
-public interface FeatureUpdateAndGetUnitsMapper extends CompleteMapper<Feature,
-                                                                       FeatureDTO.Request.UpdateUnits,
-                                                                       FeatureDTO.Response.GetWithUnits> {
+public interface FeatureUpdateAndGetUnitsMapper extends FeatureUpdateUnitsMapper, FeatureGetWithUnitsMapper {
 
 }
