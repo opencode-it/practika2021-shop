@@ -46,7 +46,7 @@ public class ProductsController {
     @GetMapping("/filtered")
     public Optional<List<ProductDTO.Response.GetBase>> findAllFiltered(
             @RequestBody ProductDTO.Request.FilterByFeatures request) {
-        return filterBaseProducts.findBy(request);
+        return filterBaseProducts.findByFilter(request);
     }
 
     /**

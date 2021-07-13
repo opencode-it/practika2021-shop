@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Александров Илья
  */
-public interface ToEntityMapper<E extends AbstractEntity, I extends RequestDTO> {
+public interface RequestMapper<E extends AbstractEntity, I extends RequestDTO> {
 
     E toEntity(I dto);
     List<E> toEntityList(List<I> dtoList);

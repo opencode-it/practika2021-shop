@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Александров Илья
  */
-public interface ToDtoMapper<E extends AbstractEntity, O extends ResponseDTO> {
+public interface ResponseMapper<E extends AbstractEntity, O extends ResponseDTO> {
 
     O toDto(E entity);
     List<O> toDtoList(List<E> entityList);

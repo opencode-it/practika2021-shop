@@ -31,7 +31,7 @@ public class ProductFilterAndGetBaseService extends CRUDService<Product,
     @Autowired
     FeatureGetUnitsMapper featureMapper;
 
-    public Optional<List<ProductDTO.Response.GetBase>> findBy(ProductDTO.Request.FilterByFeatures featuresDTO) {
+    public Optional<List<ProductDTO.Response.GetBase>> findByFilter(ProductDTO.Request.FilterByFeatures featuresDTO) {
         List<FeatureDTO.Request.Get> featureDtoList = List.copyOf(featuresDTO.getRequestedFeatures());
         List<Feature> features = featureMapper.toEntityList(featureDtoList);
         List<ProductDTO.Response.GetBase> productDtoList = mapper.toDtoList(repository.findAllBy(features));
