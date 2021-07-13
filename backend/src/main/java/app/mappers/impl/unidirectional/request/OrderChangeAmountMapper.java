@@ -13,9 +13,7 @@ public interface OrderChangeAmountMapper extends RequestMapper<Order, OrdersDTO.
 {
 
     @Mapping(target = "account", ignore = true)
-    @Mapping(target = "products", ignore = true)
     @Mapping(target = "discount", ignore = true)
-    @Mapping(target = "count", ignore = true)
     @Mapping(target = "date", ignore = true)
     @Mapping(target = "orderStatus", ignore = true)
     @Override

@@ -10,9 +10,7 @@ import org.mapstruct.Mapping;
 public interface OrdersGetMapper extends RequestMapper<Order, OrdersDTO.Request.Get> {
 
     @Mapping(target = "account", ignore = true)
-    @Mapping(target = "products", ignore = true)
     @Mapping(target = "discount", ignore = true)
-    @Mapping(target = "count", ignore = true)
     @Mapping(target = "date", ignore = true)
     @Mapping(target = "orderStatus", ignore = true)
     @Override

@@ -6,6 +6,7 @@ import app.entities.ProductFeature;
 import app.mappers.CustomTypeMapper;
 import app.mappers.ResponseMapper;
 import app.mappers.qualifiers.ProductStatusToString;
+import app.mappers.qualifiers.ProductTypeToString;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -20,7 +21,8 @@ public interface ProductGetFullMapper extends ResponseMapper<Product, ProductDTO
     @Mapping(source = "price", target = "basePrice")
     @Mapping(source = "images", target = "imagesSet")
     @Mapping(source = "prodStatus", target = "status", qualifiedBy = ProductStatusToString.class)
-    @Mapping(target = "unitFeatures", ignore = true)
+    @Mapping(source = "type", target = "type", qualifiedBy = ProductTypeToString.class)
+    @Mapping(target = "unitsFeatures", ignore = true)
     @Mapping(target = "features", ignore = true)
     @Override
     ProductDTO.Response.GetFull toDto(Product entity);
