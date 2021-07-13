@@ -27,3 +27,4 @@ public interface AbstractService<I extends RequestDTO, O extends ResponseDTO> {
     Boolean exists(Long id);
     Long count();
 }
+
