@@ -5,7 +5,7 @@ import app.entities.Product;
 import app.mappers.CompleteMapper;
 import org.mapstruct.Mapper;
 
-@Mapper(uses = FeatureGetUnitsMapper.class)
+@Mapper(uses = FeatureGetAndGetUnitsMapper.class)
 public interface ProductEditAndGetFullMapper extends CompleteMapper<Product,
                                                                     ProductDTO.Request.EditProduct,
                                                                     ProductDTO.Response.GetFull> {

@@ -7,10 +7,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper
-public interface FeatureGetMapper extends RequestMapper<Feature, FeatureDTO.Request.Get> {
+public interface FeatureDeleteMapper extends RequestMapper<Feature, FeatureDTO.Request.Delete> {
 
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "unit", ignore = true)
     @Override
-    Feature toEntity(FeatureDTO.Request.Get dto);
+    Feature toEntity(FeatureDTO.Request.Delete dto);
 }

@@ -9,7 +9,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-@Mapper(uses = FeatureGetUnitsMapper.class)
+@Mapper(uses = FeatureGetAndGetUnitsMapper.class)
 public interface ProductFilterAndGetBaseMapper extends CompleteMapper<Product,
                                                                       ProductDTO.Request.FilterByFeatures,
                                                                       ProductDTO.Response.GetBase> {
