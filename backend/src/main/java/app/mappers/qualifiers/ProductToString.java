@@ -10,5 +10,6 @@ import java.lang.annotation.Target;
 @Qualifier
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.CLASS)
-public @interface ProductStatusToString {
+public @interface ProductToString {
+
 }
