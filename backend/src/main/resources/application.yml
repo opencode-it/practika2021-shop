@@ -14,21 +14,21 @@ spring:
   jpa:
     database-platform: 'org.hibernate.dialect.PostgreSQLDialect'
     hibernate:
-      ddl-auto: 'create'
+      ddl-auto: 'validate'
     show-sql: true
 
   minio:
-    url: https://practika2021.opencode.su:9000/
+    url: https://practika2021.opencode.su/
     bucket: file #Minio Bucket name for app
     access-key: pracktika2021
     secret-key: KC8mmymg7vL3
     secure: true
 
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: google-client-id
-            client-secret: google-client-secret
+ #security:
+ #  oauth2:
+ #    client:
+ #      registration:
+ #        google:
+ #          client-id: google-client-id
+ #          client-secret: google-client-secret
 
