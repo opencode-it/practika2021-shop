@@ -14,7 +14,7 @@ import org.mapstruct.MappingTarget;
 import java.math.BigDecimal;
 
 @Mapper(uses = {CustomTypeMapper.class,
-                ImageGetMapper.class })
+                ImageGetResponseMapper.class })
 public interface ProductGetFullMapper extends ResponseMapper<Product, ProductDTO.Response.GetFull> {
 
     @Mapping(source = "price", target = "basePrice")

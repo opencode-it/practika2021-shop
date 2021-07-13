@@ -9,7 +9,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(uses = CustomTypeMapper.class)
-public interface ImageGetMapper extends RequestMapper<Image, ImageDTO.Request.Get> {
+public interface ImageGetRequestMapper extends RequestMapper<Image, ImageDTO.Request.Get> {
 
     @Mapping(target = "path", ignore = true)
     @Mapping(source = "imageDuty", target = "duty", qualifiedBy = StringToImageDuty.class)

@@ -4,6 +4,8 @@ import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
 import app.entities.AbstractEntity;
 import app.mappers.CompleteMapper;
+import app.mappers.RequestMapper;
+import app.mappers.ResponseMapper;
 import app.repositories.LongKeyRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,7 +35,8 @@ public abstract class CRUDService<E extends AbstractEntity,
                                   I extends RequestDTO,
                                   O extends ResponseDTO,
                                   R extends LongKeyRepository<E>,
-                                  M extends CompleteMapper<E, I, O>> implements AbstractService<I, O> {
+                                  M extends RequestMapper<E, I> & ResponseMapper<E, O>>
+                                    implements AbstractService<I, O> {
 
     @Autowired
     protected R repository;

@@ -9,7 +9,7 @@ import app.mappers.qualifiers.ProductTypeToString;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(uses = {CustomTypeMapper.class, ImageGetMapper.class})
+@Mapper(uses = {CustomTypeMapper.class, ImageGetResponseMapper.class})
 public interface ProductGetBaseMapper extends ResponseMapper<Product, ProductDTO.Response.GetBase> {
 
     @Mapping(source = "type", target = "type", qualifiedBy = ProductTypeToString.class)
