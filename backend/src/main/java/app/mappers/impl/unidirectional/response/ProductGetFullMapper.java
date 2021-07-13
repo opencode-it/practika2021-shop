@@ -26,7 +26,7 @@ public interface ProductGetFullMapper extends ResponseMapper<Product, ProductDTO
     ProductDTO.Response.GetFull toDto(Product entity);
 
     @AfterMapping
-    default void calculatePrices(Product source, @MappingTarget ProductDTO.Response.GetFull target) {
+    static void calculatePrices(Product source, @MappingTarget ProductDTO.Response.GetFull target) {
         BigDecimal additionalPrice = BigDecimal.valueOf(source.getFeatures()
                 .stream()
                 .mapToInt(ProductFeature::getAdditionalPrice)

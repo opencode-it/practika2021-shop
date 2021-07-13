@@ -14,7 +14,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrdersPorducts extends AbstractEntity{
+public class OrdersProducts extends AbstractEntity{
     @NotNull
     @PrimaryKeyJoinColumn(name = "product_ID")
     @ManyToOne(cascade = CascadeType.ALL)
