@@ -38,5 +38,5 @@ public class Product extends AbstractEntity{
     @NotNull
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "feature_ID")
-    private List<Feature> features;
+    private List<ProductFeature> features;
 }
