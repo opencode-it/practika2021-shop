@@ -11,7 +11,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -61,8 +63,31 @@ public abstract class CRUDService<E extends AbstractEntity,
     public O update(I dto) {
         E entityWithChanges = mapper.toEntity(dto);
         E oldEntity = repository.getOne(entityWithChanges.getId());
+        mergeFieldsOnUpdate(oldEntity, entityWithChanges);
         repository.save(entityWithChanges);
         return mapper.toDto(oldEntity);
+    }
+
+    /**
+     * При конвертации усеченных версий ResponseDTO в сущность
+     * некоторые поля "новой" сущности заполняются значениями null.
+     * При обновлении вместо них подставляются значения полей из "старой" сущности
+     * @param oldEntity "старая" сущность, извлеченная из БД по id
+     * @param entityWithChanges сущность с изменениями
+     */
+    private void mergeFieldsOnUpdate(E oldEntity, E entityWithChanges) {
+        try {
+            for(Field f : entityWithChanges.getClass().getDeclaredFields()) {
+                f.setAccessible(true);
+                if (Objects.isNull(f.get(entityWithChanges))) {
+                    f.set(entityWithChanges, oldEntity.getClass()
+                                                        .getField(f.getName())
+                                                        .get(oldEntity));
+                }
+            }
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
