@@ -29,8 +29,5 @@ public interface ProductFilterAndGetBaseMapper extends CompleteMapper<Product,
     @Override
     Product toEntity(ProductDTO.Request.FilterByFeatures dto);
 
-    @ProductTypeToString
-    static String productTypeToString(ProductType productType) {
-        return productType.getName();
-    }
+
 }
