@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * */
 @RestController
 @RequestMapping("feature")
-public class FeatureController  extends RESTController<FeatureDTO.Request.Get,
+public class FeatureController  extends RESTController<FeatureDTO.Request.UpdateUnits,
                                                          FeatureDTO.Response.GetWithUnits,
                                                             FeatureUpdateAndGetUnitsService> {
     public FeatureController(FeatureUpdateAndGetUnitsService Service) {
