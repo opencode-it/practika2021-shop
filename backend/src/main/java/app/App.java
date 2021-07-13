@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
+
 @ComponentScan("app.mappers.impl.complex")
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 public class App {
