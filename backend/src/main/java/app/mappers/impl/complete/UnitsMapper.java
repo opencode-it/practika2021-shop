@@ -1,13 +1,10 @@
 package app.mappers.impl.complete;
 
-import app.dto.impl.UnitsDTO;
-import app.entities.Units;
-import app.mappers.CompleteMapper;
+import app.mappers.impl.unidirectional.request.UnitsChangeMapper;
+import app.mappers.impl.unidirectional.response.UnitsGetMapper;
 import org.mapstruct.Mapper;
 
 @Mapper
-public interface UnitsMapper extends CompleteMapper<Units,
-                                                    UnitsDTO.Request.ChangeUnits,
-                                                    UnitsDTO.Response.Get> {
+public interface UnitsMapper extends UnitsChangeMapper, UnitsGetMapper {
 
 }
