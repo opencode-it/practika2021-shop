@@ -10,26 +10,25 @@ spring:
     password: 'KC8mmymg7vL3'
     url: jdbc:postgresql://practika2021.opencode.su:5454/postgres
     driver-class-name: 'org.postgresql.Driver'
+
   jpa:
     database-platform: 'org.hibernate.dialect.PostgreSQLDialect'
     hibernate:
-      ddl-auto: 'create-drop'
+      ddl-auto: 'validate'
     show-sql: true
+
   minio:
-    url: https://play.min.io
-    bucket: 00000qweqwe #Minio Bucket name for app
-    access-key: #login
-    secret-key: #password
+    url: https://practika2021.opencode.su:9000/
+    bucket: file #Minio Bucket name for app
+    access-key: pracktika2021
+    secret-key: KC8mmymg7vL3
+    secure: true
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: google-client-id
+            client-secret: google-client-secret
 
-# Конфигурация minio сервера изображений
-minio:
-  ip: #
-  # minio пароль для входа в аккаунт
-  accessKey: #
-  secretKey: #
-
-  ## Правила присвоения имен корзин (папок) должны соответствовать стандарту Amazon S3. Подробнее см. Http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html
-  bucketName:
-    ## Фото папка
-    facility: facility-photos
