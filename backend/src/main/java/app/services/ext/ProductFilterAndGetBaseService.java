@@ -4,6 +4,7 @@ import app.dto.impl.FeatureDTO;
 import app.dto.impl.ProductDTO;
 import app.entities.Feature;
 import app.entities.Product;
+import app.entities.ProductFeature;
 import app.mappers.impl.complete.FeatureGetAndGetUnitsMapper;
 import app.mappers.impl.complete.ProductFilterAndGetBaseMapper;
 import app.repositories.impl.ProductRepository;
@@ -34,7 +35,7 @@ public class ProductFilterAndGetBaseService extends CRUDService<Product,
     public Optional<List<ProductDTO.Response.GetBase>> findByFilter(ProductDTO.Request.FilterByFeatures featuresDTO) {
         List<FeatureDTO.Request.Get> featureDtoList = List.copyOf(featuresDTO.getRequestedFeatures());
         List<Feature> features = featureMapper.toEntityList(featureDtoList);
-        List<ProductDTO.Response.GetBase> productDtoList = mapper.toDtoList(repository.findAllBy(features));
-        return Optional.of(productDtoList);
+        //ToDo маппинг списка DTO по фичам
+        return Optional.empty();
     }
 }
