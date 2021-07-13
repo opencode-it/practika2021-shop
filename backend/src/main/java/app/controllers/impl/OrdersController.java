@@ -30,6 +30,7 @@ public class OrdersController {
     @GetMapping
     public List<OrdersDTO.Response.GetFormed> findAll() {
         //TODO
+        return null;
     }
 
     /**
@@ -38,6 +39,7 @@ public class OrdersController {
     @GetMapping("/{id}")
     public OrdersDTO.Response.GetFull getBy(@PathVariable("id") Long id) {
         //TODO
+        return null;
     }
 
 
@@ -48,6 +50,7 @@ public class OrdersController {
     public OrdersDTO.Response.GetFormed confirmOrder(
             @RequestBody OrdersDTO.Request.ConfirmOrder request) {
         //TODO
+        return null;
     }
 
 

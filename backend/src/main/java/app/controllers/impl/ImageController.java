@@ -26,6 +26,7 @@ public class ImageController {
     public ImageDTO.Response.GetRequestedImage getBy(
             @RequestBody ImageDTO.Request.Get request) {
         //TODO
+        return null;
     }
 
     /**
@@ -35,6 +36,7 @@ public class ImageController {
     public ImageDTO.Response.GetRequestedImage loadCustom(
             @RequestBody ImageDTO.Request.LoadCustom request) {
         //TODO
+        return null;
     }
 
 
