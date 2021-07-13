@@ -11,7 +11,7 @@ import org.mapstruct.Mapping;
 
 @Mapper(uses = { CustomTypeMapper.class,
                  FeatureGetMapper.class,
-                 ImageGetMapper.class })
+                 ImageGetRequestMapper.class })
 public interface ProductCreateMapper extends RequestMapper<Product, ProductDTO.Request.CreateProduct> {
 
     @Mapping(source = "type", target = "type", qualifiedBy = StringToProductType.class)

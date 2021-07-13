@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 
 @Mapper(uses = { CustomTypeMapper.class,
                  FeatureGetMapper.class,
-                 ImageGetMapper.class })
+                 ImageGetRequestMapper.class })
 public interface ProductEditMapper extends RequestMapper<Product, ProductDTO.Request.EditProduct> {
 
     @Mapping(target = "type", ignore = true)

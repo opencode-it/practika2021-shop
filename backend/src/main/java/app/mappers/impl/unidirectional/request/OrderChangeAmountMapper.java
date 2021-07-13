@@ -23,6 +23,6 @@ public interface OrderChangeAmountMapper extends RequestMapper<Order, OrdersDTO.
 
     @AfterMapping
     static void changeProductAmount(OrdersDTO.Request.ChangeProductAmount source, @MappingTarget Order target) {
-        //ToDo: логика по запросу ChangeProductAmount, ClearCart, ConfirmOrder, DeleteOrder
+        //ToDo: логика по запросу ChangeProductAmount, ClearCart, ConfirmOrder, DeleteOrder, ResponseOrder
     }
 }
