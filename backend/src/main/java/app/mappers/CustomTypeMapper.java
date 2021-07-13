@@ -1,9 +1,6 @@
 package app.mappers;
 
-import app.entities.ImageDuty;
-import app.entities.ProductStatus;
-import app.entities.ProductType;
-import app.entities.Units;
+import app.entities.*;
 import app.mappers.qualifiers.*;
 import org.mapstruct.Mapper;
 
@@ -47,6 +44,11 @@ public interface CustomTypeMapper {
     @ProductStatusToString
     static String productStatusToString(ProductStatus status) {
         return status.name();
+    }
+
+    @ProductToString
+    static String productToString(Product product) {
+        return product.toString();
     }
 
 }
