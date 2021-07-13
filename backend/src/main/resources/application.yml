@@ -15,5 +15,10 @@ spring:
     hibernate:
       ddl-auto: 'create-drop'
     show-sql: true
+  minio:
+    url: https://play.min.io
+    bucket: 00000qweqwe #Minio Bucket name for app
+    access-key: #login
+    secret-key: #password
 
 
