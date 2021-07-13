@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @Builder
 @Data
-@Table(name = "product", uniqueConstraints= @UniqueConstraint(columnNames={"name", "email"}))
+@Table(name = "product", uniqueConstraints= @UniqueConstraint(columnNames={"name"}))
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
