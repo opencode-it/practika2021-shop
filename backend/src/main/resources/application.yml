@@ -22,3 +22,14 @@ spring:
     secret-key: #password
 
 
+# Конфигурация minio сервера изображений
+minio:
+  ip: #
+  # minio пароль для входа в аккаунт
+  accessKey: #
+  secretKey: #
+
+  ## Правила присвоения имен корзин (папок) должны соответствовать стандарту Amazon S3. Подробнее см. Http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html
+  bucketName:
+    ## Фото папка
+    facility: facility-photos

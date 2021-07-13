@@ -15,7 +15,7 @@ public interface AccountDeleteMapper extends RequestMapper<Account, AccountDTO.R
             @Mapping(target = "rights", ignore = true),
             @Mapping(target = "email", ignore = true),
             @Mapping(target = "address", ignore = true),
-            @Mapping(target = "fullname", ignore = true)
+            @Mapping(target = "fullName", ignore = true)
     })
     @Override
     Account toEntity(AccountDTO.Request.Delete dto);
