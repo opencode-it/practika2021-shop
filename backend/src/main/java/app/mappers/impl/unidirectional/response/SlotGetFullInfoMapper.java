@@ -11,7 +11,6 @@ import org.mapstruct.Mapping;
 @Mapper(uses = CustomTypeMapper.class)
 public interface SlotGetFullInfoMapper extends ResponseMapper<Slot, SlotDTO.Response.GetFullInfo> {
 
-    @Mapping(target = "id", ignore = true)
     @Mapping(source = "product", target = "product", qualifiedBy = ProductToString.class)
     @Override
     SlotDTO.Response.GetFullInfo toDto(Slot entity);

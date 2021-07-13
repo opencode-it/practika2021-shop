@@ -11,7 +11,6 @@ import org.mapstruct.Mapping;
 @Mapper(uses = CustomTypeMapper.class)
 public interface ImageGetResponseMapper extends ResponseMapper<Image, ImageDTO.Response.GetImage> {
 
-    @Mapping(target = "id", ignore = true)
     @Mapping(source = "duty", target = "ImageDuty", qualifiedBy = ImageDutyToString.class)
     @Override
     ImageDTO.Response.GetImage toDto(Image entity);

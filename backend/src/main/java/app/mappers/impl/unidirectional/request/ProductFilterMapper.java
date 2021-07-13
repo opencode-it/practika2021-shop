@@ -10,7 +10,7 @@ import org.mapstruct.Mapping;
 public interface ProductFilterMapper extends RequestMapper<Product, ProductDTO.Request.FilterByFeatures> {
 
     @Mapping(target = "name", ignore = true)
-    @Mapping(target = "description", ignore = true)
+    @Mapping(target = "desription", ignore = true)
     @Mapping(target = "price", ignore = true)
     @Mapping(target = "images", ignore = true)
     @Mapping(target = "prodStatus", ignore = true)
