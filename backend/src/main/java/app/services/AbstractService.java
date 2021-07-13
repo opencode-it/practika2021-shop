@@ -15,11 +15,15 @@ import java.util.Optional;
  */
 public interface AbstractService<I extends RequestDTO, O extends ResponseDTO> {
 
-    O save(I dto);
+    O create(I dto);
+    O update(I dto);
     List<O> saveAll(List<I> dtoList);
-    Optional<O> findBy(Long id);
+    Optional<O> find(I dto);
+    Optional<O> find(Long id);
     List<O> findAll();
-    void deleteBy(Long id);
+    void delete(I dto);
+    void delete(Long id);
+    Boolean exists(I dto);
     Boolean exists(Long id);
     Long count();
 }

@@ -1,12 +1,12 @@
-package app.mappers.impl;
+package app.mappers.impl.complete;
 
 import app.dto.impl.ProductDTO;
 import app.entities.Product;
-import app.mappers.AbstractMapper;
+import app.mappers.CompleteMapper;
 import org.mapstruct.Mapper;
 
 @Mapper(uses = FeatureGetUnitsMapper.class)
-public interface ProductCreateAndGetBaseMapper extends AbstractMapper<Product,
+public interface ProductCreateAndGetBaseMapper extends CompleteMapper<Product,
                                                                       ProductDTO.Request.CreateProduct,
                                                                       ProductDTO.Response.GetBase> {
 

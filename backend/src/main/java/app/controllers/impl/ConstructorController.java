@@ -31,7 +31,7 @@ public class ConstructorController {
      */
     @GetMapping("/{id}")
     public Optional<ProductDTO.Response.GetFull> editProduct(@PathVariable Long id) {
-        return editFullProduct.findBy(id);
+        return editFullProduct.find(id);
     }
 
     /**

@@ -1,16 +1,16 @@
-package app.mappers.impl;
+package app.mappers.impl.complete;
 
 import app.dto.impl.ProductDTO;
 import app.entities.Product;
 import app.entities.ProductType;
-import app.mappers.AbstractMapper;
+import app.mappers.CompleteMapper;
 import app.mappers.qualifiers.ProductTypeToString;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 @Mapper(uses = FeatureGetUnitsMapper.class)
-public interface ProductFilterAndGetBaseMapper extends AbstractMapper<Product,
+public interface ProductFilterAndGetBaseMapper extends CompleteMapper<Product,
                                                                       ProductDTO.Request.FilterByFeatures,
                                                                       ProductDTO.Response.GetBase> {
 

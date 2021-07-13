@@ -54,7 +54,7 @@ public class ProductsController {
      */
     @GetMapping("/{id}")
     public Optional<ProductDTO.Response.GetFull> getBy(@PathVariable("id") Long id) {
-        return editFullProduct.findBy(id);
+        return editFullProduct.find(id);
     }
 
     /**
@@ -62,7 +62,7 @@ public class ProductsController {
      */
     @PostMapping("/newProduct")
     public void save(@RequestBody ProductDTO.Request.CreateProduct newProduct) {
-        createBaseProduct.save(newProduct);
+        createBaseProduct.create(newProduct);
     }
 
     /**
@@ -71,8 +71,8 @@ public class ProductsController {
     @PutMapping("/{id}/edit")
     public Optional<ProductDTO.Response.GetFull> edit(@PathVariable("id") Long id,
                                                       @RequestBody ProductDTO.Request.EditProduct request) {
-        editFullProduct.save(request);
-        return editFullProduct.findBy(id);
+        editFullProduct.create(request);
+        return editFullProduct.find(id);
     }
 
     /**
@@ -80,6 +80,6 @@ public class ProductsController {
      */
     @DeleteMapping("/{id}/delete")
     public void delete(@PathVariable("id") Long id) {
-        editFullProduct.deleteBy(id);
+        editFullProduct.delete(id);
     }
 }

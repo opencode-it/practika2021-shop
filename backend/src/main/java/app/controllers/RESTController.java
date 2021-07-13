@@ -2,8 +2,6 @@ package app.controllers;
 
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
-import app.dto.impl.ProductDTO;
-import app.dto.impl.RightsDTO;
 import app.services.AbstractService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -34,12 +32,12 @@ public abstract class RESTController<I extends RequestDTO,
     }
     @GetMapping("/{id}")
     public Optional<O> getBy(@PathVariable("id") Long id) {
-        return Service.findBy(id);
+        return Service.find(id);
     }
     @PostMapping
     public I save(@RequestBody I inputAcc ) {
         try{
-            Service.save(inputAcc);
+            Service.create(inputAcc);
             return inputAcc;
         }catch (Exception ex){
             return null;
@@ -49,7 +47,7 @@ public abstract class RESTController<I extends RequestDTO,
     public I edit(@PathVariable("id") String id, I edited) {
 
         try{
-            Service.save(edited);
+            Service.create(edited);
             return  edited;
         }catch (IllegalArgumentException ex){
             return null;
@@ -61,7 +59,7 @@ public abstract class RESTController<I extends RequestDTO,
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id) {
         try{
-            Service.deleteBy(id);
+            Service.delete(id);
 
         }catch(IllegalArgumentException ex){
             return;
