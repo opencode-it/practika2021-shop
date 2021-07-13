@@ -2,7 +2,7 @@ package app.services.ext;
 
 import app.dto.impl.RightsDTO;
 import app.entities.Rights;
-import app.mappers.impl.RightsChangeAndGetMapper;
+import app.mappers.impl.complete.RightsChangeAndGetMapper;
 import app.repositories.impl.RightsRepository;
 import app.services.CRUDService;
 import lombok.AllArgsConstructor;

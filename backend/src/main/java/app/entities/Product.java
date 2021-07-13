@@ -17,7 +17,6 @@ import java.util.List;
 public class Product extends AbstractEntity{
     @NotNull
     @Column
-
     private String name;
     @NotNull
     @Column
