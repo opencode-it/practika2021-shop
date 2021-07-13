@@ -9,7 +9,6 @@ import org.mapstruct.Mapping;
 @Mapper
 public interface ImageDeleteMapper extends RequestMapper<Image, ImageDTO.Request.DeleteImage> {
 
-    @Mapping(target = "id", ignore = true)
     @Mapping(target = "duty", ignore = true)
     @Override
     Image toEntity(ImageDTO.Request.DeleteImage dto);
