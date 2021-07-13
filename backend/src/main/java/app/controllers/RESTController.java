@@ -5,7 +5,6 @@ import app.dto.ResponseDTO;
 import app.dto.impl.ProductDTO;
 import app.dto.impl.RightsDTO;
 import app.services.AbstractService;
-import app.services.CRUDService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
