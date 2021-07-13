@@ -75,7 +75,7 @@ public abstract class CRUDService<E extends AbstractEntity,
      * @param oldEntity "старая" сущность, извлеченная из БД по id
      * @param entityWithChanges сущность с изменениями
      */
-    private void mergeFieldsOnUpdate(E oldEntity, E entityWithChanges) {
+    protected void mergeFieldsOnUpdate(E oldEntity, E entityWithChanges) {
         try {
             for(Field f : entityWithChanges.getClass().getDeclaredFields()) {
                 f.setAccessible(true);

@@ -4,7 +4,7 @@ import app.dto.impl.FeatureDTO;
 import app.dto.impl.ProductDTO;
 import app.entities.Feature;
 import app.entities.Product;
-import app.mappers.impl.complete.FeatureGetUnitsMapper;
+import app.mappers.impl.complete.FeatureGetAndGetUnitsMapper;
 import app.mappers.impl.complete.ProductFilterAndGetBaseMapper;
 import app.repositories.impl.ProductRepository;
 import app.services.CRUDService;
@@ -29,7 +29,7 @@ public class ProductFilterAndGetBaseService extends CRUDService<Product,
                                                                 ProductFilterAndGetBaseMapper> {
 
     @Autowired
-    FeatureGetUnitsMapper featureMapper;
+    FeatureGetAndGetUnitsMapper featureMapper;
 
     public Optional<List<ProductDTO.Response.GetBase>> findByFilter(ProductDTO.Request.FilterByFeatures featuresDTO) {
         List<FeatureDTO.Request.Get> featureDtoList = List.copyOf(featuresDTO.getRequestedFeatures());
