@@ -22,38 +22,31 @@ import java.util.List;
 @RestController
 @RequestMapping("/orders")
 public class OrdersController {
-     /*@Autowired
-    protected S Service;*/
+
 
     /**
      * Список всех совершенных пользователем заказов
      */
-   /* @GetMapping
+    @GetMapping
     public List<OrdersDTO.Response.GetFormed> findAll() {
         //TODO
-    }*/
+    }
 
     /**
      * Просмотр одного конкретного заказа в истории
      */
-    /*@GetMapping("/{id}")
+    @GetMapping("/{id}")
     public OrdersDTO.Response.GetFull getBy(@PathVariable("id") Long id) {
         //TODO
-    }*/
+    }
 
-    /**
-     * Просмотр корзины.
-     */
-    /*@GetMapping("/cart")
-    public OrdersDTO.Response.GetFormed showCart() {
-        //TODO
-    }*/
 
     /**
      * Подтвердить и сохранить оформленный заказ
      */
     @PostMapping("/cart/formOrder")
-    public void confirmOrder(@RequestBody OrdersDTO.Request.ConfirmOrder request) {
+    public OrdersDTO.Response.GetFormed confirmOrder(
+            @RequestBody OrdersDTO.Request.ConfirmOrder request) {
         //TODO
     }
 

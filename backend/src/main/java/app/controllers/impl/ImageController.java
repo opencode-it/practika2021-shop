@@ -23,7 +23,8 @@ public class ImageController {
      * Запросить изображение еще раз для конкретного продукта
      */
     @GetMapping
-    public void getBy(@RequestBody ImageDTO.Request.Get request) {
+    public ImageDTO.Response.GetRequestedImage getBy(
+            @RequestBody ImageDTO.Request.Get request) {
         //TODO
     }
 
@@ -31,7 +32,8 @@ public class ImageController {
      * Загрузить новое изображение на сервер
      */
     @PostMapping("/load")
-    public void confirmOrder(@RequestBody ImageDTO.Request.LoadCustom request) {
+    public ImageDTO.Response.GetRequestedImage loadCustom(
+            @RequestBody ImageDTO.Request.LoadCustom request) {
         //TODO
     }
 
