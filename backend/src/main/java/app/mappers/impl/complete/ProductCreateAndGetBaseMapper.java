@@ -1,15 +1,10 @@
 package app.mappers.impl.complete;
 
-import app.dto.impl.ProductDTO;
-import app.entities.Product;
-import app.mappers.CompleteMapper;
-import org.mapstruct.Mapper;
+import app.mappers.impl.unidirectional.request.ProductCreateMapper;
+import app.mappers.impl.unidirectional.response.ProductGetBaseMapper;
+import org.springframework.stereotype.Component;
 
-@Mapper(uses = FeatureGetUnitsMapper.class)
-public interface ProductCreateAndGetBaseMapper extends CompleteMapper<Product,
-                                                                      ProductDTO.Request.CreateProduct,
-                                                                      ProductDTO.Response.GetBase> {
-
-
+@Component
+public interface ProductCreateAndGetBaseMapper extends ProductCreateMapper, ProductGetBaseMapper {
 
 }

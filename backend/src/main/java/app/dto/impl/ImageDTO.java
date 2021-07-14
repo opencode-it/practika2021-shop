@@ -18,19 +18,9 @@ public enum ImageDTO {;
         String getImageDuty();
     }
 
-    private interface RequestForProduct {
-        Integer getProductId();
-    }
 
-    private interface ImageSize {
-        Integer getLength();
-        Integer getWidth();
-    }
 
-    private interface ImagePosition {
-        Double getX();
-        Double getY();
-    }
+
 
     private interface ImageFile {}
 
@@ -41,8 +31,7 @@ public enum ImageDTO {;
         */
         @Data
         @AllArgsConstructor
-        public static class Get implements ImageDuty, RequestForProduct, RequestDTO  {
-            Integer productId;
+        public static class Get implements ImageDuty, RequestDTO  {
             String imageDuty;
         }
 
@@ -59,13 +48,10 @@ public enum ImageDTO {;
 
         @Data
         @AllArgsConstructor
-        public static class CustomizeImage implements Path, ImageSize, ImagePosition,
-                                                      ImageDuty, RequestDTO {
+        public static class CustomizeImage implements Path,
+                                                        ImageDuty,
+                                                        RequestDTO {
             private String path;
-            private Integer length;
-            private Integer width;
-            private Double x;
-            private Double y;
             private String imageDuty;
 
         }
@@ -95,7 +81,7 @@ public enum ImageDTO {;
          * Дополнительная подгрузка изображения для конкретного объекта
          */
         @Value
-        public static class GetRequestedImage implements RequestForProduct, Path, ImageDuty, ResponseDTO {
+        public static class GetRequestedImage implements  Path, ImageDuty, ResponseDTO {
             private Integer productId;
             String path;
             String ImageDuty;

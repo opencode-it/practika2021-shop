@@ -1,12 +1,20 @@
 package app.controllers.impl;
 
+import app.controllers.RESTController;
 import app.dto.impl.ImageDTO;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import app.services.ext.ImageGetService;
+import io.minio.MinioClient;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Контроллер, работающий с изображениями,
@@ -14,35 +22,140 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/assets/images")
-public class ImageController {
+public class ImageController extends RESTController<ImageDTO.Request.Get,
+                                                        ImageDTO.Response.GetImage,
+                                                        ImageGetService> {
     //Изображения изначально поступают на клиент вместе
     //с товарами или заказами, поэтому путь к ним и
     //их предназначение всегда известны
 
-    /**
-     * Запросить изображение еще раз для конкретного продукта
-     */
-    @GetMapping
-    public ImageDTO.Response.GetRequestedImage getBy(
-            @RequestBody ImageDTO.Request.Get request) {
-        //TODO
-    }
+    @Value("${minio.ip}")
+    private String ip;
 
-    /**
-     * Загрузить новое изображение на сервер
-     */
-    @PostMapping("/load")
-    public ImageDTO.Response.GetRequestedImage loadCustom(
-            @RequestBody ImageDTO.Request.LoadCustom request) {
-        //TODO
-    }
+    @Value("${minio.bucket}")
+    private String bucketName;
+
+    @Value("${minio.accessKey}")
+    private String accessKey;
+
+
+    @Value("${minio.secretKey}")
+    private String secretKey;
 
 
     /**
-     * Удалить изображение
+     * Метод, срабатывающтй при POST запросе, с путём /assets/images/upload
+     * @param file - фалй с изображением
+     * @return Возвращает строку с сообщением
      */
-    @DeleteMapping("/delete")
-    public void delete(@RequestBody ImageDTO.Request.DeleteImage request) {
-        //TODO
+    @PostMapping("/upload")
+    public String minioUpload(MultipartFile file) {
+        try {
+            String fileName = file.getOriginalFilename();
+            MinioClient minioClient = new MinioClient("http://" + ip, accessKey, secretKey);
+            boolean bucketExists = minioClient.bucketExists(bucketName);
+            if (bucketExists) {
+
+            } else {
+                minioClient.makeBucket(bucketName);
+            }
+            if (file.getSize() <= 20971520) {
+                // fileName пусто, что указывает на загрузку с использованием имени исходного файла
+                if (fileName == null) {
+                    fileName = file.getOriginalFilename();
+                    fileName = fileName.replaceAll(" ", "_");
+                }
+
+                // имя мини-склада
+                minioClient.putObject(bucketName, fileName, file.getInputStream(), file.getContentType());
+                String fileUrl = bucketName + "/" + fileName;
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("fileUrl", fileUrl);
+                map.put("bucketName", bucketName);
+                map.put("originFileName", fileName);
+                return "OKEY";
+            }else return "Отсутвует файл";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Ошибка загрузки";
+        }
+
     }
+
+    /**
+     * Метод, срабатывающтй при GET запросе, с путём /assets/images//down/{fileName}
+     * @param objectName - имя файла с изображением
+     * @param response
+     * @return Возвращает строку с сообщением
+     */
+    @GetMapping("/down/{fileName}")
+    public String downloadFile(@PathVariable("fileName") String objectName, HttpServletResponse response) {
+        try {
+            MinioClient minioClient = new MinioClient("http://" + ip, accessKey, secretKey);
+            InputStream file = minioClient.getObject(bucketName,objectName);
+            String filename = new String(objectName.getBytes("ISO8859-1"), StandardCharsets.UTF_8);
+            response.setHeader("Content-Disposition", "attachment;filename=" + filename);
+            ServletOutputStream servletOutputStream = response.getOutputStream();
+            int len;
+            byte[] buffer = new byte[1024];
+            while((len=file.read(buffer)) > 0){
+                servletOutputStream.write(buffer, 0, len);
+            }
+            servletOutputStream.flush();
+            file.close();
+            servletOutputStream.close();
+            return "загрузка прошла успешно";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return"Ошибка загрузки: [" + e.getMessage () + "】";
+        }
+    }
+    public String chek(){
+        return "DA";
+    }
+    /**
+     * Метод, срабатывающтй при POST запросе, с путём /assets/images//down/{fileName}
+     * @param fileName - имя файла с изображением
+     * @return Возвращает true при успешном удалении
+     */
+    @DeleteMapping("/{fileName}")
+    public boolean delete(@PathVariable("fileName") String fileName) {
+        try {
+            MinioClient minioClient = new MinioClient("http://" + ip, accessKey, secretKey);
+            minioClient.removeObject(bucketName,fileName);
+
+            return true;
+        } catch (Exception e) {
+
+            return false;
+        }
+    }
+    /**
+     * Проверка на существание файла
+     * @param fileName - имя файла с изображением
+     * @return Возвращает true, если файл существет
+     */
+    public boolean isFileExisted(String fileName) {
+        InputStream inputStream = null;
+        try {
+            MinioClient minioClient = new MinioClient("http://" + ip, accessKey, secretKey);
+            inputStream = minioClient.getObject(bucketName, fileName);
+            if (inputStream != null) {
+                return true;
+            }
+        } catch (Exception e) {
+            return false;
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+
 }

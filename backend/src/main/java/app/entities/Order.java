@@ -22,16 +22,9 @@ public class Order extends AbstractEntity {
     @JoinColumn(name = "accounts_ID")
     private Account account;
     @NotNull
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private List<Product> products;
-    @NotNull
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "discount_ID")
     private Discount discount;
-    @NotNull
-    @Column(name = "count")
-    private Integer count;
     @NotNull
     @Column(name = "date")
     private LocalDateTime date;

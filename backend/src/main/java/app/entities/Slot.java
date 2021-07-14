@@ -11,7 +11,7 @@ import javax.persistence.*;
  * @author ZubchenkoArtem
  * */
 @Entity
-@Table(name = "slot", uniqueConstraints= @UniqueConstraint(columnNames={"product"}))
+@Table(name = "slot", uniqueConstraints= @UniqueConstraint(columnNames={"product_id"}))
 @Data
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor

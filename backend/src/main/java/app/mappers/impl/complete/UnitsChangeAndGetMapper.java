@@ -2,9 +2,9 @@ package app.mappers.impl.complete;
 
 import app.mappers.impl.unidirectional.request.UnitsChangeMapper;
 import app.mappers.impl.unidirectional.response.UnitsGetMapper;
-import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
 
-@Mapper
-public interface UnitsMapper extends UnitsChangeMapper, UnitsGetMapper {
+@Component
+public interface UnitsChangeAndGetMapper extends UnitsChangeMapper, UnitsGetMapper {
 
 }

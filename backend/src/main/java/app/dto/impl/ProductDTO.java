@@ -187,7 +187,7 @@ public enum ProductDTO implements DTO {;
          * Полная информация о продукте
          * (для вида со страницы продукта или конструктора)
          */
-        @Value
+        @Data
         public static class GetFull implements Id, Name, Type,
                                     Description, Status, BasePrice,
                                     AdditionalPrice, FullPrice, Features,
