@@ -62,7 +62,7 @@ public enum FeatureDTO {;
         @Data
         @AllArgsConstructor
         public static class Get implements Id, RequestDTO {
-            private Integer id;
+            private Long id;
         }
 
         /**
