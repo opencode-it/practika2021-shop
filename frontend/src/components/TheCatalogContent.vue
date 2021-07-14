@@ -40,8 +40,8 @@
       <App-add-card />
       <App-product-card
         v-for="(item, index) in mainCatalog"
+        :key="index"
         :item="item"
-        :key="item"
         :index="index"
         :typeMain="$store.state.catalogType"
       />

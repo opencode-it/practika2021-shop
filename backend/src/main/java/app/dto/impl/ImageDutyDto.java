@@ -17,7 +17,7 @@ public enum ImageDutyDto {;
     }
 
     private interface Id {
-        Integer getId();
+        Long getId();
     }
 
     public enum Request {;
@@ -25,20 +25,20 @@ public enum ImageDutyDto {;
         @Data
         @AllArgsConstructor
         public static class Get implements Id, RequestDTO {
-            private Integer id;
+            private Long id;
         }
 
         @Data
         @AllArgsConstructor
         public static class UpdateName implements Id, Name, RequestDTO {
-            private Integer id;
+            private Long id;
             private String name;
         }
 
         @Data
         @AllArgsConstructor
         public static class Delete implements Id, RequestDTO {
-            private Integer id;
+            private Long id;
         }
 
 

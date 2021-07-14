@@ -10,7 +10,7 @@ import lombok.Value;
 public enum SlotDTO {;
 
     private interface Id {
-        Integer getId();
+        Long getId();
     }
 
     private interface Product {
@@ -26,7 +26,7 @@ public enum SlotDTO {;
         @Data
         @AllArgsConstructor
         public static class Get implements Id, RequestDTO {
-            private Integer id;
+            private Long id;
         }
 
         @Data
@@ -39,7 +39,7 @@ public enum SlotDTO {;
         @Data
         @AllArgsConstructor
         public static class SetAmountOnId implements Id, Amount, RequestDTO {
-            private Integer id;
+            private Long id;
             private Integer amount;
         }
     }
@@ -48,7 +48,7 @@ public enum SlotDTO {;
 
         @Value
         public static class GetAmountOnId implements Amount, Id, ResponseDTO {
-            Integer id;
+            Long id;
             Integer amount;
         }
 
