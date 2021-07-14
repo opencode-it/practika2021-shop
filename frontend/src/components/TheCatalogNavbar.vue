@@ -5,7 +5,7 @@
         :style="flags[index] ? isActive : isDisabled"
         class="catalog-menu__item"
         v-for="(item, index) in titles"
-        :key="item"
+        :key="index"
         @click="navbarEvent(index)"
       >{{item}}
       </li>
@@ -27,6 +27,11 @@ export default {
       titles: ["Все", "Кружки", "Майки", "Тарелки"]
     };
   },
+  props: {
+    index: {
+      type: Number,
+    },
+  },
   methods: {
     navbarEvent(index) {
       for (let i = 0; i < this.flags.length; i++) {
@@ -46,11 +51,6 @@ export default {
       if (this.titles[index] == "Тарелки") {
         this.$store.state.catalogType = "Тарелка"
       }
-    },
-  },
-  props: {
-    index: {
-      type: Number,
     },
   }
 };
