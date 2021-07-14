@@ -9,8 +9,8 @@ import org.mapstruct.Mapping;
 @Mapper(uses = UnitsChangeMapper.class)
 public interface FeatureUpdateUnitsMapper extends RequestMapper<Feature, FeatureDTO.Request.UpdateUnits> {
 
-    @Mapping(source = "changesUnits", target = "unit")
-    @Mapping(target = "name", ignore = true)
+
+
     @Override
     Feature toEntity(FeatureDTO.Request.UpdateUnits dto);
 }

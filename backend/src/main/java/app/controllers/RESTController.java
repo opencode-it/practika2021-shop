@@ -67,6 +67,7 @@ public abstract class RESTController<I extends RequestDTO,
     public I edit(@PathVariable("id") Long id, @RequestBody I edited) {
 
         try{
+            System.out.println(edited);
             Service.create(edited);
             return  edited;
         }catch (IllegalArgumentException ex){
