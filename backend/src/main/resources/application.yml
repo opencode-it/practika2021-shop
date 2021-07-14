@@ -22,7 +22,7 @@ spring:
     bucket: file #Minio Bucket name for app
     access-key: pracktika2021
     secret-key: KC8mmymg7vL3
-  #secure: true
+    secure: true
 
  #security:
  #  oauth2:
