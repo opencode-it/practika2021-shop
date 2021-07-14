@@ -15,6 +15,7 @@ public class ProductEditAndGetFullService extends CRUDService<Product,
                                                               ProductDTO.Request.EditProduct,
                                                               ProductDTO.Response.GetFull,
                                                               ProductRepository,
-        ProductEditMapper, ProductGetFullMapper> {
+                                                              ProductEditMapper,
+                                                              ProductGetFullMapper> {
 
 }

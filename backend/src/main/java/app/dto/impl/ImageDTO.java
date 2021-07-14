@@ -10,20 +10,13 @@ import lombok.Value;
  * */
 public enum ImageDTO {;
 
-    private interface Path {
-        String getPath();
+    private interface FileName {
+        String getFileName();
     }
 
     private interface ImageDuty {
         String getImageDuty();
     }
-
-
-
-
-
-    private interface ImageFile {}
-
 
     public enum Request {;
         /**
@@ -35,23 +28,13 @@ public enum ImageDTO {;
             String imageDuty;
         }
 
-        /**
-         * Создает свое изображение
-         */
-        @Data
-        @AllArgsConstructor
-        public static class LoadCustom implements ImageFile, ImageDuty, RequestDTO {
-            //TODO в чем грузятся изображения на сервер?
-
-            private String imageDuty;
-        }
 
         @Data
         @AllArgsConstructor
-        public static class CustomizeImage implements Path,
+        public static class CustomizeImage implements FileName,
                                                         ImageDuty,
                                                         RequestDTO {
-            private String path;
+            private String fileName;
             private String imageDuty;
 
         }
@@ -61,8 +44,8 @@ public enum ImageDTO {;
          */
         @Data
         @AllArgsConstructor
-        public static class DeleteImage implements Path, RequestDTO {
-            private String path;
+        public static class DeleteImage implements FileName, RequestDTO {
+            private String fileName;
         }
     }
 
@@ -72,8 +55,8 @@ public enum ImageDTO {;
          * Стандартная загрузка изображений
          */
         @Value
-        public static class GetImage implements Path, ImageDuty, ResponseDTO {
-            String path;
+        public static class GetImage implements FileName, ImageDuty, ResponseDTO {
+            String fileName;
             String ImageDuty;
         }
 
@@ -81,9 +64,9 @@ public enum ImageDTO {;
          * Дополнительная подгрузка изображения для конкретного объекта
          */
         @Value
-        public static class GetRequestedImage implements  Path, ImageDuty, ResponseDTO {
-            private Integer productId;
-            String path;
+        public static class GetRequestedImage implements FileName, ImageDuty, ResponseDTO {
+            Integer productId;
+            String fileName;
             String ImageDuty;
         }
 

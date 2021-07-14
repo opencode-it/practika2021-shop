@@ -21,6 +21,7 @@ public interface AbstractService<I extends RequestDTO, O extends ResponseDTO> {
     Optional<O> find(I dto);
     Optional<O> find(Long id);
     List<O> findAll();
+    List<O> findAllById(List<Long> idList);
     void delete(I dto);
     void delete(Long id);
     Boolean exists(I dto);

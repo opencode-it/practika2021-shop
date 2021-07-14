@@ -15,6 +15,7 @@ public class FeatureUpdateAndGetUnitsService extends CRUDService<Feature,
                                                                  FeatureDTO.Request.UpdateUnits,
                                                                  FeatureDTO.Response.GetWithUnits,
                                                                  FeatureRepository,
-        FeatureUpdateUnitsMapper, FeatureGetWithUnitsMapper> {
+                                                                 FeatureUpdateUnitsMapper,
+                                                                 FeatureGetWithUnitsMapper> {
 
 }

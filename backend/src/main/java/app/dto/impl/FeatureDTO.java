@@ -17,7 +17,7 @@ import lombok.Value;
 public enum FeatureDTO {;
 
     private interface Id {
-        Integer getId();
+        Long getId();
     }
 
     private interface Name {
@@ -62,7 +62,7 @@ public enum FeatureDTO {;
         @Data
         @AllArgsConstructor
         public static class Get implements Id, RequestDTO {
-            private Integer id;
+            private Long id;
         }
 
         /**
@@ -72,7 +72,7 @@ public enum FeatureDTO {;
         @Data
         @AllArgsConstructor
         public static class UpdateUnits implements Id, ChangeUnits, RequestDTO  {
-            private Integer Id;
+            private Long Id;
             private UnitsDTO.Request.ChangeUnits changesUnits;
         }
 
@@ -83,7 +83,7 @@ public enum FeatureDTO {;
         @Data
         @AllArgsConstructor
         public static class UpdateValue implements Id, FeatureValue, RequestDTO  {
-            private Integer Id;
+            private Long Id;
             private String featureValue;
         }
 
@@ -93,7 +93,7 @@ public enum FeatureDTO {;
         @Data
         @AllArgsConstructor
         public static class Delete implements Id, RequestDTO  {
-            private Integer Id;
+            private Long Id;
         }
 
     }

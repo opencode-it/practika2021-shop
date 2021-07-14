@@ -15,6 +15,7 @@ public class AccountCreateAndGetService extends CRUDService<Account,
                                                             AccountDTO.Request.Create,
                                                             AccountDTO.Response.GetFullInfo,
                                                             AccountRepository,
-        AccountCreateMapper, AccountGetFullInfoMapper> {
+                                                            AccountCreateMapper,
+                                                            AccountGetFullInfoMapper> {
 
 }
