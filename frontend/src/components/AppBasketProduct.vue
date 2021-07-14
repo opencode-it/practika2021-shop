@@ -1,7 +1,7 @@
 <template>
   <div class="basket-product">
     <div class="basket-card">
-      <App-product-card :item="basket" />
+      <App-product-card :item="basket" :index="index"/>
     </div>
     <div class="card-info">
       <div class="delete" @click="deleteProduct(index)">&#10006;</div>
@@ -27,8 +27,13 @@
 import AppProductCard from "./AppProductCard.vue";
 export default {
   props: {
-    basket: Object,
-    default: () => {},
+    basket: {
+      type: Object,
+      default: () => {},
+    },
+    index: {
+      type: Number
+    }
   },
   methods: {
     deleteProduct(index) {

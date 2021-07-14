@@ -1,5 +1,10 @@
 <template>
-  <router-link to="" @click.prevent="check" class="flex-item">
+  <router-link
+    to=""
+    @click.prevent="checkClass"
+    class="flex-item"
+    v-if="typeMain == item.type || typeMain == `All`"
+  >
     <div class="router-item">
       <img :src="item.link" class="item" alt="item" />
       <span v-if="item.name" class="product-name">{{
@@ -17,7 +22,7 @@
 <script>
 export default {
   methods: {
-    check(event) {
+    checkClass(event) {
       if (event.target.className == "item") {
         this.$router.push("/catalog");
       }
@@ -29,6 +34,9 @@ export default {
     item: {
       type: Object,
       default: () => {},
+    },
+    typeMain: {
+      type: String,
     },
   },
 };

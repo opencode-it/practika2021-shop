@@ -11,8 +11,9 @@
     </div>
     <div class="products-flex">
       <App-product-card
-        v-for="product in products"
+        v-for="(product, index) in products"
         :item="product"
+        :index="index"
         :key="product"
       />
     </div>
@@ -39,7 +40,7 @@ export default {
 <style lang="scss" scoped>
 .products-flex {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .products {

@@ -43,8 +43,9 @@
         :item="item"
         :key="item"
         :index="index"
-        :length="mainCatalog.length"
+        :typeMain="$store.state.catalogType"
       />
+      <The-next-cards />
     </div>
   </div>
 </template>
@@ -53,6 +54,7 @@
 import AppProductCard from "./AppProductCard.vue";
 import { mainCatalog } from "../mocks/data";
 import AppAddCard from "./AppAddCard.vue";
+import TheNextCards from "./TheNextCards";
 
 export default {
   data() {
@@ -60,7 +62,7 @@ export default {
       mainCatalog,
     };
   },
-  components: { AppProductCard, AppAddCard },
+  components: { AppProductCard, AppAddCard, TheNextCards },
   methods: {
     move(id) {
       let acc = document.getElementsByClassName("accordion");
@@ -119,7 +121,6 @@ export default {
 }
 
 .accordion.active {
-  display: none;
   .accordion-arrow {
     color: #b8b3ad;
     transform: rotate(270deg);
