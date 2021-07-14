@@ -3,20 +3,20 @@
     <div class="container footer-line">
       <div class="footer-flex">
         <router-link to="/" class="footer-logo">
-          <img src="../../public/img/LOGO_2_0_1.svg" />
+          <img src="/img/LOGO_2_0_1.svg" />
         </router-link>
         <div class="footer-social">
           <a href="http://www.facebook.com" class="social-link">
-            <img src="../../public/img/social/facebook.svg" />
+            <img src="/img/social/facebook.svg" />
           </a>
           <a href="http://www.vk.com" class="social-link">
-            <img src="../../public/img/social/vk.svg" />
+            <img src="/img/social/vk.svg" />
           </a>
           <a href="http://www.instagram.com" class="social-link">
-            <img src="../../public/img/social/instagram.svg" />
+            <img src="/img/social/instagram.svg" />
           </a>
         </div>
-        <div class="footer-phone">+7(977)777-77-77</div>
+        <a href="tel:+7(977)777-77-77" class="footer-phone">+7(977)777-77-77</a>
       </div>
     </div>
   </div>
