@@ -24,7 +24,8 @@ import java.util.Optional;
  * @param <I> Incoming (Request) DTO - тип DTO-"запроса", ограниченный {@link RequestDTO}
  * @param <O> Outcoming (Response) DTO - тип DTO-"ответа", ограниченный {@link ResponseDTO}
  * @param <R> тип репоозитория, ограниченный {@link LongKeyRepository}
- * @param <M> тип маппера, ограниченный {@link CompleteMapper}
+ * @param <M> тип маппера, ограниченный {@link RequestMapper}
+ * @param <N> тип маппера, органиченный {@link ResponseMapper}
  *
  * @author Александров Илья
  */
