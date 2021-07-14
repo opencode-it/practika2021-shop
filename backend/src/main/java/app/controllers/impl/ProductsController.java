@@ -39,12 +39,12 @@ public class ProductsController {
      * Запрос на отображение товаров в каталоге
      */
     @GetMapping
-    public List<ProductDTO.Response.GetBase> findAll() {
+    public List<ProductDTO.Response.GetFull> findAll() {
         return filterBaseProducts.findAll();
     }
 
     @GetMapping("/filtered")
-    public Optional<List<ProductDTO.Response.GetBase>> findAllFiltered(
+    public Optional<List<ProductDTO.Response.GetFull>> findAllFiltered(
             @RequestBody ProductDTO.Request.FilterByFeatures request) {
         return filterBaseProducts.findByFilter(request);
     }
