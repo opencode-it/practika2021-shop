@@ -30,7 +30,7 @@ public class AccountCreateAndGetService extends CRUDService<Account,
     @Override
     public AccountDTO.Response.GetFullInfo create(AccountDTO.Request.Create dto) {
         rightsRepository.findById(dto.getRights().getId())
-                .ifPresent(r -> dto.setRights(rightsMapper.toDto(null)));
+                .ifPresent(r -> dto.setRights(rightsMapper.toDto(r)));
         Account createdAccount = repository.save(requestMapper.toEntity(dto));
         return responseMapper.toDto(createdAccount);
     }
