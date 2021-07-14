@@ -17,7 +17,7 @@ import lombok.Value;
 public enum AccountDTO {;
 
     private interface Id {
-        Integer getId();
+        Long getId();
     }
 
     /**
@@ -54,7 +54,7 @@ public enum AccountDTO {;
         @Data
         @AllArgsConstructor
         public static class Get implements Id, RequestDTO  {
-            private Integer id;
+            private Long id;
         }
 
         /**
@@ -76,7 +76,7 @@ public enum AccountDTO {;
         @Data
         @AllArgsConstructor
         public static class UpdateInfo implements Id, FullName, Email, Address, RequestDTO {
-            private Integer id;
+            private Long id;
 
             private String fullName;
             private boolean isNewFullName;
@@ -94,7 +94,7 @@ public enum AccountDTO {;
         @Data
         @AllArgsConstructor
         public static class Delete implements Id, RequestDTO {
-            private Integer id;
+            private Long id;
         }
     }
 
@@ -114,7 +114,7 @@ public enum AccountDTO {;
          */
         @Value
         public static class GetFullInfo implements Id, Rights, Email, FullName, Token, Address, ResponseDTO {
-            Integer id;
+            Long id;
             RightsDTO.Response.Get rights;
             String email;
             String fullName;

@@ -24,29 +24,23 @@ public enum OrdersDTO {;
      * ID аккаунта заказчика
      */
     private interface AccountId {
-        Integer getAccountId();
+        Long getAccountId();
     }
 
     /**
      * ID заказа
      */
     private interface Id {
-        Integer getId();
+        Long getId();
     }
 
     /**
      * Продукты и их количество в заказе
      */
     private interface ProductsId {
-        Map<Integer, Integer> getOrderedProductIds();
+        Map<Long, Integer> getOrderedProductIds();
     }
 
-    /**
-     * Для обращения к одному продукту в заказе
-     */
-    private interface Product {
-        Integer getProductId();
-    }
 
     /**
      * Короткая информация о всех продуктах в заказе
@@ -69,6 +63,10 @@ public enum OrdersDTO {;
         String getStatus();
     }
 
+    private interface Discount {
+        Integer getDiscount();
+    }
+
     /**
      * Полная стоимость заказа
      */
@@ -84,7 +82,7 @@ public enum OrdersDTO {;
         @Data
         @AllArgsConstructor
         public static class Get implements Id, RequestDTO  {
-            private Integer id;
+            private Long id;
         }
 
 
@@ -93,9 +91,10 @@ public enum OrdersDTO {;
          */
         @Data
         @AllArgsConstructor
-        public static class ConfirmOrder implements AccountId, ProductsId, RequestDTO {
-            private Integer accountId;
-            private Map<Integer, Integer> orderedProductIds;
+        public static class ConfirmOrder implements AccountId, ProductsId, Discount, RequestDTO {
+            private Long accountId;
+            private Map<Long, Integer> orderedProductIds;
+            private Integer discount;
         }
 
         /**
@@ -104,10 +103,11 @@ public enum OrdersDTO {;
         @Data
         @AllArgsConstructor
         public static class DeleteOrder implements Id, AccountId, ProductsId, Status, RequestDTO {
-            private Integer id;
-            private Integer accountId;
-            private Map<Integer, Integer> orderedProductIds;
+            private Long id;
+            private Long accountId;
+            private Map<Long, Integer> orderedProductIds;
             private String status;
+            private boolean permanently;
         }
     }
 
@@ -118,8 +118,8 @@ public enum OrdersDTO {;
         */
         @Value
         public static class GetFormed implements Id, AccountId, ProductsInfo, GrandTotal, ResponseDTO {
-            Integer id;
-            Integer accountId;
+            Long id;
+            Long accountId;
             Set<ProductDTO.Response.GetBase> productsInOrder;
             BigDecimal grandTotal;
         }
@@ -129,8 +129,8 @@ public enum OrdersDTO {;
          */
         @Value
         public static class GetFull implements Id, AccountId, ProductsInfo, GrandTotal, Date, Status, ResponseDTO {
-            Integer id;
-            Integer accountId;
+            Long id;
+            Long accountId;
             Set<ProductDTO.Response.GetBase> productsInOrder;
             BigDecimal grandTotal;
             LocalDateTime date;
