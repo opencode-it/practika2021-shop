@@ -29,7 +29,7 @@ public enum RightsDTO {;
         @Data
         @AllArgsConstructor
         public static class CheckRights implements Id, RequestDTO {
-            private Integer id;
+            private Long id;
         }
 
         /**

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class UnitsService extends CRUDService<Units,
-                                              UnitsDTO.Request.ChangeUnits,
+                                              UnitsDTO.Request.AddUnits,
                                               UnitsDTO.Response.Get,
                                               UnitsRepository,
                                               UnitsChangeMapper,
