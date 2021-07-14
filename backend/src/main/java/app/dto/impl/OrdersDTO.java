@@ -126,16 +126,6 @@ public enum OrdersDTO {;
         }
 
         /**
-         * Чтобы удалить все товары из корзины
-         */
-        @Data
-        @AllArgsConstructor
-        public static class ClearCart implements AccountId, ProductsId, RequestDTO {
-            private Integer accountId;
-            private Map<Integer, Integer> orderedProductIds;
-        }
-
-        /**
          * Чтобы удалить/отменить оформленный заказ
          */
         @Data
