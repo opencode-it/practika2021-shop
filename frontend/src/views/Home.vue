@@ -4,9 +4,9 @@
       <TheSlider />
       <TheProducts
         v-for="item in products"
+        :key="item.id"
         :products="item.content"
         :title="item.title"
-        :key="item"
       />
       <TheAbout />
     </div>

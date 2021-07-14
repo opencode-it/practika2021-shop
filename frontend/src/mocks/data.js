@@ -1,5 +1,6 @@
 export const products = {
   cups: {
+    id: 0,
     title: "Кружки",
     content: [
       {
@@ -59,6 +60,7 @@ export const products = {
     ],
   },
   tshirts: {
+    id: 1,
     title: "Майки",
     content: [
       {
@@ -118,6 +120,7 @@ export const products = {
     ],
   },
   plates: {
+    id: 2,
     title: "Тарелки",
     content: [
       {

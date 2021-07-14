@@ -17,7 +17,7 @@ import lombok.Value;
  */
 public enum UnitsDTO implements DTO {;
     private interface Id {
-        Integer getId();
+        Long getId();
     }
 
     /**
@@ -44,7 +44,7 @@ public enum UnitsDTO implements DTO {;
         @Data
         @AllArgsConstructor
         public static class ChangeUnits implements Id, Measure, RequestDTO {
-            private Integer id;
+            private Long id;
             private Double measure;
         }
     }
