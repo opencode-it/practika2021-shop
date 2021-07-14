@@ -15,7 +15,7 @@ import lombok.Value;
  */
 public enum RightsDTO {;
     private interface Id {
-        Integer getId();
+        Long getId();
     }
 
     private interface Name {
@@ -38,7 +38,7 @@ public enum RightsDTO {;
         @Data
         @AllArgsConstructor
         public static class ChangeRights implements Id, Name, RequestDTO {
-            private Integer id;
+            private Long id;
             private String name;
         }
     }
@@ -49,7 +49,7 @@ public enum RightsDTO {;
          */
         @Value
         public static class Get implements Id, Name, ResponseDTO {
-            Integer id;
+            Long id;
             String name;
         }
     }

@@ -21,7 +21,7 @@ import java.util.Set;
 public enum ProductDTO implements DTO {;
 
     private interface Id {
-        Integer getId();
+        Long getId();
     }
 
     //TODO не помнбю, было ли у класса продукта имя, но на схеме вроде точно не было
@@ -116,7 +116,7 @@ public enum ProductDTO implements DTO {;
         @Data
         @AllArgsConstructor
         public static class Get implements Id, RequestDTO {
-            private Integer id;
+            private Long id;
         }
 
         /**
@@ -147,7 +147,7 @@ public enum ProductDTO implements DTO {;
         public static class EditProduct implements Id, Name, Description,
                                                    FeaturesRequests, LoadedImagesSet,
                                                    BasePrice, RequestDTO {
-            private Integer id;
+            private Long id;
 
             private String name;
             private boolean isNewName;
@@ -175,7 +175,7 @@ public enum ProductDTO implements DTO {;
          */
         @Value
         public static class GetBase implements Id, Name, Type, Image, Status, BasePrice, ResponseDTO {
-            Integer id;
+            Long id;
             String name;
             String type;
             ImageDTO.Response.GetImage image;
@@ -192,7 +192,7 @@ public enum ProductDTO implements DTO {;
                                     Description, Status, BasePrice,
                                     AdditionalPrice, FullPrice, Features,
                                     UnitsFeatures, ImagesSet, ResponseDTO {
-            Integer id;
+            Long id;
             String name;
             String description;
             String type;
