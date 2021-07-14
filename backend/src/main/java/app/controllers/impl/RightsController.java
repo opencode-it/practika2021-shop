@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * */
 @RestController
 @RequestMapping("rights")
-public class RightsController extends RESTController<RightsDTO.Request.ChangeRights, RightsDTO.Response.Get, RightsChangeAndGetService> {
+public class RightsController extends RESTController<RightsDTO.Request.AddRights, RightsDTO.Response.Get, RightsChangeAndGetService> {
     public RightsController(RightsChangeAndGetService Service) {
         super(Service);
     }

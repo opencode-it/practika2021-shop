@@ -78,7 +78,8 @@ public enum FeatureDTO {;
 
         @Data
         @AllArgsConstructor
-        public static class AddFeature implements Name, FeatureValue, FeaturePrice, Units, RequestDTO {
+        public static class AddFeature implements Id, Name, FeatureValue, FeaturePrice, Units, RequestDTO {
+            private Long id;
             private String name;
             private String featureValue;
             private UnitsDTO.Request.Get units;

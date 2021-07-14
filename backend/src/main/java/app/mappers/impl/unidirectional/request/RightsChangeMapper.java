@@ -6,6 +6,6 @@ import app.mappers.RequestMapper;
 import org.mapstruct.Mapper;
 
 @Mapper
-public interface RightsChangeMapper extends RequestMapper<Rights, RightsDTO.Request.ChangeRights> {
+public interface RightsChangeMapper extends RequestMapper<Rights, RightsDTO.Request.AddRights> {
 
 }

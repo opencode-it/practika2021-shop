@@ -71,24 +71,6 @@ public enum AccountDTO {;
         }
 
         /**
-         * Запрос пользователя на изменение своих данных
-         */
-        @Data
-        @AllArgsConstructor
-        public static class UpdateInfo implements Id, FullName, Email, Address, RequestDTO {
-            private Long id;
-
-            private String fullName;
-            private boolean isNewFullName;
-
-            private String email;
-            private boolean isNewEmail;
-
-            private String address;
-            private boolean isNewAddress;
-        }
-
-        /**
          * Запрос пользователя на удаление своего аккаунта
          */
         @Data
