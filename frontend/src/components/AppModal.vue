@@ -40,7 +40,7 @@
           <div class="btn-center">
             <button type="button" class="google-auth">
               <img
-                src="../../public/img/google.png"
+                src="/img/google.png"
                 alt="google"
                 class="google"
               />
@@ -102,7 +102,7 @@
           <div class="btn-center">
             <button type="button" class="google-auth">
               <img
-                src="../../public/img/google.png"
+                src="/img/google.png"
                 alt="google"
                 class="google"
               />

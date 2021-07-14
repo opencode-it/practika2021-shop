@@ -39,11 +39,11 @@ export default {};
 .about-title {
   padding-top: 50px;
   margin-bottom: 20px;
-  font-style: 36px;
+  font-size: 36px;
 }
 
 .about-text {
-  font-style: 20px;
+  font-size: 19px;
   margin-bottom: 20px;
 }
 </style>

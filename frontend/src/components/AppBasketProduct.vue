@@ -26,6 +26,7 @@
 <script>
 import AppProductCard from "./AppProductCard.vue";
 export default {
+  components: { AppProductCard },
   props: {
     basket: {
       type: Object,
@@ -40,7 +41,6 @@ export default {
       console.log(index);
     },
   },
-  components: { AppProductCard },
 };
 </script>
 
