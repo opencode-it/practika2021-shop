@@ -24,7 +24,8 @@ public class ProductFilterAndGetBaseService extends CRUDService<Product,
                                                                 ProductDTO.Request.FilterByFeatures,
                                                                 ProductDTO.Response.GetBase,
                                                                 ProductRepository,
-                                                                ProductFilterMapper, ProductGetBaseMapper> {
+                                                                ProductFilterMapper,
+                                                                ProductGetBaseMapper> {
 
 
     public Optional<List<ProductDTO.Response.GetBase>> findByFilter(ProductDTO.Request.FilterByFeatures featuresDTO) {

@@ -15,6 +15,7 @@ public class ImageDeleteAndGetService extends CRUDService<Image,
                                                           ImageDTO.Request.DeleteImage,
                                                           ImageDTO.Response.GetImage,
                                                           ImageRepository,
-        ImageDeleteMapper, ImageGetResponseMapper> {
+                                                          ImageDeleteMapper,
+                                                          ImageGetResponseMapper> {
 
 }

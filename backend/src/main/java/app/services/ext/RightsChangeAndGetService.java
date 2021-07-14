@@ -15,6 +15,7 @@ public class RightsChangeAndGetService extends CRUDService<Rights,
                                                            RightsDTO.Request.ChangeRights,
                                                            RightsDTO.Response.Get,
                                                            RightsRepository,
-        RightsChangeMapper, RightsGetMapper> {
+                                                           RightsChangeMapper,
+                                                           RightsGetMapper> {
 
 }

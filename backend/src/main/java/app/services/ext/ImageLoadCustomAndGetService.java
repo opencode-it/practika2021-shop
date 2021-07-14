@@ -15,6 +15,7 @@ public class ImageLoadCustomAndGetService extends CRUDService<Image,
                                                               ImageDTO.Request.LoadCustom,
                                                               ImageDTO.Response.GetImage,
                                                               ImageRepository,
-        ImageLoadCustomMapper, ImageGetResponseMapper> {
+                                                              ImageLoadCustomMapper,
+                                                              ImageGetResponseMapper> {
 
 }

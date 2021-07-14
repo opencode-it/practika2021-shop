@@ -15,6 +15,7 @@ public class ProductCreateAndGetBaseService extends CRUDService<Product,
                                                                 ProductDTO.Request.CreateProduct,
                                                                 ProductDTO.Response.GetBase,
                                                                 ProductRepository,
-        ProductCreateMapper, ProductGetBaseMapper> {
+                                                                ProductCreateMapper,
+                                                                ProductGetBaseMapper> {
 
 }
