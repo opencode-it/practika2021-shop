@@ -6,7 +6,7 @@ package app.controllers.impl;
 import app.dto.impl.ProductDTO;
 import app.services.ext.ProductCreateAndGetBaseService;
 import app.services.ext.ProductEditAndGetFullService;
-import app.services.ext.ProductFilterAndGetBaseService;
+import app.services.ext.ProductFilterAndGetFullService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +27,7 @@ import java.util.Optional;
 @RequestMapping("/products")
 public class ProductsController {
     @Autowired
-    private ProductFilterAndGetBaseService filterBaseProducts;
+    private ProductFilterAndGetFullService filterBaseProducts;
 
     @Autowired
     private ProductEditAndGetFullService editFullProduct;
@@ -39,12 +39,12 @@ public class ProductsController {
      * Запрос на отображение товаров в каталоге
      */
     @GetMapping
-    public List<ProductDTO.Response.GetBase> findAll() {
+    public List<ProductDTO.Response.GetFull> findAll() {
         return filterBaseProducts.findAll();
     }
 
     @GetMapping("/filtered")
-    public Optional<List<ProductDTO.Response.GetBase>> findAllFiltered(
+    public Optional<List<ProductDTO.Response.GetFull>> findAllFiltered(
             @RequestBody ProductDTO.Request.FilterByFeatures request) {
         return filterBaseProducts.findByFilter(request);
     }

@@ -56,13 +56,6 @@ public enum OrdersDTO {;
     }
 
     /**
-     * Примененная скидка к заказу
-     */
-    private interface Discount {
-        Integer getDiscount();
-    }
-
-    /**
      * Дата оформления заказа
      */
     private interface Date {
@@ -94,26 +87,6 @@ public enum OrdersDTO {;
             private Integer id;
         }
 
-        /**
-         * Запрос на изменение количества
-         * конкретного продукта в заказе на одну единицу
-         */
-        @Data
-        @AllArgsConstructor
-        public static class ChangeProductAmount implements Id, Product, RequestDTO  {
-            private Integer Id;
-            private Integer productId;
-            private boolean increase;
-        }
-
-
-        /**
-         * Запрос на применение скидки к заказу
-         */
-        /*@Data
-        public static class ApplyDiscount implements Id, Discount, RequestDTO  {
-            //TODO и че с этим делать
-        }*/
 
         /**
          * Запрос на формирование заказа из товаров в корзине
@@ -121,16 +94,6 @@ public enum OrdersDTO {;
         @Data
         @AllArgsConstructor
         public static class ConfirmOrder implements AccountId, ProductsId, RequestDTO {
-            private Integer accountId;
-            private Map<Integer, Integer> orderedProductIds;
-        }
-
-        /**
-         * Чтобы удалить все товары из корзины
-         */
-        @Data
-        @AllArgsConstructor
-        public static class ClearCart implements AccountId, ProductsId, RequestDTO {
             private Integer accountId;
             private Map<Integer, Integer> orderedProductIds;
         }

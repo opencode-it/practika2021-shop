@@ -15,15 +15,15 @@ import org.mapstruct.MappingTarget;
 import java.math.BigDecimal;
 
 @Mapper(uses = {CustomTypeMapper.class,
-                ImageGetResponseMapper.class })
+                ImageGetResponseMapper.class,
+                FeatureGetUnitlessMapper.class,
+                FeatureGetWithUnitsMapper.class })
 public interface ProductGetFullMapper extends ResponseMapper<Product, ProductDTO.Response.GetFull> {
 
     @Mapping(source = "price", target = "basePrice")
     @Mapping(source = "images", target = "imagesSet")
     @Mapping(source = "prodStatus", target = "status", qualifiedBy = ProductStatusToString.class)
     @Mapping(source = "type", target = "type", qualifiedBy = ProductTypeToString.class)
-    @Mapping(target = "unitsFeatures", ignore = true)
-    @Mapping(target = "features", ignore = true)
     @Override
     ProductDTO.Response.GetFull toDto(Product entity);
 

@@ -142,6 +142,16 @@ public abstract class CRUDService<E extends AbstractEntity,
 
     /**
      *
+     * @param idList - список ключей
+     * @return объекты ResponseDTO - представление содержимого таблицы
+     */
+    @Override
+    public List<O> findAllById(List<Long> idList) {
+        return responseMapper.toDtoList(repository.findAllById(idList));
+    }
+
+    /**
+     *
      * @param dto RequestDTO с ключом, по которому сущность удаляется из БД
      */
     @Override

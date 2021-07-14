@@ -15,6 +15,7 @@ public class UnitsService extends CRUDService<Units,
                                               UnitsDTO.Request.ChangeUnits,
                                               UnitsDTO.Response.Get,
                                               UnitsRepository,
-        UnitsChangeMapper, UnitsGetMapper> {
+                                              UnitsChangeMapper,
+                                              UnitsGetMapper> {
 
 }

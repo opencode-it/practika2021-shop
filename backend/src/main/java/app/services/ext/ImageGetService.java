@@ -15,6 +15,7 @@ public class ImageGetService extends CRUDService<Image,
                                                  ImageDTO.Request.Get,
                                                  ImageDTO.Response.GetImage,
                                                  ImageRepository,
-        ImageGetRequestMapper, ImageGetResponseMapper> {
+                                                 ImageGetRequestMapper,
+                                                 ImageGetResponseMapper> {
 
 }
