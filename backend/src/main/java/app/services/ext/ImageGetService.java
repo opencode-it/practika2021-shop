@@ -2,7 +2,6 @@ package app.services.ext;
 
 import app.dto.impl.ImageDTO;
 import app.entities.Image;
-import app.mappers.impl.complete.ImageGetMapper;
 import app.mappers.impl.unidirectional.request.ImageGetRequestMapper;
 import app.mappers.impl.unidirectional.response.ImageGetResponseMapper;
 import app.repositories.impl.ImageRepository;
