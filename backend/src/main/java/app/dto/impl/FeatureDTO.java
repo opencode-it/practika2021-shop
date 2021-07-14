@@ -3,7 +3,6 @@
  */
 package app.dto.impl;
 
-import app.dto.DTO;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
 import lombok.AllArgsConstructor;
@@ -34,12 +33,12 @@ public enum FeatureDTO {;
     }
 
     /**
-     * Содержит информацию об изменении
+     * Содержит информацию об
      * измеряемой характеристики продукта
      * для сервера
      */
-    private interface ChangeUnits {
-        UnitsDTO.Request.ChangeUnits getChangesUnits();
+    private interface Units {
+        UnitsDTO.Request.Get getUnits();
     }
 
     /**
@@ -49,6 +48,7 @@ public enum FeatureDTO {;
     private interface FeatureValue {
         String getFeatureValue();
     }
+
 
     private interface FeaturePrice {
         Integer getFeaturePrice();
@@ -71,9 +71,18 @@ public enum FeatureDTO {;
          */
         @Data
         @AllArgsConstructor
-        public static class UpdateUnits implements Id, ChangeUnits, RequestDTO  {
+        public static class UpdateUnits implements Id, Units, RequestDTO  {
             private Long Id;
-            private UnitsDTO.Request.ChangeUnits changesUnits;
+            private UnitsDTO.Request.Get units;
+        }
+
+        @Data
+        @AllArgsConstructor
+        public static class AddFeature implements Name, FeatureValue, FeaturePrice, Units, RequestDTO {
+            private String name;
+            private String featureValue;
+            private UnitsDTO.Request.Get units;
+            private Integer featurePrice;
         }
 
         /**
