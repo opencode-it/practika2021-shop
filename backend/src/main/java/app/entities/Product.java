@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @Builder
 @Data
-@Table(name = "product", uniqueConstraints= @UniqueConstraint(columnNames={"name", "email"}))
+@Table(name = "product", uniqueConstraints= @UniqueConstraint(columnNames={"name"}))
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,5 +38,5 @@ public class Product extends AbstractEntity{
     @NotNull
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "feature_ID")
-    private List<Feature> features;
+    private List<ProductFeature> features;
 }

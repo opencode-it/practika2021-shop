@@ -14,6 +14,7 @@ import app.entities.AbstractEntity;
  */
 public interface CompleteMapper<E extends AbstractEntity,
                                 I extends RequestDTO,
-                                O extends ResponseDTO> extends RequestMapper<E, I>, ResponseMapper<E, O> {
+                                O extends ResponseDTO>
+                                  extends RequestMapper<E, I>, ResponseMapper<E, O> {
 
 }
