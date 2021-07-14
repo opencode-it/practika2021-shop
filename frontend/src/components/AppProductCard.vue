@@ -21,15 +21,6 @@
 
 <script>
 export default {
-  methods: {
-    checkClass(event) {
-      if (event.target.className == "item") {
-        this.$router.push("/catalog");
-      }
-    },
-    add() {},
-    remove() {},
-  },
   props: {
     item: {
       type: Object,
@@ -38,6 +29,15 @@ export default {
     typeMain: {
       type: String,
     },
+  },
+  methods: {
+    checkClass(event) {
+      if (event.target.className == "item") {
+        this.$router.push("/catalog");
+      }
+    },
+    add() {},
+    remove() {},
   },
 };
 </script>

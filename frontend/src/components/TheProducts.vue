@@ -4,7 +4,7 @@
       <router-link to="/catalog/cups" class="products-sector">
         <h2 class="products-title">{{ title }}</h2>
         <img
-          src="../../public/img/title-element.svg"
+          src="/img/title-element.svg"
           class="products-title__element"
         />
       </router-link>
@@ -14,7 +14,7 @@
         v-for="(product, index) in products"
         :item="product"
         :index="index"
-        :key="product"
+        :key="index"
       />
     </div>
   </div>
