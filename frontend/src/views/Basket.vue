@@ -5,7 +5,8 @@
       <div class="basket-items">
         <App-basket-product
           :basket="info"
-          v-for="info in basket.basketProducts"
+          v-for="(info, index) in basket.basketProducts"
+          :index="index"
           :key="info"
         />
       </div>

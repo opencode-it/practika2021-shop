@@ -1,22 +1,59 @@
 <template>
   <div>
     <ul class="catalog-menu">
-      <router-link to="/catalog" class="catalog-menu__item">Все</router-link>
-      <router-link to="/catalog/cups" class="catalog-menu__item"
-        >Кружки</router-link
-      >
-      <router-link to="/catalog/tshirts" class="catalog-menu__item"
-        >Майки</router-link
-      >
-      <router-link to="/catalog/plates" class="catalog-menu__item"
-        >Тарелки</router-link
-      >
+      <li
+        :style="flags[index] ? isActive : isDisabled"
+        class="catalog-menu__item"
+        v-for="(item, index) in titles"
+        :key="item"
+        @click="navbarEvent(index)"
+      >{{item}}
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isActive: {
+        color: "#ed7102"
+      },
+      isDisabled: {
+        color: "black"
+      },
+      flags: [true, false, false, false],
+      titles: ["Все", "Кружки", "Майки", "Тарелки"]
+    };
+  },
+  methods: {
+    navbarEvent(index) {
+      for (let i = 0; i < this.flags.length; i++) {
+        this.flags[i] = false;
+      }
+      this.flags[index] = true;
+
+      if (this.titles[index] == "Все") {
+        this.$store.state.catalogType = "All"
+      }
+      if (this.titles[index] == "Кружки") {
+        this.$store.state.catalogType = "Кружка"
+      }
+      if (this.titles[index] == "Майки") {
+        this.$store.state.catalogType = "Майка"
+      }
+      if (this.titles[index] == "Тарелки") {
+        this.$store.state.catalogType = "Тарелка"
+      }
+    },
+  },
+  props: {
+    index: {
+      type: Number,
+    },
+  }
+};
 </script>
 
 <style lang="scss" scoped>
