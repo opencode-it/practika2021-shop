@@ -17,13 +17,6 @@
         <java.version>11</java.version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>minio</id>
-            <name>minio repo</name>
-            <url>https://mvnrepository.com/artifact/com.jlefebure/spring-boot-starter-minio</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>

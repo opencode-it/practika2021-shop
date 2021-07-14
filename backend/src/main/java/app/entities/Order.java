@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "orders")
@@ -25,6 +26,10 @@ public class Order extends AbstractEntity {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "discount_ID")
     private Discount discount;
+    @NotNull
+    @PrimaryKeyJoinColumn(name = "order_has_product_ID")
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<OrdersProducts> ordersProducts;
     @NotNull
     @Column(name = "date")
     private LocalDateTime date;

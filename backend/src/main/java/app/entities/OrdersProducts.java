@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "order_has_products")
@@ -19,10 +20,6 @@ public class OrdersProducts extends AbstractEntity{
     @PrimaryKeyJoinColumn(name = "product_ID")
     @ManyToOne(cascade = CascadeType.ALL)
     private Product product;
-    @NotNull
-    @PrimaryKeyJoinColumn(name = "order_ID")
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Order order;
     @NotNull
     @Column
     private Integer count;
