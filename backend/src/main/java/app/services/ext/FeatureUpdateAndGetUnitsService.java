@@ -2,7 +2,6 @@ package app.services.ext;
 
 import app.dto.impl.FeatureDTO;
 import app.entities.Feature;
-import app.mappers.impl.complete.FeatureUpdateAndGetUnitsMapper;
 import app.mappers.impl.unidirectional.request.FeatureUpdateUnitsMapper;
 import app.mappers.impl.unidirectional.response.FeatureGetWithUnitsMapper;
 import app.repositories.impl.FeatureRepository;
