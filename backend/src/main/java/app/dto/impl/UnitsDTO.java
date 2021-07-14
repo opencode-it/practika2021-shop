@@ -28,24 +28,27 @@ public enum UnitsDTO implements DTO {;
         String getName();
     }
 
-    //TODO я не уверена, нужны ли Units действительные мерки, поэтому просто пока оставлю тут
-    /**
-     * Размер характеристики
-     */
-    private interface Measure {
-        Double getMeasure();
-    }
 
     public enum Request {;
+        /**
+         * Для запроса на получение единицы измерения фичи
+         */
+        @Data
+        @AllArgsConstructor
+        public static class Get implements Id, RequestDTO {
+            private Long id;
+        }
+
+
         /**
          * Для запроса на изменения значения размера
          * мерочной характеристики по ее ID
          */
         @Data
         @AllArgsConstructor
-        public static class ChangeUnits implements Id, Measure, RequestDTO {
+        public static class AddUnits implements Id, Name, RequestDTO {
             private Long id;
-            private Double measure;
+            private String name;
         }
     }
 
@@ -55,9 +58,9 @@ public enum UnitsDTO implements DTO {;
          * мерочно характеристики продукта
          */
         @Value
-        public static class Get implements Name, Measure, ResponseDTO {
+        public static class Get implements Id, Name, ResponseDTO {
+            Long id;
             String name;
-            Double measure;
         }
     }
 }
