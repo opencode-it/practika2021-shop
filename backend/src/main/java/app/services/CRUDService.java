@@ -35,14 +35,18 @@ public abstract class CRUDService<E extends AbstractEntity,
                                   I extends RequestDTO,
                                   O extends ResponseDTO,
                                   R extends LongKeyRepository<E>,
-                                  M extends RequestMapper<E, I> & ResponseMapper<E, O>>
+                                  M extends RequestMapper<E, I>,
+                                  N extends ResponseMapper<E, O>>
                                     implements AbstractService<I, O> {
 
     @Autowired
     protected R repository;
 
     @Autowired
-    protected M mapper;
+    protected M requestMapper;
+
+    @Autowired
+    protected N responseMapper;
 
     /**
      *
@@ -52,8 +56,8 @@ public abstract class CRUDService<E extends AbstractEntity,
      */
     @Override
     public O create(I dto) {
-        E createdEntity = repository.save(mapper.toEntity(dto));
-        return mapper.toDto(createdEntity);
+        E createdEntity = repository.save(requestMapper.toEntity(dto));
+        return responseMapper.toDto(createdEntity);
     }
 
     /**
@@ -64,11 +68,11 @@ public abstract class CRUDService<E extends AbstractEntity,
      */
     @Override
     public O update(I dto) {
-        E entityWithChanges = mapper.toEntity(dto);
+        E entityWithChanges = requestMapper.toEntity(dto);
         E oldEntity = repository.getOne(entityWithChanges.getId());
         mergeFieldsOnUpdate(oldEntity, entityWithChanges);
         repository.save(entityWithChanges);
-        return mapper.toDto(oldEntity);
+        return responseMapper.toDto(oldEntity);
     }
 
     /**
@@ -101,8 +105,8 @@ public abstract class CRUDService<E extends AbstractEntity,
      */
     @Override
     public List<O> saveAll(List<I> dtoList) {
-        List<E> savedEntities = repository.saveAll(mapper.toEntityList(dtoList));
-        return mapper.toDtoList(savedEntities);
+        List<E> savedEntities = repository.saveAll(requestMapper.toEntityList(dtoList));
+        return responseMapper.toDtoList(savedEntities);
     }
 
     /**
@@ -112,7 +116,7 @@ public abstract class CRUDService<E extends AbstractEntity,
      */
     @Override
     public Optional<O> find(I dto) {
-        Long id = mapper.toEntity(dto).getId();
+        Long id = requestMapper.toEntity(dto).getId();
         return find(id);
     }
 
@@ -123,7 +127,7 @@ public abstract class CRUDService<E extends AbstractEntity,
      */
     @Override
     public Optional<O> find(Long id) {
-        O dto = mapper.toDto(repository.getOne(id));
+        O dto = responseMapper.toDto(repository.getOne(id));
         return Optional.of(dto);
     }
 
@@ -133,7 +137,7 @@ public abstract class CRUDService<E extends AbstractEntity,
      */
     @Override
     public List<O> findAll() {
-        return mapper.toDtoList(repository.findAll());
+        return responseMapper.toDtoList(repository.findAll());
     }
 
     /**
@@ -142,7 +146,7 @@ public abstract class CRUDService<E extends AbstractEntity,
      */
     @Override
     public void delete(I dto) {
-        repository.delete(mapper.toEntity(dto));
+        repository.delete(requestMapper.toEntity(dto));
     }
 
     /**
@@ -161,7 +165,7 @@ public abstract class CRUDService<E extends AbstractEntity,
      */
     @Override
     public Boolean exists(I dto) {
-        E entity = mapper.toEntity(dto);
+        E entity = requestMapper.toEntity(dto);
         return repository.exists(Example.of(entity));
     }
 
