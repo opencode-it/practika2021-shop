@@ -107,7 +107,6 @@ public enum OrdersDTO {;
             private Long accountId;
             private Map<Long, Integer> orderedProductIds;
             private String status;
-            private boolean permanently;
         }
     }
 

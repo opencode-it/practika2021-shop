@@ -40,8 +40,6 @@ public enum ImageDutyDto {;
         public static class Delete implements Id, RequestDTO {
             private Long id;
         }
-
-
     }
 
     public enum Response {;
