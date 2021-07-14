@@ -17,12 +17,12 @@ spring:
       ddl-auto: 'validate'
     show-sql: true
 
-minio:
-  url: https://practika2021.opencode.su:9000
-  bucket: file #Minio Bucket name for app
-  access-key: pracktika2021
-  secret-key: KC8mmymg7vL3
-  secure: true
+  minio:
+    url: https://practika2021.opencode.su:9000/
+    bucket: file #Minio Bucket name for app
+    access-key: pracktika2021
+    secret-key: KC8mmymg7vL3
+  #secure: true
 
  #security:
  #  oauth2:
