@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends LongKeyRepository<Product> {
 
-     List<Product> findByFeatures(List<ProductFeature> features);
+     List<Product> findByFeaturesIn(Iterable<ProductFeature> features);
 }

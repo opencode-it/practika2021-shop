@@ -40,7 +40,7 @@ public class ProductFilterAndGetFullService extends CRUDService<Product,
                 .map(FeatureDTO.Request.Get::getId)
                 .collect(Collectors.toList());
         List<ProductFeature> foundFeatures = productFeatureRepository.findAllById(idList);
-        List<Product> foundProducts = repository.findByFeatures(foundFeatures);
+        List<Product> foundProducts = repository.findByFeaturesIn(foundFeatures);
         return Optional.of(responseMapper.toDtoList(foundProducts));
     }
 }
