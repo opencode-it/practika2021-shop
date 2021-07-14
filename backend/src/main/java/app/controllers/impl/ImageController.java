@@ -25,21 +25,21 @@ import java.util.Map;
 public class ImageController extends RESTController<ImageDTO.Request.Get,
                                                         ImageDTO.Response.GetImage,
                                                         ImageGetService> {
-    //Изображения изначально поступают на клиент вместе
+    //Изображения изначально поступают на клиент вместе     ?
     //с товарами или заказами, поэтому путь к ним и
     //их предназначение всегда известны
 
-    @Value("${minio.ip}")
-    private String ip;
+   @Value("${minio.url}")
+   private String ip;
 
     @Value("${minio.bucket}")
     private String bucketName;
 
-    @Value("${minio.accessKey}")
+    @Value("${minio.access-key}")
     private String accessKey;
 
 
-    @Value("${minio.secretKey}")
+    @Value("${minio.secret-key}")
     private String secretKey;
 
 
@@ -52,7 +52,7 @@ public class ImageController extends RESTController<ImageDTO.Request.Get,
     public String minioUpload(MultipartFile file) {
         try {
             String fileName = file.getOriginalFilename();
-            MinioClient minioClient = new MinioClient("http://" + ip, accessKey, secretKey);
+            MinioClient minioClient = new MinioClient(ip, accessKey, secretKey);
             boolean bucketExists = minioClient.bucketExists(bucketName);
             if (bucketExists) {
 
@@ -92,7 +92,7 @@ public class ImageController extends RESTController<ImageDTO.Request.Get,
     @GetMapping("/down/{fileName}")
     public String downloadFile(@PathVariable("fileName") String objectName, HttpServletResponse response) {
         try {
-            MinioClient minioClient = new MinioClient("http://" + ip, accessKey, secretKey);
+            MinioClient minioClient = new MinioClient(ip, accessKey, secretKey);
             InputStream file = minioClient.getObject(bucketName,objectName);
             String filename = new String(objectName.getBytes("ISO8859-1"), StandardCharsets.UTF_8);
             response.setHeader("Content-Disposition", "attachment;filename=" + filename);
@@ -122,7 +122,7 @@ public class ImageController extends RESTController<ImageDTO.Request.Get,
     @DeleteMapping("/{fileName}")
     public boolean delete(@PathVariable("fileName") String fileName) {
         try {
-            MinioClient minioClient = new MinioClient("http://" + ip, accessKey, secretKey);
+            MinioClient minioClient = new MinioClient(ip, accessKey, secretKey);
             minioClient.removeObject(bucketName,fileName);
 
             return true;
@@ -139,7 +139,7 @@ public class ImageController extends RESTController<ImageDTO.Request.Get,
     public boolean isFileExisted(String fileName) {
         InputStream inputStream = null;
         try {
-            MinioClient minioClient = new MinioClient("http://" + ip, accessKey, secretKey);
+            MinioClient minioClient = new MinioClient(ip, accessKey, secretKey);
             inputStream = minioClient.getObject(bucketName, fileName);
             if (inputStream != null) {
                 return true;
