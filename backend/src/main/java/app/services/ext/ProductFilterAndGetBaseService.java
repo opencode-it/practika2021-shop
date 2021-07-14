@@ -7,6 +7,8 @@ import app.entities.Product;
 import app.entities.ProductFeature;
 import app.mappers.impl.complete.FeatureGetAndGetUnitsMapper;
 import app.mappers.impl.complete.ProductFilterAndGetBaseMapper;
+import app.mappers.impl.unidirectional.request.ProductFilterMapper;
+import app.mappers.impl.unidirectional.response.ProductGetBaseMapper;
 import app.repositories.impl.ProductRepository;
 import app.services.CRUDService;
 import lombok.AllArgsConstructor;
@@ -27,7 +29,7 @@ public class ProductFilterAndGetBaseService extends CRUDService<Product,
                                                                 ProductDTO.Request.FilterByFeatures,
                                                                 ProductDTO.Response.GetBase,
                                                                 ProductRepository,
-                                                                ProductFilterAndGetBaseMapper> {
+                                                                ProductFilterMapper, ProductGetBaseMapper> {
 
     @Autowired
     FeatureGetAndGetUnitsMapper featureMapper;
