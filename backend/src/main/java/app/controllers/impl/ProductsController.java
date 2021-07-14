@@ -6,7 +6,7 @@ package app.controllers.impl;
 import app.dto.impl.ProductDTO;
 import app.services.ext.ProductCreateAndGetBaseService;
 import app.services.ext.ProductEditAndGetFullService;
-import app.services.ext.ProductFilterAndGetBaseService;
+import app.services.ext.ProductFilterAndGetFullService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +27,7 @@ import java.util.Optional;
 @RequestMapping("/products")
 public class ProductsController {
     @Autowired
-    private ProductFilterAndGetBaseService filterBaseProducts;
+    private ProductFilterAndGetFullService filterBaseProducts;
 
     @Autowired
     private ProductEditAndGetFullService editFullProduct;
