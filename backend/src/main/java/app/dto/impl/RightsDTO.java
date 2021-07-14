@@ -37,7 +37,7 @@ public enum RightsDTO {;
          */
         @Data
         @AllArgsConstructor
-        public static class ChangeRights implements Id, Name, RequestDTO {
+        public static class AddRights implements Id, Name, RequestDTO {
             private Long id;
             private String name;
         }

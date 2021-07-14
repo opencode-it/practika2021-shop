@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class RightsChangeAndGetService extends CRUDService<Rights,
-                                                           RightsDTO.Request.ChangeRights,
+        RightsDTO.Request.AddRights,
                                                            RightsDTO.Response.Get,
                                                            RightsRepository,
                                                            RightsChangeMapper,
