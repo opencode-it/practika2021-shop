@@ -2,7 +2,6 @@ package app.services.ext;
 
 import app.dto.impl.ProductDTO;
 import app.entities.Product;
-import app.mappers.impl.complete.ProductCreateAndGetBaseMapper;
 import app.mappers.impl.unidirectional.request.ProductCreateMapper;
 import app.mappers.impl.unidirectional.response.ProductGetBaseMapper;
 import app.repositories.impl.ProductRepository;
