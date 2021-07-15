@@ -29,7 +29,7 @@ public class Order extends AbstractEntity {
     @NotNull
     @PrimaryKeyJoinColumn(name = "order_has_product_ID")
     @OneToMany(cascade = CascadeType.ALL)
-    private List<OrdersProducts> ordersProducts;
+    private Set<OrdersProducts> ordersProducts;
     @NotNull
     @Column(name = "date")
     private LocalDateTime date;

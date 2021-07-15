@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Builder
@@ -20,6 +21,6 @@ public class ProductType extends AbstractEntity{
     @NotNull
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_type_ID")
-    private List<Feature> prod_feature;
+    private Set<Feature> prod_feature;
 
 }
