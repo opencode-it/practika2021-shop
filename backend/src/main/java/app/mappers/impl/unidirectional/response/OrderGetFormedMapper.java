@@ -15,7 +15,7 @@ import java.util.Set;
 
 public abstract class OrderGetFormedMapper implements ResponseMapper<Order, OrdersDTO.Response.GetFormed> {
     @Autowired
-    private ProductGetBaseMapper productBase;
+    private ProductGetOrderedBaseMapper productBase;
 
     @Mapping(target = "accountId", ignore = true)
     @Mapping(target = "productsInOrder", ignore = true)
@@ -28,7 +28,7 @@ public abstract class OrderGetFormedMapper implements ResponseMapper<Order, Orde
     public void after(Order source, @MappingTarget OrdersDTO.Response.GetFormed target) {
         target.setAccountId(source.getAccount().getId());
 
-        Set<ProductDTO.Response.GetBase> productsInFormedOrder = new HashSet<>();
+        Set<ProductDTO.Response.GetOrderedBase> productsInFormedOrder = new HashSet<>();
 
         source.getOrdersProducts().forEach(op -> {
             var mappedProduct = productBase.toDto(op.getProduct());

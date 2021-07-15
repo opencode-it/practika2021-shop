@@ -32,8 +32,8 @@ public abstract class OrderProductsConfirmMapper implements
     @Autowired
     private ProductRepository products;
 
-    @Mapping(target = "accountId", ignore = true)
-    @Mapping(target = "orderedProductIds", ignore = true)
+    @Mapping(target = "account", ignore = true)
+    @Mapping(target = "ordersProducts", ignore = true)
     @Mapping(source = "discount", target = "discount", qualifiedBy = IntegerToDiscount.class)
     @Override
     public abstract Order toEntity(OrdersDTO.Request.ConfirmOrder dto);
