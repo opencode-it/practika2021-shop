@@ -1,16 +1,15 @@
 package app.entities;
 
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "accounts", uniqueConstraints= @UniqueConstraint(columnNames={"token", "email"}))
 @Data
+@Builder
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
@@ -36,4 +35,5 @@ public class Account extends AbstractEntity {
     @NotNull
     @Column(name = "fullname")
     private String fullName;
+
 }
