@@ -31,8 +31,10 @@ public abstract class OrderProductsConfirmMapper implements
     private ProductRepository products;
 
 
-    @Mapping(target = "accountId", ignore = true)
-    @Mapping(target = "orderedProductIds", ignore = true)
+    @Mapping(target = "account", ignore = true)
+    @Mapping(target = "ordersProducts", ignore = true)
+    @Mapping(target = "discount", ignore = true)
+    @Mapping(target = "orderStatus", ignore = true)
 
 
 
