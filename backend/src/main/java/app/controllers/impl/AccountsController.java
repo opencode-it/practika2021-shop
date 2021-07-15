@@ -3,8 +3,7 @@ package app.controllers.impl;
 import app.controllers.RESTController;
 import app.dto.impl.AccountDTO;
 import app.services.ext.AccountCreateAndGetService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountsController extends RESTController<AccountDTO.Request.Create,
                                                        AccountDTO.Response.GetFullInfo,
                                                        AccountCreateAndGetService> {
+
     public AccountsController(AccountCreateAndGetService Service) {
         super(Service);
     }
