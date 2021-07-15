@@ -1,6 +1,5 @@
 package app.entities;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,7 +17,7 @@ import javax.persistence.UniqueConstraint;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Rights extends AbstractEntity {
-    @NotNull
+
     @Column
     private String name;
 }

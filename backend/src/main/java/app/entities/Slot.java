@@ -1,12 +1,12 @@
 package app.entities;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
 /**
  * @author ZubchenkoArtem
  * */
@@ -17,10 +17,10 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Slot extends AbstractEntity{
-    @NotNull
+
     @Column
     private Integer amount;
-    @NotNull
+
     @OneToOne(cascade = CascadeType.ALL)
     Product product;
 }

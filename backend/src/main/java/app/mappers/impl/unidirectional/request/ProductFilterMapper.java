@@ -19,6 +19,4 @@ public interface ProductFilterMapper extends RequestMapper<Product, FilterProduc
     @Mapping(source = "commonFeatures", target = "features")
     @Override
     Product toEntity(FilterProductDTO.Request.FilterByCommonFeatures dto);
-
-
 }

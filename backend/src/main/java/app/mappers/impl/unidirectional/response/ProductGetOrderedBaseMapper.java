@@ -4,7 +4,6 @@ import app.dto.impl.ProductDTO;
 import app.entities.Product;
 import app.mappers.CustomTypeMapper;
 import app.mappers.ResponseMapper;
-import app.mappers.qualifiers.ProductStatusToString;
 import app.mappers.qualifiers.ProductTypeToString;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
