@@ -5,6 +5,7 @@ import app.dto.impl.ProductDTO;
 import app.entities.Order;
 import app.mappers.ResponseMapper;
 import org.mapstruct.AfterMapping;
+import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
+@Mapper
 public abstract class OrderGetFormedMapper implements ResponseMapper<Order, OrdersDTO.Response.GetFormed> {
     @Autowired
     private ProductGetOrderedBaseMapper productBase;
