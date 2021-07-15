@@ -14,9 +14,9 @@ import java.util.Optional;
  * Контроллер для обработки CRUD запросов для аккаунтов
  * @author Krll
  * */
+@Tag(name = "Аккаунты", description = "Контроллер для аккаунтов")
 @RestController
 @RequestMapping("accounts")
-@Tag(name = "Аккаунты", description = "Контроллер для аккаунтов")
 public class AccountsController extends RESTController<AccountDTO.Request.Create,
                                                        AccountDTO.Response.GetFullInfo,
                                                        AccountCreateAndGetService> {
@@ -26,11 +26,38 @@ public class AccountsController extends RESTController<AccountDTO.Request.Create
     }
 
     @Operation(
-            summary = "Реализация GET-запроса",
-            description = "Позволяет получить информацию об аккаунте"
+            summary = "Информация об аккаунте",
+            description = "Получить информацию об аккаунте по id"
     )
     @Override
     public Optional<AccountDTO.Response.GetFullInfo> getBy(Long id) {
         return super.getBy(id);
+    }
+
+    @Operation(
+            summary = "Создать аккаунт",
+            description = "Создать и сохранить аккаунт в БД"
+    )
+    @Override
+    public AccountDTO.Request.Create save(AccountDTO.Request.Create inputAcc) {
+        return super.save(inputAcc);
+    }
+
+    @Operation(
+            summary = "Редактировать",
+            description = "Обновить информацию об аккаунте в БД"
+    )
+    @Override
+    public AccountDTO.Request.Create edit(Long id, AccountDTO.Request.Create edited) {
+        return super.edit(id, edited);
+    }
+
+    @Operation(
+            summary = "Удалить",
+            description = "Удалить аккаунт по id"
+    )
+    @Override
+    public void delete(Long id) {
+        super.delete(id);
     }
 }
