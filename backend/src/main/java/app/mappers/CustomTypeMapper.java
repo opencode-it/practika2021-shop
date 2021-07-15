@@ -51,4 +51,16 @@ public interface CustomTypeMapper {
         return product.toString();
     }
 
+    @IntegerToDiscount
+    static Discount integerToDiscount(Integer value) {
+        return Discount.builder()
+                .value(value)
+                .build();
+    }
+
+    @DiscountToInteger
+    static Integer discountToInteger(Discount discount) {
+        return discount.getValue();
+    }
+
 }
