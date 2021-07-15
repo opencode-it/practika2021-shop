@@ -3,13 +3,13 @@ package app.services;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
 import app.entities.AbstractEntity;
-import app.mappers.CompleteMapper;
 import app.mappers.RequestMapper;
 import app.mappers.ResponseMapper;
 import app.repositories.LongKeyRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 
@@ -32,6 +32,7 @@ import java.util.Optional;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Log
 public abstract class CRUDService<E extends AbstractEntity,
                                   I extends RequestDTO,
                                   O extends ResponseDTO,
@@ -94,7 +95,7 @@ public abstract class CRUDService<E extends AbstractEntity,
                 }
             }
         } catch (IllegalAccessException | NoSuchFieldException e) {
-            e.printStackTrace();
+            log.warning("Fields merger failed for " + entityWithChanges.toString());
         }
     }
 
