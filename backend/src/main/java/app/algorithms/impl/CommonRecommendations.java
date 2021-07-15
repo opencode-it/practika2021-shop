@@ -27,12 +27,12 @@ public class CommonRecommendations extends Recommendations {
         Map<Feature, Integer> featuresRating = new HashMap<>(){
             {
                 visits.forEach(v -> {
-                    v.getReviewedProduct().get
+                    //v.getReviewedProduct().get
                 });
             }
         };
 
-
+        return null;
     }
 
 
