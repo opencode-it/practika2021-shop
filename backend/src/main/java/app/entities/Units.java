@@ -1,7 +1,6 @@
 package app.entities;
 
 
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -17,7 +16,7 @@ import javax.persistence.UniqueConstraint;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Units extends AbstractEntity {
-    @NotNull
+
     @Column
     private String name;
 
