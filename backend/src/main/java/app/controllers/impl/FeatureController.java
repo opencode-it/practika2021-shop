@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 /**
- * Контроллер для обработки CRUD запросов для характеристик товара
  * @author Krll
- * */
-@Tag(name = "Характеристики", description = "Контроллер для уникальных характеристик")
+ */
+@Tag(name = "Характеристики", description = "Контроллер для обработки CRUD запросов для характеристик товара")
 @RestController
 @RequestMapping("feature")
 public class FeatureController  extends RESTController<FeatureDTO.Request.UpdateUnits,

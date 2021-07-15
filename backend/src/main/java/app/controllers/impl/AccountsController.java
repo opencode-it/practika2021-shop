@@ -11,10 +11,9 @@ import java.util.Optional;
 
 
 /**
- * Контроллер для обработки CRUD запросов для аккаунтов
  * @author Krll
- * */
-@Tag(name = "Аккаунты", description = "Контроллер для аккаунтов")
+ */
+@Tag(name = "Аккаунты", description = "Контроллер для обработки CRUD запросов для аккаунтов")
 @RestController
 @RequestMapping("accounts")
 public class AccountsController extends RESTController<AccountDTO.Request.Create,
