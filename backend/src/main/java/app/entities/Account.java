@@ -44,4 +44,5 @@ public class Account extends AbstractEntity {
     @NotNull
     @Column(name = "googleUsername")
     private String googleUsername;
+
 }
