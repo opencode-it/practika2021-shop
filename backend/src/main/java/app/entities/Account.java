@@ -36,4 +36,12 @@ public class Account extends AbstractEntity {
     @NotNull
     @Column(name = "fullname")
     private String fullName;
+
+    @NotNull
+    @Column(name = "googleName")
+    private String googleName;
+
+    @NotNull
+    @Column(name = "googleUsername")
+    private String googleUsername;
 }
