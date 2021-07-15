@@ -113,10 +113,6 @@ public enum ProductDTO implements DTO {;
         Integer getAmount();
     }
 
-    private interface AccountId {
-        Long getAccountId();
-    }
-
     public enum Request {;
 
         /**
@@ -124,8 +120,7 @@ public enum ProductDTO implements DTO {;
         */
         @Data
         @AllArgsConstructor
-        public static class Get implements Id, AccountId, RequestDTO {
-            private Long accountId;
+        public static class Get implements Id, RequestDTO {
             private Long id;
         }
 
