@@ -62,7 +62,8 @@ public enum AccountDTO {;
          */
         @Data
         @AllArgsConstructor
-        public static class Create implements Rights, Email, FullName, Address, Token, RequestDTO {
+        public static class Create implements Id, Rights, Email, FullName, Address, Token, RequestDTO {
+            private Long id;
             private RightsDTO.Response.Get rights;
             private String email;
             private String fullName;
