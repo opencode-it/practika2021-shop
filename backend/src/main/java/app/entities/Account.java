@@ -36,9 +36,4 @@ public class Account extends AbstractEntity {
     @Column(name = "fullname")
     private String fullName;
 
-    public static Account guest() {
-        return Account.builder()
-                .fullName("Guest")
-                .build();
-    }
 }
