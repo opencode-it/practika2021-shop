@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Builder
@@ -27,7 +28,7 @@ public class Product extends AbstractEntity{
     @NotNull
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_ID")
-    private List<Image> images;
+    private Set<Image> images;
     @NotNull
     @Column
     private ProductStatus prodStatus;
@@ -38,5 +39,5 @@ public class Product extends AbstractEntity{
     @NotNull
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "feature_ID")
-    private List<ProductFeature> features;
+    private Set<ProductFeature> features;
 }
