@@ -3,7 +3,11 @@ package app.controllers.impl;
 import app.controllers.RESTController;
 import app.dto.impl.AccountDTO;
 import app.services.ext.AccountCreateAndGetService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 
 /**
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * */
 @RestController
 @RequestMapping("accounts")
+@Tag(name = "Аккаунты", description = "Контроллер для аккаунтов")
 public class AccountsController extends RESTController<AccountDTO.Request.Create,
                                                        AccountDTO.Response.GetFullInfo,
                                                        AccountCreateAndGetService> {
@@ -20,4 +25,12 @@ public class AccountsController extends RESTController<AccountDTO.Request.Create
         super(Service);
     }
 
+    @Operation(
+            summary = "Реализация GET-запроса",
+            description = "Позволяет получить информацию об аккаунте"
+    )
+    @Override
+    public Optional<AccountDTO.Response.GetFullInfo> getBy(Long id) {
+        return super.getBy(id);
+    }
 }
