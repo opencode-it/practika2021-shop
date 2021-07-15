@@ -108,6 +108,10 @@ public enum ProductDTO implements DTO {;
         String getStatus();
     }
 
+    private interface Amount {
+        Integer getAmount();
+    }
+
     public enum Request {;
 
         /**
@@ -188,6 +192,7 @@ public enum ProductDTO implements DTO {;
          * (для вида со страницы продукта или конструктора)
          */
         @Data
+        @AllArgsConstructor
         public static class GetFull implements Id, Name, Type,
                                     Description, Status, BasePrice,
                                     AdditionalPrice, FullPrice, Features,
@@ -203,6 +208,16 @@ public enum ProductDTO implements DTO {;
             BigDecimal fullPrice;
             Set<FeatureDTO.Response.GetUnitless> features;
             Set<FeatureDTO.Response.GetWithUnits> unitsFeatures;
+        }
+
+        @Data
+        public static class GetOrderedBase implements Id, Name, Type, Image, BasePrice, Amount, ResponseDTO {
+            Long id;
+            String name;
+            String type;
+            ImageDTO.Response.GetImage image;
+            Integer amount;
+            BigDecimal basePrice;
         }
     }
 }

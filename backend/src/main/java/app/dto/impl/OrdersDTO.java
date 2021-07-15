@@ -1,6 +1,6 @@
 /*
-* Uliana
-*/
+ * Uliana
+ */
 package app.dto.impl;
 
 import app.dto.RequestDTO;
@@ -46,7 +46,7 @@ public enum OrdersDTO {;
      * Короткая информация о всех продуктах в заказе
      */
     private interface ProductsInfo {
-        Set<ProductDTO.Response.GetBase> getProductsInOrder();
+        Set<ProductDTO.Response.GetOrderedBase> getProductsInOrder();
     }
 
     /**
@@ -81,7 +81,7 @@ public enum OrdersDTO {;
          */
         @Data
         @AllArgsConstructor
-        public static class Get implements Id, RequestDTO  {
+        public static class Get implements Id, RequestDTO {
             private Long id;
         }
 
@@ -113,9 +113,10 @@ public enum OrdersDTO {;
     public enum Response {;
 
         /**
-        * Запрос на отображение корзины перед окончательным оформлением заказа в системе
-        */
-        @Value
+         * Запрос на отображение корзины перед окончательным оформлением заказа в системе
+         */
+        @Data
+        @AllArgsConstructor
         public static class GetFormed implements Id, AccountId, ProductsInfo, GrandTotal, ResponseDTO {
             Long id;
             Long accountId;
@@ -126,11 +127,12 @@ public enum OrdersDTO {;
         /**
          * Запрос на отображение полной информации о совершенном заказе
          */
-        @Value
+        @Data
+        @AllArgsConstructor
         public static class GetFull implements Id, AccountId, ProductsInfo, GrandTotal, Date, Status, ResponseDTO {
             Long id;
             Long accountId;
-            Set<ProductDTO.Response.GetBase> productsInOrder;
+            Set<ProductDTO.Response.GetOrderedBase> productsInOrder;
             BigDecimal grandTotal;
             LocalDateTime date;
             String status;
