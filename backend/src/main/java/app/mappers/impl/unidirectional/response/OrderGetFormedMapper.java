@@ -42,7 +42,7 @@ public abstract class OrderGetFormedMapper implements ResponseMapper<Order, Orde
     }
 
     private BigDecimal countGrandTotal(Order order) {
-        BigDecimal result = BigDecimal.valueOf(0);
+        BigDecimal result = BigDecimal.valueOf(0);  //BigDecimal.ZERO (???)
         order.getOrdersProducts().forEach(op -> {
             result.add(op.getProduct().getPrice()
                     .multiply(

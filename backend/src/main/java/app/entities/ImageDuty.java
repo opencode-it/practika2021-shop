@@ -1,7 +1,6 @@
 package app.entities;
 
 
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -17,7 +16,6 @@ import javax.persistence.UniqueConstraint;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ImageDuty extends AbstractEntity{
-    @NotNull
     @Column
     private String name;
 }
