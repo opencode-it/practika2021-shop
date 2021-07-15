@@ -120,7 +120,7 @@ public enum OrdersDTO {;
         public static class GetFormed implements Id, AccountId, ProductsInfo, GrandTotal, ResponseDTO {
             Long id;
             Long accountId;
-            Set<ProductDTO.Response.GetBase> productsInOrder;
+            Set<ProductDTO.Response.GetOrderedBase> productsInOrder;
             BigDecimal grandTotal;
         }
 
