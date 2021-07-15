@@ -3,6 +3,7 @@
  */
 package app.controllers.impl;
 
+import app.dto.impl.FilterProductDTO;
 import app.dto.impl.ProductDTO;
 import app.services.ext.ProductCreateAndGetBaseService;
 import app.services.ext.ProductEditAndGetFullService;
@@ -45,7 +46,7 @@ public class ProductsController {
 
     @GetMapping("/filtered")
     public Optional<List<ProductDTO.Response.GetFull>> findAllFiltered(
-            @RequestBody ProductDTO.Request.FilterByFeatures request) {
+            @RequestBody FilterProductDTO.Request.FilterByCommonFeatures request) {
         return filterBaseProducts.findByFilter(request);
     }
 

@@ -1,6 +1,7 @@
 package app.services.ext;
 
 import app.dto.impl.FeatureDTO;
+import app.dto.impl.FilterProductDTO;
 import app.dto.impl.ProductDTO;
 import app.entities.Product;
 import app.entities.ProductFeature;
@@ -25,7 +26,7 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 public class ProductFilterAndGetFullService extends CRUDService<Product,
-                                                                ProductDTO.Request.FilterByFeatures,
+                                                                FilterProductDTO.Request.FilterByCommonFeatures,
                                                                 ProductDTO.Response.GetFull,
                                                                 ProductRepository,
                                                                 ProductFilterMapper,
@@ -34,8 +35,8 @@ public class ProductFilterAndGetFullService extends CRUDService<Product,
     @Autowired
     ProductFeatureRepository productFeatureRepository;
 
-    public Optional<List<ProductDTO.Response.GetFull>> findByFilter(ProductDTO.Request.FilterByFeatures featuresDTO) {
-        List<Long> idList = List.copyOf(featuresDTO.getRequestedFeatures())
+    public Optional<List<ProductDTO.Response.GetFull>> findByFilter(FilterProductDTO.Request.FilterByCommonFeatures featuresDTO) {
+        List<Long> idList = List.copyOf(featuresDTO.getCommonFeatures())
                 .stream()
                 .map(FeatureDTO.Request.Get::getId)
                 .collect(Collectors.toList());
