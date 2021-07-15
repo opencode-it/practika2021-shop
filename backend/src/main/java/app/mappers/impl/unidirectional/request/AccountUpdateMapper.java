@@ -7,10 +7,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper
-public interface AccountUpdateMapper extends RequestMapper<Account, AccountDTO.Request.UpdateInfo> {
+public interface AccountUpdateMapper extends RequestMapper<Account, AccountDTO.Request.Get> {
 
     @Mapping(target = "token", ignore = true)
     @Mapping(target = "rights", ignore = true)
     @Override
-    Account toEntity(AccountDTO.Request.UpdateInfo dto);
+    Account toEntity(AccountDTO.Request.Get dto);
 }

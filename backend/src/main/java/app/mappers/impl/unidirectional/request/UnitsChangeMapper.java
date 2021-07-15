@@ -7,9 +7,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper
-public interface UnitsChangeMapper extends RequestMapper<Units, UnitsDTO.Request.ChangeUnits> {
+public interface UnitsChangeMapper extends RequestMapper<Units, UnitsDTO.Request.AddUnits> {
 
     @Mapping(target = "name", ignore = true)
     @Override
-    Units toEntity(UnitsDTO.Request.ChangeUnits dto);
+    Units toEntity(UnitsDTO.Request.AddUnits dto);
 }

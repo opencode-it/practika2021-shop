@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Krll
  * */
 @RestController
-@RequestMapping("feature")
-public class UnitsController extends RESTController<UnitsDTO.Request.ChangeUnits,
+@RequestMapping("units")
+public class UnitsController extends RESTController<UnitsDTO.Request.AddUnits,
                                                     UnitsDTO.Response.Get,
                                                     UnitsService> {
     public UnitsController(UnitsService Service) {
