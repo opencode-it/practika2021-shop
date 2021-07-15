@@ -20,11 +20,11 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class ProductGetAndGetBaseService extends CRUDService<Product,
-        ProductDTO.Request.Get,
-        ProductDTO.Response.GetBase,
-        ProductRepository,
-        ProductGetMapper,
-        ProductGetBaseMapper> {
+                                                             ProductDTO.Request.Get,
+                                                             ProductDTO.Response.GetBase,
+                                                             ProductRepository,
+                                                             ProductGetMapper,
+                                                             ProductGetBaseMapper> {
 
     @Autowired
     VisitRepository visitRepository;
@@ -34,9 +34,9 @@ public class ProductGetAndGetBaseService extends CRUDService<Product,
 
     @Override
     public Optional<ProductDTO.Response.GetBase> find(ProductDTO.Request.Get dto) {
-        Account account = accountRepository.findById(dto.getId())
-                .orElseGet(Account::guest);
-        Product product = repository.findById(dto.getAccountId())
+        Account account = accountRepository.findById(dto.getAccountId())
+                .orElseThrow();
+        Product product = repository.findById(dto.getId())
                 .orElseThrow();
         Visit visit = Visit.builder()
                 .account(account)
