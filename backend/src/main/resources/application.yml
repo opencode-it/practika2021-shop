@@ -16,6 +16,7 @@ spring:
     hibernate:
       ddl-auto: 'validate'
     show-sql: true
+    open-in-view: true
 
   minio:
     url: https://practika2021.opencode.su:9000/
