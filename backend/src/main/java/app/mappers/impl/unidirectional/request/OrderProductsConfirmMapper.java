@@ -6,7 +6,9 @@ import app.entities.Account;
 import app.entities.Order;
 import app.entities.OrdersProducts;
 import app.entities.Product;
+import app.mappers.CustomTypeMapper;
 import app.mappers.RequestMapper;
+import app.mappers.qualifiers.IntegerToDiscount;
 import app.repositories.impl.AccountRepository;
 import app.repositories.impl.ProductRepository;
 import jdk.dynalink.linker.LinkerServices;
@@ -22,7 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Mapper
+@Mapper(uses = CustomTypeMapper.class)
 public abstract class OrderProductsConfirmMapper implements
         RequestMapper<Order, OrdersDTO.Request.ConfirmOrder> {
     @Autowired
@@ -30,13 +32,11 @@ public abstract class OrderProductsConfirmMapper implements
     @Autowired
     private ProductRepository products;
 
-
     @Mapping(target = "account", ignore = true)
     @Mapping(target = "ordersProducts", ignore = true)
-    @Mapping(target = "discount", ignore = true)
-    @Mapping(target = "orderStatus", ignore = true)
-
-
+    @Mapping(source = "discount", target = "discount", qualifiedBy = IntegerToDiscount.class)
+    @Override
+    public abstract Order toEntity(OrdersDTO.Request.ConfirmOrder dto);
 
     @AfterMapping
     public void boundProducts(OrdersDTO.Request.ConfirmOrder source, @MappingTarget  Order target) {

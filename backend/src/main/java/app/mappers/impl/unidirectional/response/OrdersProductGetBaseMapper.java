@@ -4,9 +4,11 @@ import app.dto.impl.ProductDTO;
 import app.entities.OrdersProducts;
 import app.mappers.ResponseMapper;
 import org.mapstruct.AfterMapping;
+import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
+@Mapper
 public abstract class OrdersProductGetBaseMapper implements ResponseMapper<OrdersProducts, ProductDTO.Response.GetOrderedBase> {
     @Mapping(source = "count", target = "amount")
 

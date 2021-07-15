@@ -45,6 +45,7 @@ public enum ProductDTO implements DTO {;
         Set<FeatureDTO.Request.Get> getRequestedFeatures();
     }
 
+
     /**
      * Мерочные характеристики продукта
      */
@@ -121,16 +122,6 @@ public enum ProductDTO implements DTO {;
         @AllArgsConstructor
         public static class Get implements Id, RequestDTO {
             private Long id;
-        }
-
-        /**
-         * Запрос на список продуктов, отфильтрованных
-         * по конкретным характеристикам
-         */
-        @Data
-        @AllArgsConstructor
-        public static class FilterByFeatures implements FeaturesRequests, RequestDTO  {
-            private Set<FeatureDTO.Request.Get> requestedFeatures;
         }
 
         @Data
