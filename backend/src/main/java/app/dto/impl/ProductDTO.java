@@ -11,7 +11,6 @@ import lombok.Data;
 import lombok.Value;
 
 import java.math.BigDecimal;
-
 import java.util.Set;
 
 /**
@@ -22,6 +21,10 @@ public enum ProductDTO implements DTO {;
 
     private interface Id {
         Long getId();
+    }
+
+    private interface AccountId {
+        Long getAccountId();
     }
 
     //TODO не помнбю, было ли у класса продукта имя, но на схеме вроде точно не было
@@ -122,6 +125,12 @@ public enum ProductDTO implements DTO {;
         @AllArgsConstructor
         public static class Get implements Id, RequestDTO {
             private Long id;
+        }
+
+        @Data
+        @AllArgsConstructor
+        public static class GetRecommended implements AccountId, RequestDTO {
+            private Long accountId;
         }
 
         @Data
