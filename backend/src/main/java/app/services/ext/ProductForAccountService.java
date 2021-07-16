@@ -8,6 +8,7 @@ import app.entities.Product;
 import app.entities.Visit;
 import app.mappers.impl.unidirectional.request.ProductForAccountMapper;
 import app.mappers.impl.unidirectional.response.ProductGetBaseMapper;
+import app.mappers.impl.unidirectional.response.ProductGetFullMapper;
 import app.repositories.impl.AccountRepository;
 import app.repositories.impl.ProductRepository;
 import app.repositories.impl.VisitRepository;
@@ -36,16 +37,19 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ProductForAccountService extends CRUDService<Product,
                                                           ProductDTO.Request.GetForAccount,
-                                                          ProductDTO.Response.GetBase,
+                                                          ProductDTO.Response.GetFull,
                                                           ProductRepository,
                                                           ProductForAccountMapper,
-                                                          ProductGetBaseMapper> {
+                                                          ProductGetFullMapper> {
 
     @Autowired
     VisitRepository visitRepository;
 
     @Autowired
     AccountRepository accountRepository;
+
+    @Autowired
+    ProductGetBaseMapper baseMapper;
 
     @Autowired(required = false)
     Recommendations recommendations;
@@ -60,11 +64,10 @@ public class ProductForAccountService extends CRUDService<Product,
 
     public Optional<List<ProductDTO.Response.GetBase>> recommendFor(NeedsRecommendationsDTO dto) {
         List<Product> products = recommendations.getFor(dto.getAccountId());
-        return Optional.of(responseMapper.toDtoList(products));
+        return Optional.of(baseMapper.toDtoList(products));
     }
 
-    @Override
-    public Optional<ProductDTO.Response.GetBase> find(ProductDTO.Request.GetForAccount dto) {
+    public Optional<ProductDTO.Response.GetFull> find(ProductDTO.Request.GetForAccount dto) {
         Account account = accountRepository.findById(dto.getAccountId())
                 .orElseThrow();
         Product product = repository.findById(dto.getProductId())
