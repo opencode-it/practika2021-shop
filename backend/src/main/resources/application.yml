@@ -29,7 +29,7 @@ spring:
  #  oauth2:
  #    client:
  #      registration:
- #        google:
- #          client-id: google-client-id
- #          client-secret: google-client-secret
+ #          client-id: --
+ #          client-secret: --
+
 
