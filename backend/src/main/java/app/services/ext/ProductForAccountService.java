@@ -1,6 +1,7 @@
 package app.services.ext;
 
 import app.algorithms.recommendations.Recommendations;
+import app.dto.NeedsRecommendationsDTO;
 import app.dto.impl.ProductDTO;
 import app.entities.Account;
 import app.entities.Product;
@@ -11,6 +12,7 @@ import app.repositories.impl.AccountRepository;
 import app.repositories.impl.ProductRepository;
 import app.repositories.impl.VisitRepository;
 import app.services.CRUDService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,7 @@ import java.util.Optional;
  * @author Александров Илья
  */
 @Service
+@AllArgsConstructor
 public class ProductForAccountService extends CRUDService<Product,
                                                           ProductDTO.Request.GetForAccount,
                                                           ProductDTO.Response.GetBase,
@@ -55,7 +58,7 @@ public class ProductForAccountService extends CRUDService<Product,
         return new ProductForAccountService(recommendations);
     }
 
-    public Optional<List<ProductDTO.Response.GetBase>> recommendFor(ProductDTO.Request.GetForAccount dto) {
+    public Optional<List<ProductDTO.Response.GetBase>> recommendFor(NeedsRecommendationsDTO dto) {
         List<Product> products = recommendations.getFor(dto.getAccountId());
         return Optional.of(responseMapper.toDtoList(products));
     }
@@ -74,4 +77,5 @@ public class ProductForAccountService extends CRUDService<Product,
         visitRepository.save(visit);
         return super.find(dto);
     }
+
 }
