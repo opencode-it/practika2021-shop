@@ -62,7 +62,7 @@ public class ProductForAccountService extends CRUDService<Product,
     public Optional<ProductDTO.Response.GetBase> find(ProductDTO.Request.GetForAccount dto) {
         Account account = accountRepository.findById(dto.getAccountId())
                 .orElseThrow();
-        Product product = repository.findById(dto.getAccountId())
+        Product product = repository.findById(dto.getProductId())
                 .orElseThrow();
         Visit visit = Visit.builder()
                 .account(account)
