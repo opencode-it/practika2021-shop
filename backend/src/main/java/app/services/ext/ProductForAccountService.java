@@ -14,6 +14,7 @@ import app.repositories.impl.ProductRepository;
 import app.repositories.impl.VisitRepository;
 import app.services.CRUDService;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,7 @@ import java.util.Optional;
  */
 @Service
 @AllArgsConstructor
+@NoArgsConstructor
 public class ProductForAccountService extends CRUDService<Product,
                                                           ProductDTO.Request.GetForAccount,
                                                           ProductDTO.Response.GetFull,
