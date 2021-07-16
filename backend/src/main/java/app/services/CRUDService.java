@@ -3,6 +3,7 @@ package app.services;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
 import app.entities.AbstractEntity;
+import app.exceptions.FieldsMergerFailedException;
 import app.mappers.RequestMapper;
 import app.mappers.ResponseMapper;
 import app.repositories.LongKeyRepository;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,16 +88,24 @@ public abstract class CRUDService<E extends AbstractEntity,
      */
     protected void mergeFieldsOnUpdate(E oldEntity, E entityWithChanges) {
         try {
+            String fieldName;
+            String setterName;
             for(Field f : entityWithChanges.getClass().getDeclaredFields()) {
                 f.setAccessible(true);
                 if (Objects.isNull(f.get(entityWithChanges))) {
-                    f.set(entityWithChanges, oldEntity.getClass()
-                                                        .getField(f.getName())
-                                                        .get(oldEntity));
+                    fieldName = f.getName();
+                    setterName = "set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+                    entityWithChanges.getClass()
+                            .getDeclaredMethod(setterName, f.getType())
+                            .invoke(entityWithChanges, oldEntity.getClass()
+                                    .getField(fieldName)
+                                    .get(oldEntity));
                 }
             }
-        } catch (IllegalAccessException | NoSuchFieldException e) {
-            log.warning("Fields merger failed for " + entityWithChanges.toString());
+        } catch (IllegalAccessException | NoSuchFieldException |
+                NoSuchMethodException | InvocationTargetException e) {
+            throw new FieldsMergerFailedException("Fields merger failed for " +
+                    entityWithChanges.toString());
         }
     }
 
