@@ -27,6 +27,10 @@ public enum ProductDTO implements DTO {;
         Long getAccountId();
     }
 
+    private interface ProductId {
+        Long getProductId();
+    }
+
     //TODO не помнбю, было ли у класса продукта имя, но на схеме вроде точно не было
     private interface Name {
         String getName();
@@ -118,29 +122,48 @@ public enum ProductDTO implements DTO {;
 
     public enum Request {;
 
-        /**
-        * Запрос на продукт по его ID
-        */
+        //TODO в помойку
         @Data
         @AllArgsConstructor
+        @Deprecated
         public static class Get implements Id, RequestDTO {
             private Long id;
         }
 
+
+
+        /**
+         * Передавать id аккаунта на сервер, чтобы при ответе
+         * тот мог выдать рекомендованные товары
+         */
         @Data
         @AllArgsConstructor
-        public static class GetTypedAll implements AccountId, Type, RequestDTO {
+        public static class GetAll implements AccountId, RequestDTO {
+            private Long accountId;
+        }
+
+        /**
+         * Передает id аккаунта на сервер и запрашиваемую
+         * страницу категории товаров, чтобы выдать
+         * рекомендации внутри категории
+         */
+        @Data
+        @AllArgsConstructor
+        public static class GetTypeAll implements Type, AccountId, RequestDTO {
             private String type;
             private Long accountId;
         }
 
+        /**
+         * Запоминает конкретно просмотренные пользователем продукт,
+         * чтобы использовать его в дальнейших рекомендациях
+         */
         @Data
         @AllArgsConstructor
-        public static class GetForAccount implements AccountId, RequestDTO {
+        public static class GetForAccount implements AccountId, ProductId, RequestDTO {
             private Long accountId;
+            private Long productId;
         }
-
-
 
         @Data
         @AllArgsConstructor
