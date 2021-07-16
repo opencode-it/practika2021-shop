@@ -90,22 +90,28 @@ public abstract class CRUDService<E extends AbstractEntity,
         try {
             String fieldName;
             String setterName;
+            String getterName;
             for(Field f : entityWithChanges.getClass().getDeclaredFields()) {
                 f.setAccessible(true);
                 if (Objects.isNull(f.get(entityWithChanges))) {
                     fieldName = f.getName();
-                    setterName = "set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
-                    entityWithChanges.getClass()
+                    setterName = "set"
+                            .concat(fieldName.substring(0, 1).toUpperCase())
+                            .concat(fieldName.substring(1));
+                    getterName = setterName.replaceFirst("s", "g");
+                    entityWithChanges
+                            .getClass()
                             .getDeclaredMethod(setterName, f.getType())
-                            .invoke(entityWithChanges, oldEntity.getClass()
-                                    .getField(fieldName)
-                                    .get(oldEntity));
+                            .invoke(entityWithChanges, oldEntity
+                                                        .getClass()
+                                                        .getDeclaredMethod(getterName)
+                                                        .invoke(oldEntity)
+                            );
                 }
             }
-        } catch (IllegalAccessException | NoSuchFieldException |
-                NoSuchMethodException | InvocationTargetException e) {
-            throw new FieldsMergerFailedException("Fields merger failed for " +
-                    entityWithChanges.toString());
+        } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            throw new FieldsMergerFailedException("Fields merger failed for "
+                    .concat(entityWithChanges.toString()));
         }
     }
 
