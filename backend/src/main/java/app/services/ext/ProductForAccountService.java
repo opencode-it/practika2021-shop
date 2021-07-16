@@ -20,19 +20,21 @@ import java.util.Optional;
 /**
  * Сервис, который сохраняет запись о визите при просмотре каталога
  * для последующего формирования рекомендаций
- * @param <T> тип рекомендаций
+ * <p/>
+ * Создать сервис
+ * <pre>
+ *     ProductForAccountService service =
+ *          ProductForAccountService.with(typeRecommendations)
+ * </pre>
  *
  * @author Александров Илья
  */
-public abstract class ProductForAccountService<T extends Recommendations> extends CRUDService<Product,
-                                                                                              ProductDTO.Request.GetForAccount,
-                                                                                              ProductDTO.Response.GetBase,
-                                                                                              ProductRepository,
-                                                                                              ProductForAccountMapper,
-                                                                                              ProductGetBaseMapper> {
-
-    @Autowired
-    T recommendations;
+public class ProductForAccountService extends CRUDService<Product,
+                                                          ProductDTO.Request.GetForAccount,
+                                                          ProductDTO.Response.GetBase,
+                                                          ProductRepository,
+                                                          ProductForAccountMapper,
+                                                          ProductGetBaseMapper> {
 
     @Autowired
     VisitRepository visitRepository;
@@ -40,11 +42,27 @@ public abstract class ProductForAccountService<T extends Recommendations> extend
     @Autowired
     AccountRepository accountRepository;
 
+    @Autowired(required = false)
+    Recommendations recommendations;
+
+    private ProductForAccountService(Recommendations recommendations) {
+        this.recommendations = recommendations;
+    }
+
+    public static ProductForAccountService with(Recommendations recommendations) {
+        return new ProductForAccountService(recommendations);
+    }
+
+    public Optional<List<ProductDTO.Response.GetBase>> recommendFor(ProductDTO.Request.GetForAccount dto) {
+        List<Product> products = recommendations.getFor(dto.getAccountId());
+        return Optional.of(responseMapper.toDtoList(products));
+    }
+
     @Override
     public Optional<ProductDTO.Response.GetBase> find(ProductDTO.Request.GetForAccount dto) {
         Account account = accountRepository.findById(dto.getAccountId())
                 .orElseThrow();
-        Product product = repository.findById(dto.getAccountId())
+        Product product = repository.findById(dto.getProductId())
                 .orElseThrow();
         Visit visit = Visit.builder()
                 .account(account)
@@ -53,10 +71,5 @@ public abstract class ProductForAccountService<T extends Recommendations> extend
                 .build();
         visitRepository.save(visit);
         return super.find(dto);
-    }
-
-    public Optional<List<ProductDTO.Response.GetBase>> recommendFor(ProductDTO.Request.GetForAccount dto) {
-        List<Product> products = recommendations.getFor(dto.getAccountId());
-        return Optional.of(responseMapper.toDtoList(products));
     }
 }
