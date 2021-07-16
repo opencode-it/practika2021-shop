@@ -39,6 +39,8 @@ public class OrdersController {
         return deleteAndGetFormedService.findAll();
     }
 
+
+
     @Operation(
             summary = "Просмотреть",
             description = "Просмотр одного конкретного заказа в истории"
@@ -47,6 +49,8 @@ public class OrdersController {
     public Optional<OrdersDTO.Response.GetFull> getBy(@PathVariable("id") Long id) {
         return confirmAndGetFullService.find(id);
     }
+
+
 
     @Operation(
             summary = "Оформить",
@@ -57,6 +61,8 @@ public class OrdersController {
             @RequestBody OrdersDTO.Request.ConfirmOrder request) {
         return confirmAndGetFullService.create(request);
     }
+
+
 
     @Operation(
             summary = "Отменить",

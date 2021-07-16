@@ -55,6 +55,8 @@ public class ProductsController {
         return recommendations.recommendFor(request);
     }
 
+
+
     @Operation(
             summary = "Отобразить страницу с категорией товаров в каталоге",
             description = "Запрос на отображение товаров определенного типа в каталоге"
@@ -67,6 +69,8 @@ public class ProductsController {
 
     }
 
+
+
     @Operation(
             summary = "Применить фильтр",
             description = "Запрос на отображение товаров по фильтру"
@@ -76,6 +80,8 @@ public class ProductsController {
             @RequestBody FilterProductDTO.Request.FilterByCommonFeatures request) {
         return filterBaseProducts.findByFilter(request);
     }
+
+
 
     @Operation(
             summary = "Отобразить товар",
@@ -88,6 +94,8 @@ public class ProductsController {
         return recommendations.find(id);
     }
 
+
+
     @Operation(
             summary = "Добавить товар",
             description = "Запрос на добавление нового товара"
@@ -96,6 +104,8 @@ public class ProductsController {
     public void save(@RequestBody ProductDTO.Request.CreateProduct newProduct) {
         createBaseProduct.create(newProduct);
     }
+
+
 
     @Operation(
             summary = "Изменить",
@@ -107,6 +117,8 @@ public class ProductsController {
         editFullProduct.create(request);
         return editFullProduct.find(id);
     }
+
+
 
     @Operation(
             summary = "Удалить",

@@ -20,8 +20,8 @@ import java.util.stream.IntStream;
  * Рекомендует внутри конкретной категории продуктов
  */
 public final class TypeRecommendations extends Recommendations {
-    private final int TypeFeatureFilterSize = 4;
-    private final int TypeRecommendationPageSize = 5;
+    private final int typeFeatureFilterSize = 4;
+    private final int typeRecommendationPageSize = 5;
 
     /**
      * Фильтр типовой характеристики, который можно поменять
@@ -47,7 +47,7 @@ public final class TypeRecommendations extends Recommendations {
         List<Product> sortedByTypeFeatures = sortByTypeFeatures(availableProducts, accountsVisits);
         List<Product> sortedByCommonFeatures = sortByCommonFeature(sortedByTypeFeatures, accountsVisits);
 
-        return sortedByCommonFeatures.subList(0, TypeRecommendationPageSize);
+        return sortedByCommonFeatures.subList(0, typeRecommendationPageSize);
     }
 
     /**
@@ -80,7 +80,7 @@ public final class TypeRecommendations extends Recommendations {
 
     private List<Product> sortByTypeFeatures(List<Product> products, List<Visit> visits) {
         Feature[] ratedTypeFeature = (Feature[]) relevantTypeFeatures(visits).keySet().toArray();
-        IntStream.range(0, TypeFeatureFilterSize).mapToObj(i ->
+        IntStream.range(0, typeFeatureFilterSize).mapToObj(i ->
                 new HasTypeFeatureComparator(ratedTypeFeature[i]))
                 .forEach(products::sort);
 

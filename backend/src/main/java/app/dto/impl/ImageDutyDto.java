@@ -2,6 +2,8 @@ package app.dto.impl;
 
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import app.dto.interfaces.Id;
+import app.dto.interfaces.Name;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
@@ -11,14 +13,6 @@ import lombok.Value;
  */
 
 public enum ImageDutyDto {;
-
-    private interface Name {
-        String getName();
-    }
-
-    private interface Id {
-        Long getId();
-    }
 
     public enum Request {;
 
