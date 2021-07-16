@@ -12,6 +12,7 @@ import app.repositories.impl.ProductRepository;
 import app.repositories.impl.VisitRepository;
 import app.services.CRUDService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -29,6 +30,7 @@ import java.util.Optional;
  *
  * @author Александров Илья
  */
+@Service
 public class ProductForAccountService extends CRUDService<Product,
                                                           ProductDTO.Request.GetForAccount,
                                                           ProductDTO.Response.GetBase,

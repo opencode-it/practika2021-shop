@@ -125,12 +125,10 @@ public enum ProductDTO implements DTO {;
         //TODO в помойку
         @Data
         @AllArgsConstructor
-        @Deprecated
+        @Deprecated(forRemoval = true)
         public static class Get implements Id, RequestDTO {
             private Long id;
         }
-
-
 
         /**
          * Передавать id аккаунта на сервер, чтобы при ответе

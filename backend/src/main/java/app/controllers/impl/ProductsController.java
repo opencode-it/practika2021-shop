@@ -3,11 +3,14 @@
  */
 package app.controllers.impl;
 
+import app.algorithms.recommendations.impl.CommonRecommendations;
+import app.algorithms.recommendations.impl.TypeRecommendations;
 import app.dto.impl.FilterProductDTO;
 import app.dto.impl.ProductDTO;
 import app.services.ext.ProductCreateAndGetBaseService;
 import app.services.ext.ProductEditAndGetFullService;
 import app.services.ext.ProductFilterAndGetFullService;
+import app.services.ext.ProductForAccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,17 +39,32 @@ public class ProductsController {
     @Autowired
     private ProductCreateAndGetBaseService createBaseProduct;
 
+
+    private final ProductForAccountService recommendations
+            = ProductForAccountService.with(new CommonRecommendations());
+    private final ProductForAccountService typedRecommendations
+            = ProductForAccountService.with(new TypeRecommendations());
+
+
     @Operation(
             summary = "Отобразить каталог",
             description = "Запрос на отображение товаров в каталоге"
     )
     @GetMapping
-    public List<ProductDTO.Response.GetFull> findAll() {
-        return filterBaseProducts.findAll();
+    public List<ProductDTO.Response.GetFull> findAll(@RequestBody ProductDTO.Request.GetAll request) {
+        recommendations.
+
     }
 
+    @Operation(
+            summary = "Отобразить страницу с категорией товаров в каталоге",
+            description = "Запрос на отображение товаров определенного типа в каталоге"
+    )
     @GetMapping("/{type}")
-    public List<ProductDTO.Response.GetBase> findAllInType(@PathVariable String type, @RequestBody ) {
+    public List<ProductDTO.Response.GetBase> findAllInType(@PathVariable String type,
+                                                           @RequestBody ProductDTO.Request.GetTypeAll request) {
+        request.setType(type);
+
 
     }
 

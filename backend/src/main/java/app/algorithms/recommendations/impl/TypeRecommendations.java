@@ -7,6 +7,8 @@ import app.entities.Feature;
 import app.entities.Product;
 import app.entities.ProductType;
 import app.entities.Visit;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,11 +23,13 @@ public final class TypeRecommendations extends Recommendations {
     private final int TypeFeatureFilterSize = 4;
     private final int TypeRecommendationPageSize = 5;
 
-    private final ProductType typeFilter;
-
-    public TypeRecommendations(ProductType type) {
-        this.typeFilter = type;
-    }
+    /**
+     * Фильтр типовой характеристики, который можно поменять
+     * для объекта класса TypeRecommendations
+     */
+    @Getter
+    @Setter
+    private ProductType typeFilter;
 
     @Override
     public List<Product> getFor(Long accountID) {
