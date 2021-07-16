@@ -4,6 +4,7 @@
 package app.dto.impl;
 
 import app.dto.DTO;
+import app.dto.NeedsRecommendationsDTO;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
 import lombok.AllArgsConstructor;
@@ -21,10 +22,6 @@ public enum ProductDTO implements DTO {;
 
     private interface Id {
         Long getId();
-    }
-
-    private interface AccountId {
-        Long getAccountId();
     }
 
     private interface ProductId {
@@ -138,7 +135,7 @@ public enum ProductDTO implements DTO {;
          */
         @Data
         @AllArgsConstructor
-        public static class GetAll implements AccountId, RequestDTO {
+        public static class GetAll implements NeedsRecommendationsDTO {
             private Long accountId;
         }
 
@@ -149,7 +146,7 @@ public enum ProductDTO implements DTO {;
          */
         @Data
         @AllArgsConstructor
-        public static class GetTypeAll implements Type, AccountId, RequestDTO {
+        public static class GetTypeAll implements Type, NeedsRecommendationsDTO {
             private String type;
             private Long accountId;
         }
@@ -160,7 +157,7 @@ public enum ProductDTO implements DTO {;
          */
         @Data
         @AllArgsConstructor
-        public static class GetForAccount implements AccountId, ProductId, RequestDTO {
+        public static class GetForAccount implements ProductId, NeedsRecommendationsDTO {
             private Long accountId;
             private Long productId;
         }
