@@ -27,6 +27,10 @@ public enum ProductDTO implements DTO {;
         Long getAccountId();
     }
 
+    private interface ProductId {
+        Long getProductId();
+    }
+
     //TODO не помнбю, было ли у класса продукта имя, но на схеме вроде точно не было
     private interface Name {
         String getName();
@@ -129,8 +133,9 @@ public enum ProductDTO implements DTO {;
 
         @Data
         @AllArgsConstructor
-        public static class GetForAccount implements AccountId, RequestDTO {
+        public static class GetForAccount implements AccountId, ProductId, RequestDTO {
             private Long accountId;
+            private Long productId;
         }
 
         @Data
