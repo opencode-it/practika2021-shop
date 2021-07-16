@@ -129,7 +129,7 @@ public enum ProductDTO implements DTO {;
 
         @Data
         @AllArgsConstructor
-        public static class GetRecommended implements AccountId, RequestDTO {
+        public static class GetForAccount implements AccountId, RequestDTO {
             private Long accountId;
         }
 
