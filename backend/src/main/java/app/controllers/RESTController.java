@@ -5,6 +5,7 @@ import app.dto.ResponseDTO;
 import app.services.AbstractService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,19 +20,20 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Log
 public abstract class RESTController<I extends RequestDTO,
                                      O extends ResponseDTO,
                                      S extends AbstractService<I, O>> {
 
     @Autowired
-    protected S Service;
+    protected S service;
     /**
      * Метод, срабатывающтй при GET запросе, с путём ../../
      * @return  Возвращает  список экземпляров {@link O}
      */
     @GetMapping
     public List<O> findAll() {
-        return Service.findAll();
+        return service.findAll();
     }
     /**
      * Метод, срабатывающтй при GET запросе, с путём ../../{id}
@@ -40,7 +42,7 @@ public abstract class RESTController<I extends RequestDTO,
      */
     @GetMapping("/{id}")
     public Optional<O> getBy(@PathVariable("id") Long id) {
-        return Service.find(id);
+        return service.find(id);
     }
     /**
      * Метод, срабатывающтй при POST запросе, с путём ../../{id}
@@ -50,12 +52,11 @@ public abstract class RESTController<I extends RequestDTO,
     @PostMapping
     public I save(@RequestBody I inputAcc ) {
         try{
-            Service.create(inputAcc);
-            return inputAcc;
+            service.create(inputAcc);
         }catch (Exception ex){
-            return null;
+            log.warning("Save failed, cause: " + ex.getMessage());
         }
-
+        return inputAcc;
     }
     /**
      * Метод, срабатывающтй при PUT запросе, с путём ../../{id}
@@ -67,13 +68,12 @@ public abstract class RESTController<I extends RequestDTO,
     public I edit(@PathVariable("id") Long id, @RequestBody I edited) {
 
         try{
-            System.out.println(edited);
-            Service.create(edited);
-            return  edited;
-        }catch (IllegalArgumentException ex){
-            return null;
+            service.update(edited);
+            log.info("Editing... " + edited.toString());
+        } catch (IllegalArgumentException ex){
+            log.warning("Edit failed, cause: " + ex.getMessage());
         }
-
+        return edited;
 
     }
     /**
@@ -83,10 +83,10 @@ public abstract class RESTController<I extends RequestDTO,
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id) {
         try{
-            Service.delete(id);
-
+            service.delete(id);
+            log.info("Delete by id = " + id);
         }catch(IllegalArgumentException ex){
-            return;
+            log.warning("Delete failed, cause: " + ex.getMessage());
         }
     }
 
