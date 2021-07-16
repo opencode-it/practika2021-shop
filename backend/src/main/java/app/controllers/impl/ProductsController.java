@@ -9,7 +9,7 @@ import app.dto.impl.FilterProductDTO;
 import app.dto.impl.ProductDTO;
 import app.services.ext.ProductCreateAndGetBaseService;
 import app.services.ext.ProductEditAndGetFullService;
-import app.services.ext.ProductFilterAndGetFullService;
+import app.services.ext.ProductFilterAndGetBaseService;
 import app.services.ext.ProductForAccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,7 +31,7 @@ import java.util.Optional;
 @RequestMapping("/products")
 public class ProductsController {
     @Autowired
-    private ProductFilterAndGetFullService filterBaseProducts;
+    private ProductFilterAndGetBaseService filterBaseProducts;
 
     @Autowired
     private ProductEditAndGetFullService editFullProduct;
@@ -72,7 +72,7 @@ public class ProductsController {
             description = "Запрос на отображение товаров по фильтру"
     )
     @GetMapping("/filtered")
-    public Optional<List<ProductDTO.Response.GetFull>> findAllFiltered(
+    public Optional<List<ProductDTO.Response.GetBase>> findAllFiltered(
             @RequestBody FilterProductDTO.Request.FilterByCommonFeatures request) {
         return filterBaseProducts.findByFilter(request);
     }

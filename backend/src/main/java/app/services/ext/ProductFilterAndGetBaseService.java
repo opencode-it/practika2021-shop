@@ -6,6 +6,7 @@ import app.dto.impl.ProductDTO;
 import app.entities.Product;
 import app.entities.ProductFeature;
 import app.mappers.impl.unidirectional.request.ProductFilterMapper;
+import app.mappers.impl.unidirectional.response.ProductGetBaseMapper;
 import app.mappers.impl.unidirectional.response.ProductGetFullMapper;
 import app.repositories.impl.ProductFeatureRepository;
 import app.repositories.impl.ProductRepository;
@@ -25,17 +26,17 @@ import java.util.stream.Collectors;
  */
 @Service
 @AllArgsConstructor
-public class ProductFilterAndGetFullService extends CRUDService<Product,
+public class ProductFilterAndGetBaseService extends CRUDService<Product,
                                                                 FilterProductDTO.Request.FilterByCommonFeatures,
-                                                                ProductDTO.Response.GetFull,
+                                                                ProductDTO.Response.GetBase,
                                                                 ProductRepository,
                                                                 ProductFilterMapper,
-                                                                ProductGetFullMapper> {
+                                                                ProductGetBaseMapper> {
 
     @Autowired
     ProductFeatureRepository productFeatureRepository;
 
-    public Optional<List<ProductDTO.Response.GetFull>> findByFilter(FilterProductDTO.Request.FilterByCommonFeatures featuresDTO) {
+    public Optional<List<ProductDTO.Response.GetBase>> findByFilter(FilterProductDTO.Request.FilterByCommonFeatures featuresDTO) {
         List<Long> idList = List.copyOf(featuresDTO.getCommonFeatures())
                 .stream()
                 .map(FeatureDTO.Request.Get::getId)
