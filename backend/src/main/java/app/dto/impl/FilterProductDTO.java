@@ -1,6 +1,10 @@
 package app.dto.impl;
 
 import app.dto.RequestDTO;
+import app.dto.interfaces.filter.CommonFeaturesFilter;
+import app.dto.interfaces.filter.PriceFilter;
+import app.dto.interfaces.filter.TypeFeatureFilter;
+import app.dto.interfaces.filter.TypeFilter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,27 +12,6 @@ import java.math.BigDecimal;
 import java.util.Set;
 
 public enum FilterProductDTO {;
-    /**
-     * Для фильтрации общего списка продуктов
-     * по конкретным характеристикам
-     */
-    private interface CommonFeaturesFilter {
-        Set<FeatureDTO.Request.Get> getCommonFeatures();
-    }
-
-    private interface TypeFilter {
-        String getProductType();
-    }
-
-    private interface TypeFeatureFilter {
-        Set<FeatureDTO.Request.Get> getTypeFeatures();
-    }
-
-    private interface PriceFilter {
-        BigDecimal getMinPrice();
-        BigDecimal getMaxPrice();
-    }
-
 
     public enum Request {;
         /**

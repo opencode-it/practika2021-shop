@@ -18,9 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 public class ImageController extends RESTController<ImageDTO.Request.Get,
                                                         ImageDTO.Response.GetImage,
                                                         ImageGetService> {
-    //Изображения изначально поступают на клиент вместе     ?
-    //с товарами или заказами, поэтому путь к ним и
-    //их предназначение всегда известны
     @Autowired
     private Minio minio;
 
@@ -38,6 +35,8 @@ public class ImageController extends RESTController<ImageDTO.Request.Get,
         return minio.minioUpload(file);
     }
 
+
+
     /**
      * Метод, срабатывающтй при GET запросе, с путём /assets/images//down/{fileName}
      * @param objectName - имя файла с изображением
@@ -53,6 +52,8 @@ public class ImageController extends RESTController<ImageDTO.Request.Get,
         return minio.downloadFile(objectName, response);
     }
 
+
+
     /**
      * Метод, срабатывающтй при POST запросе, с путём /assets/images//down/{fileName}
      * @param fileName - имя файла с изображением
@@ -66,6 +67,9 @@ public class ImageController extends RESTController<ImageDTO.Request.Get,
     public boolean delete(@PathVariable("fileName") String fileName) {
         return  minio.delete(fileName);
     }
+
+
+
     /**
      * Проверка на существание файла
      * @param fileName - имя файла с изображением

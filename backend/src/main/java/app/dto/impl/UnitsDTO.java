@@ -6,6 +6,8 @@ package app.dto.impl;
 import app.dto.DTO;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import app.dto.interfaces.Id;
+import app.dto.interfaces.Name;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
@@ -16,18 +18,6 @@ import lombok.Value;
  * характеристике конкретного продукта
  */
 public enum UnitsDTO implements DTO {;
-    private interface Id {
-        Long getId();
-    }
-
-    /**
-     * Название того, в чем измеряется
-     * характеристика
-     */
-    private interface Name {
-        String getName();
-    }
-
 
     public enum Request {;
         /**
