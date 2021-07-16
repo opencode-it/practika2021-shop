@@ -5,7 +5,7 @@ import app.entities.Product;
 import app.mappers.RequestMapper;
 import org.mapstruct.Mapping;
 
-public interface ProductGetRecommendedMapper extends RequestMapper<Product, ProductDTO.Request.GetRecommended> {
+public interface ProductForAccountMapper extends RequestMapper<Product, ProductDTO.Request.GetForAccount> {
 
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "desription", ignore = true)
@@ -15,5 +15,5 @@ public interface ProductGetRecommendedMapper extends RequestMapper<Product, Prod
     @Mapping(target = "type", ignore = true)
     @Mapping(target = "features", ignore = true)
     @Override
-    Product toEntity(ProductDTO.Request.GetRecommended dto);
+    Product toEntity(ProductDTO.Request.GetForAccount dto);
 }
