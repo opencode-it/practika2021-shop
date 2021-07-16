@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 /**
  * Отбирает из списка продукты, находящиеся в указаном рендже
  */
-public class PriceProductFilter extends ProductFilter {
-    private BigDecimal minPrice;
-    private BigDecimal maxPrice;
+public final class PriceProductFilter extends ProductFilter {
+    private final BigDecimal minPrice;
+    private final BigDecimal maxPrice;
 
     public PriceProductFilter(BigDecimal min, BigDecimal max) {
         this.minPrice = min;

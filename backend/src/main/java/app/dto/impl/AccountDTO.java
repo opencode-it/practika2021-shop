@@ -5,6 +5,12 @@ package app.dto.impl;
 
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import app.dto.interfaces.account.Address;
+import app.dto.interfaces.account.Email;
+import app.dto.interfaces.account.FullName;
+import app.dto.interfaces.Id;
+import app.dto.interfaces.account.Rights;
+import app.dto.interfaces.account.Token;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
@@ -14,36 +20,6 @@ import lombok.Value;
  * запросы и ответы по аккаунту пользователя
  */
 public enum AccountDTO {;
-
-    private interface Id {
-        Long getId();
-    }
-
-    /**
-     * Что-то для Outh2
-     */
-    private interface Token {
-        String getToken();
-    }
-
-    /**
-     * Для определения прав пользователя
-     */
-    private interface Rights {
-        RightsDTO.Response.Get getRights();
-    }
-
-    private interface Email {
-        String getEmail();
-    }
-
-    private interface FullName {
-        String getFullName();
-    }
-
-    private interface Address {
-        String getAddress();
-    }
 
     public enum Request implements RequestDTO {;
 

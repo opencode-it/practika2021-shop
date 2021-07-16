@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
 
+//TODO расширить @Deprecated, чтобы можно было писать сообщение ниже в него
+//TODO в помойку
+@Deprecated
 public enum SlotDTO {;
 
     private interface Id {

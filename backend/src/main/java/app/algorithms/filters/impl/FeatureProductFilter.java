@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 /**
  * Отбирает из списка продукты, обладающие всемы указанными характеристиками
  */
-public class FeatureProductFilter extends ProductFilter {
-    private List<ProductFeature> features;
+public final class FeatureProductFilter extends ProductFilter {
+    private final List<ProductFeature> features;
 
     public FeatureProductFilter(List<ProductFeature> featuresFilter) {
         features = featuresFilter;

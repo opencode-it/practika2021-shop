@@ -5,6 +5,8 @@ package app.dto.impl;
 
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import app.dto.interfaces.Id;
+import app.dto.interfaces.Name;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
@@ -14,13 +16,6 @@ import lombok.Value;
  * запросы и ответы по правам пользователя
  */
 public enum RightsDTO {;
-    private interface Id {
-        Long getId();
-    }
-
-    private interface Name {
-        String getName();
-    }
 
     public enum Request {;
         /**

@@ -33,6 +33,8 @@ public class AccountsController extends RESTController<AccountDTO.Request.Create
         return super.getBy(id);
     }
 
+
+
     @Operation(
             summary = "Создать аккаунт",
             description = "Создать и сохранить аккаунт в БД"
@@ -42,6 +44,8 @@ public class AccountsController extends RESTController<AccountDTO.Request.Create
         return super.save(inputAcc);
     }
 
+
+
     @Operation(
             summary = "Редактировать",
             description = "Обновить информацию об аккаунте в БД"
@@ -50,6 +54,8 @@ public class AccountsController extends RESTController<AccountDTO.Request.Create
     public AccountDTO.Request.Create edit(Long id, AccountDTO.Request.Create edited) {
         return super.edit(id, edited);
     }
+
+
 
     @Operation(
             summary = "Удалить",

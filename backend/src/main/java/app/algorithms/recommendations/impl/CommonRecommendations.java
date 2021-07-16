@@ -19,7 +19,7 @@ public final class CommonRecommendations extends Recommendations {
     /**
      * Фиксированный размер выдаваемых рекомендаций
      */
-    private final int RecommendationsPageSize = 5;
+    private final int recommendationsPageSize = 5;
 
 
     @Override
@@ -36,7 +36,7 @@ public final class CommonRecommendations extends Recommendations {
             availableProducts.sort(comparator);
         }
 
-        return availableProducts.subList(0, RecommendationsPageSize);
+        return availableProducts.subList(0, recommendationsPageSize);
     }
 
 }
