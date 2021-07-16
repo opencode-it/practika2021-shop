@@ -13,6 +13,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 @Mapper(uses = {CustomTypeMapper.class,
                 ImageGetResponseMapper.class,
@@ -27,12 +28,17 @@ public interface ProductGetFullMapper extends ResponseMapper<Product, ProductDTO
     @Override
     ProductDTO.Response.GetFull toDto(Product entity);
 
+    BigDecimal FULL_PERCENTAGE = BigDecimal.valueOf(100);
+
     @AfterMapping
     static void calculatePrices(Product source, @MappingTarget ProductDTO.Response.GetFull target) {
-        BigDecimal additionalPrice = BigDecimal.valueOf(source.getFeatures()
+        BigDecimal additionalPrice = BigDecimal.valueOf(source
+                .getFeatures()
                 .stream()
                 .mapToInt(ProductFeature::getAdditionalPrice)
-                .sum());
+                .sum())
+                .multiply(source.getPrice())
+                .divide(FULL_PERCENTAGE, MathContext.DECIMAL32);
         target.setAdditionalPrice(additionalPrice);
         target.setFullPrice(source.getPrice().add(additionalPrice));
     }
