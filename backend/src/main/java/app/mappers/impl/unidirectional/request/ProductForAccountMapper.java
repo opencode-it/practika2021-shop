@@ -3,8 +3,10 @@ package app.mappers.impl.unidirectional.request;
 import app.dto.impl.ProductDTO;
 import app.entities.Product;
 import app.mappers.RequestMapper;
+import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+@Mapper
 public interface ProductForAccountMapper extends RequestMapper<Product, ProductDTO.Request.GetForAccount> {
 
     @Mapping(target = "name", ignore = true)
