@@ -1,14 +1,11 @@
 package app.mappers.impl.unidirectional.request;
 
-import app.dto.impl.FilterProductDTO;
 import app.dto.impl.ProductDTO;
 import app.entities.Product;
 import app.mappers.RequestMapper;
-import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(uses = FeatureGetMapper.class)
-public interface ProductFilterMapper extends RequestMapper<Product, FilterProductDTO.Request.FilterByCommonFeatures> {
+public interface ProductForAccountMapper extends RequestMapper<Product, ProductDTO.Request.GetForAccount> {
 
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "desription", ignore = true)
@@ -16,7 +13,7 @@ public interface ProductFilterMapper extends RequestMapper<Product, FilterProduc
     @Mapping(target = "images", ignore = true)
     @Mapping(target = "prodStatus", ignore = true)
     @Mapping(target = "type", ignore = true)
-    @Mapping(source = "commonFeatures", target = "features")
+    @Mapping(target = "features", ignore = true)
     @Override
-    Product toEntity(FilterProductDTO.Request.FilterByCommonFeatures dto);
+    Product toEntity(ProductDTO.Request.GetForAccount dto);
 }

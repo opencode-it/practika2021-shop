@@ -5,6 +5,7 @@ import app.entities.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Отбирает из списка продукты, находящиеся в указаном рендже
@@ -20,6 +21,12 @@ public class PriceProductFilter extends ProductFilter {
 
     @Override
     public List<Product> applyOn(List<Product> unfiltered) {
-        return null;
+        return unfiltered.stream().filter(p ->
+                IsInRange(p.getPrice(), minPrice, maxPrice))
+                .collect(Collectors.toList());
+    }
+
+    private boolean IsInRange(BigDecimal price, BigDecimal min, BigDecimal max) {
+        return price.compareTo(min)>=0 && price.compareTo(max)<=0;
     }
 }
