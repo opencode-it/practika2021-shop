@@ -111,7 +111,7 @@ public abstract class CRUDService<E extends AbstractEntity,
             }
         } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new FieldsMergerFailedException("Fields merger failed for "
-                    .concat(entityWithChanges.toString()));
+                                                        .concat(entityWithChanges.toString()));
         }
     }
 
