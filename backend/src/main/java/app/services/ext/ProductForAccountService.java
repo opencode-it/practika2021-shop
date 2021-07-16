@@ -20,25 +20,38 @@ import java.util.Optional;
 /**
  * Сервис, который сохраняет запись о визите при просмотре каталога
  * для последующего формирования рекомендаций
- * @param <T> тип рекомендаций
+ * <p/>
+ * Создать сервис
+ * <pre>
+ *     ProductForAccountService service =
+ *          ProductForAccountService.with(typeRecommendations)
+ * </pre>
  *
  * @author Александров Илья
  */
-public abstract class ProductForAccountService<T extends Recommendations> extends CRUDService<Product,
-                                                                                              ProductDTO.Request.GetForAccount,
-                                                                                              ProductDTO.Response.GetBase,
-                                                                                              ProductRepository,
-                                                                                              ProductForAccountMapper,
-                                                                                              ProductGetBaseMapper> {
-
-    @Autowired
-    T recommendations;
+public class ProductForAccountService extends CRUDService<Product,
+                                                          ProductDTO.Request.GetForAccount,
+                                                          ProductDTO.Response.GetBase,
+                                                          ProductRepository,
+                                                          ProductForAccountMapper,
+                                                          ProductGetBaseMapper> {
 
     @Autowired
     VisitRepository visitRepository;
 
     @Autowired
     AccountRepository accountRepository;
+
+    @Autowired(required = false)
+    Recommendations recommendations;
+
+    private ProductForAccountService(Recommendations recommendations) {
+        this.recommendations = recommendations;
+    }
+
+    public static ProductForAccountService with(Recommendations recommendations) {
+        return new ProductForAccountService(recommendations);
+    }
 
     @Override
     public Optional<ProductDTO.Response.GetBase> find(ProductDTO.Request.GetForAccount dto) {
