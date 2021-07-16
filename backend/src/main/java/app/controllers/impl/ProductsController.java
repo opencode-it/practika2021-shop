@@ -51,9 +51,8 @@ public class ProductsController {
             description = "Запрос на отображение товаров в каталоге"
     )
     @GetMapping
-    public List<ProductDTO.Response.GetFull> findAll(@RequestBody ProductDTO.Request.GetAll request) {
-        recommendations.
-
+    public Optional<List<ProductDTO.Response.GetBase>> findAll(@RequestBody ProductDTO.Request.GetAll request) {
+        return recommendations.recommendFor(request);
     }
 
     @Operation(
@@ -61,10 +60,10 @@ public class ProductsController {
             description = "Запрос на отображение товаров определенного типа в каталоге"
     )
     @GetMapping("/{type}")
-    public List<ProductDTO.Response.GetBase> findAllInType(@PathVariable String type,
+    public Optional<List<ProductDTO.Response.GetBase>> findAllInType(@PathVariable String type,
                                                            @RequestBody ProductDTO.Request.GetTypeAll request) {
         request.setType(type);
-
+        return typedRecommendations.recommendFor(request);
 
     }
 
@@ -83,8 +82,10 @@ public class ProductsController {
             description = "Запрос на открытие страницы конкретного товара"
     )
     @GetMapping("/{id}")
-    public Optional<ProductDTO.Response.GetFull> getBy(@PathVariable("id") Long id) {
-        return editFullProduct.find(id);
+    public Optional<ProductDTO.Response.GetFull> getBy(@PathVariable("id") Long id,
+                                                       @RequestBody ProductDTO.Request.GetForAccount request) {
+        request.setProductId(id);
+        return recommendations.find(id);
     }
 
     @Operation(
