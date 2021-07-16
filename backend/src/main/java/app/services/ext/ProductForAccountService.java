@@ -53,6 +53,11 @@ public class ProductForAccountService extends CRUDService<Product,
         return new ProductForAccountService(recommendations);
     }
 
+    public Optional<List<ProductDTO.Response.GetBase>> recommendFor(ProductDTO.Request.GetForAccount dto) {
+        List<Product> products = recommendations.getFor(dto.getAccountId());
+        return Optional.of(responseMapper.toDtoList(products));
+    }
+
     @Override
     public Optional<ProductDTO.Response.GetBase> find(ProductDTO.Request.GetForAccount dto) {
         Account account = accountRepository.findById(dto.getAccountId())
@@ -66,10 +71,5 @@ public class ProductForAccountService extends CRUDService<Product,
                 .build();
         visitRepository.save(visit);
         return super.find(dto);
-    }
-
-    public Optional<List<ProductDTO.Response.GetBase>> recommendFor(ProductDTO.Request.GetForAccount dto) {
-        List<Product> products = recommendations.getFor(dto.getAccountId());
-        return Optional.of(responseMapper.toDtoList(products));
     }
 }
