@@ -55,7 +55,7 @@ public abstract class CRUDService<E extends AbstractEntity,
     /**
      *
      * @param dto объект RequestDTO, который конвертируется маппером
-     *            и сохраняется репозиторием как сущность
+     *            и сохраняется репозиторием как объект сущности
      * @return объект ResponseDTO - представление созданной сущности
      */
     @Override
@@ -67,7 +67,7 @@ public abstract class CRUDService<E extends AbstractEntity,
     /**
      *
      * @param dto объект RequestDTO, который конвертируется маппером
-     *            и обновляется репозиторием как сущность
+     *            и обновляется репозиторием как объект сущности
      * @return объект ResponseDTO - представление "старой" сущности до обновления
      */
     @Override
@@ -81,10 +81,10 @@ public abstract class CRUDService<E extends AbstractEntity,
 
     /**
      * При конвертации усеченных версий ResponseDTO в сущность
-     * некоторые поля "новой" сущности заполняются значениями null.
-     * При обновлении вместо них подставляются значения полей из "старой" сущности
-     * @param oldEntity "старая" сущность, извлеченная из БД по id
-     * @param entityWithChanges сущность с изменениями
+     * некоторые поля нового объекта сущности заполняются значениями null.
+     * При обновлении вместо них подставляются значения полей из старого объекта сущности
+     * @param oldEntity старый объект сущности, извлеченный из БД по id
+     * @param entityWithChanges объект сущности с изменениями
      */
     protected void mergeFieldsOnUpdate(E oldEntity, E entityWithChanges) {
         try {
@@ -112,8 +112,8 @@ public abstract class CRUDService<E extends AbstractEntity,
     /**
      *
      * @param dtoList список RequestDTO, который конвертируется маппером
-     *                и сохраняется репозиторием как список сущностей
-     * @return список ResponseDTO - представление сохраненных сущностей
+     *                и сохраняется репозиторием как список объектов сущности
+     * @return список ResponseDTO - представление сохраненных объектов сущности
      */
     @Override
     public List<O> saveAll(List<I> dtoList) {
@@ -134,7 +134,7 @@ public abstract class CRUDService<E extends AbstractEntity,
 
     /**
      *
-     * @param id ключ, по которому осуществляется поиск сущности в БД
+     * @param id ключ, по которому осуществляется поиск объекта сущности в БД
      * @return Optional с результатом поиска в БД
      */
     @Override
@@ -164,7 +164,7 @@ public abstract class CRUDService<E extends AbstractEntity,
 
     /**
      *
-     * @param dto RequestDTO с ключом, по которому сущность удаляется из БД
+     * @param dto RequestDTO с ключом, по которому объект сущности удаляется из БД
      */
     @Override
     public void delete(I dto) {
@@ -173,7 +173,7 @@ public abstract class CRUDService<E extends AbstractEntity,
 
     /**
      *
-     * @param id ключ, по которому сущность удаляется из БД
+     * @param id ключ, по которому объект сущности удаляется из БД
      */
     @Override
     public void delete(Long id) {
@@ -183,7 +183,7 @@ public abstract class CRUDService<E extends AbstractEntity,
     /**
      *
      * @param dto RequestDTO - представление сущности
-     * @return есть ли сущность с заданным ключом в таблице
+     * @return есть ли объект сущности с заданным ключом в таблице
      */
     @Override
     public Boolean exists(I dto) {
@@ -194,7 +194,7 @@ public abstract class CRUDService<E extends AbstractEntity,
     /**
      *
      * @param id ключ
-     * @return есть ли сущность с заданным ключом в таблице
+     * @return есть ли объект сущности с заданным ключом в таблице
      */
     @Override
     public Boolean exists(Long id) {
