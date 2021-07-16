@@ -32,14 +32,15 @@ public interface ProductGetFullMapper extends ResponseMapper<Product, ProductDTO
 
     @AfterMapping
     static void calculatePrices(Product source, @MappingTarget ProductDTO.Response.GetFull target) {
+        BigDecimal basePrice = source.getPrice();
         BigDecimal additionalPrice = BigDecimal.valueOf(source
                 .getFeatures()
                 .stream()
                 .mapToInt(ProductFeature::getAdditionalPrice)
                 .sum())
-                .multiply(source.getPrice())
+                .multiply(basePrice)
                 .divide(FULL_PERCENTAGE, MathContext.DECIMAL32);
         target.setAdditionalPrice(additionalPrice);
-        target.setFullPrice(source.getPrice().add(additionalPrice));
+        target.setFullPrice(basePrice.add(additionalPrice));
     }
  }
