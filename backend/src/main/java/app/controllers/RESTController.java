@@ -54,7 +54,7 @@ public abstract class RESTController<I extends RequestDTO,
         try{
             service.create(inputAcc);
         }catch (Exception ex){
-            log.warning("Save failed, cause: " + ex.getMessage());
+            log.warning("Save failed, cause: ".concat(ex.getMessage()));
         }
         return inputAcc;
     }
@@ -69,9 +69,9 @@ public abstract class RESTController<I extends RequestDTO,
 
         try{
             service.update(edited);
-            log.info("Editing... " + edited.toString());
+            log.info("Editing... ".concat(edited.toString()));
         } catch (IllegalArgumentException ex){
-            log.warning("Edit failed, cause: " + ex.getMessage());
+            log.warning("Edit failed, cause: ".concat(ex.getMessage()));
         }
         return edited;
 
@@ -86,7 +86,7 @@ public abstract class RESTController<I extends RequestDTO,
             service.delete(id);
             log.info("Delete by id = " + id);
         }catch(IllegalArgumentException ex){
-            log.warning("Delete failed, cause: " + ex.getMessage());
+            log.warning("Delete failed, cause: ".concat(ex.getMessage()));
         }
     }
 
