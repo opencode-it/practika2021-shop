@@ -2,7 +2,6 @@ package app.mappers.impl.unidirectional.response;
 
 import app.dto.impl.FeatureDTO;
 import app.entities.Feature;
-import app.entities.Units;
 import app.mappers.CustomTypeMapper;
 import app.mappers.ResponseMapper;
 import app.mappers.qualifiers.UnitsToString;

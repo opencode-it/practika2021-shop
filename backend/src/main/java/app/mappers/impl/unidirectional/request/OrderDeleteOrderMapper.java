@@ -4,10 +4,8 @@ import app.dto.impl.OrdersDTO;
 import app.entities.Order;
 import app.mappers.RequestMapper;
 import app.repositories.impl.AccountRepository;
-import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Mapper

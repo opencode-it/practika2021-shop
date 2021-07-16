@@ -1,6 +1,5 @@
 package app.entities;
 
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -17,7 +16,6 @@ import javax.persistence.UniqueConstraint;
 @NoArgsConstructor
 public class Discount extends AbstractEntity {
 
-    @NotNull
     @Column(name = "value")
     private Integer value;
 }

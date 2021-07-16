@@ -1,11 +1,9 @@
 package app.entities;
 
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,27 +14,27 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product extends AbstractEntity{
-    @NotNull
+
     @Column
     private String name;
-    @NotNull
+
     @Column
     private String desription;
-    @NotNull
+
     @Column
     BigDecimal price;
-    @NotNull
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_ID")
     private Set<Image> images;
-    @NotNull
+
     @Column
     private ProductStatus prodStatus;
-    @NotNull
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_type_ID")
     private ProductType type;
-    @NotNull
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "feature_ID")
     private Set<ProductFeature> features;
