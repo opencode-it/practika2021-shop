@@ -45,6 +45,11 @@ public class ProductsController {
         return filterBaseProducts.findAll();
     }
 
+    @GetMapping("/{type}")
+    public List<ProductDTO.Response.GetBase> findAllInType(@PathVariable String type, @RequestBody ) {
+
+    }
+
     @Operation(
             summary = "Применить фильтр",
             description = "Запрос на отображение товаров по фильтру"

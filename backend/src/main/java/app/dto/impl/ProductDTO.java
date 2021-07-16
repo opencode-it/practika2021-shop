@@ -129,9 +129,18 @@ public enum ProductDTO implements DTO {;
 
         @Data
         @AllArgsConstructor
+        public static class GetTypedAll implements AccountId, Type, RequestDTO {
+            private String type;
+            private Long accountId;
+        }
+
+        @Data
+        @AllArgsConstructor
         public static class GetForAccount implements AccountId, RequestDTO {
             private Long accountId;
         }
+
+
 
         @Data
         @AllArgsConstructor

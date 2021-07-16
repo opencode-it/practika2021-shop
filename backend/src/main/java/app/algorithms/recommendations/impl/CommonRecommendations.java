@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Рекомендует из общего списка продуктов
  */
-public class CommonRecommendations extends Recommendations {
+public final class CommonRecommendations extends Recommendations {
 
     /**
      * Фиксированный размер выдаваемых рекомендаций
