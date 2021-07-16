@@ -5,6 +5,14 @@ package app.dto.impl;
 
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import app.dto.interfaces.AccountId;
+import app.dto.interfaces.Id;
+import app.dto.interfaces.order.Date;
+import app.dto.interfaces.order.Discount;
+import app.dto.interfaces.order.GrandTotal;
+import app.dto.interfaces.order.ProductsId;
+import app.dto.interfaces.order.ProductsInfo;
+import app.dto.interfaces.order.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -18,60 +26,6 @@ import java.util.Set;
  * запросы и ответы по заказу
  */
 public enum OrdersDTO {;
-
-    /**
-     * ID аккаунта заказчика
-     */
-    private interface AccountId {
-        Long getAccountId();
-    }
-
-    /**
-     * ID заказа
-     */
-    private interface Id {
-        Long getId();
-    }
-
-    /**
-     * Продукты и их количество в заказе
-     */
-    private interface ProductsId {
-        Map<Long, Integer> getOrderedProductIds();
-    }
-
-
-    /**
-     * Короткая информация о всех продуктах в заказе
-     */
-    private interface ProductsInfo {
-        Set<ProductDTO.Response.GetOrderedBase> getProductsInOrder();
-    }
-
-    /**
-     * Дата оформления заказа
-     */
-    private interface Date {
-        LocalDateTime getDate();
-    }
-
-    /**
-     * Текуший статус заказа
-     */
-    private interface Status {
-        String getStatus();
-    }
-
-    private interface Discount {
-        Integer getDiscount();
-    }
-
-    /**
-     * Полная стоимость заказа
-     */
-    private interface GrandTotal {
-        BigDecimal getGrandTotal();
-    }
 
     public enum Request {;
 

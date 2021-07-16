@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 /**
  * Показывает продукты только определенного типа
  */
-public class TypeProductFilter extends ProductFilter {
-    private ProductType typeFilter;
+public final class TypeProductFilter extends ProductFilter {
+    private final ProductType typeFilter;
 
     public TypeProductFilter(ProductType typeFilter) {
         this.typeFilter = typeFilter;

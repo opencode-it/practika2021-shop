@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Сортирует список продуктов по популярности - общему числу просмотров
  */
-public class PopularProductFilter extends ProductFilter {
+public final class PopularProductFilter extends ProductFilter {
     private boolean ascending = false;
 
     public PopularProductFilter(boolean ascending) {

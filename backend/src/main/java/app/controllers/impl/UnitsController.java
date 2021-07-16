@@ -33,6 +33,8 @@ public class UnitsController extends RESTController<UnitsDTO.Request.AddUnits,
         return super.getBy(id);
     }
 
+
+
     @Operation(
             summary = "Создать",
             description = "Создать и сохранить единицы измерения в БД"
@@ -42,6 +44,8 @@ public class UnitsController extends RESTController<UnitsDTO.Request.AddUnits,
         return super.save(inputAcc);
     }
 
+
+
     @Operation(
             summary = "Редактировать",
             description = "Редактировать информацию о единицах измерения"
@@ -50,6 +54,8 @@ public class UnitsController extends RESTController<UnitsDTO.Request.AddUnits,
     public UnitsDTO.Request.AddUnits edit(Long id, UnitsDTO.Request.AddUnits edited) {
         return super.edit(id, edited);
     }
+
+
 
     @Operation(
             summary = "Удалить",
