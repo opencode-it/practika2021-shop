@@ -1,6 +1,7 @@
 package app.services.ext;
 
 import app.algorithms.recommendations.Recommendations;
+import app.dto.NeedsRecommendationsDTO;
 import app.dto.impl.ProductDTO;
 import app.entities.Account;
 import app.entities.Product;
@@ -57,7 +58,7 @@ public class ProductForAccountService extends CRUDService<Product,
         return new ProductForAccountService(recommendations);
     }
 
-    public Optional<List<ProductDTO.Response.GetBase>> recommendFor(ProductDTO.Request.GetForAccount dto) {
+    public Optional<List<ProductDTO.Response.GetBase>> recommendFor(NeedsRecommendationsDTO dto) {
         List<Product> products = recommendations.getFor(dto.getAccountId());
         return Optional.of(responseMapper.toDtoList(products));
     }
@@ -76,4 +77,5 @@ public class ProductForAccountService extends CRUDService<Product,
         visitRepository.save(visit);
         return super.find(dto);
     }
+
 }
