@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/" class="add-card" id="add-card">
+  <router-link to="/constructor" class="add-card" id="add-card">
     <div class="add-top">
       <div class="add-circle">
         <span class="add-plus"> + </span>
