@@ -2,9 +2,12 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
+    cardFlag: false,
+    sumOrder: 0,
     catalogType: "All",
-    watch: 14,
+    catalogTopic: "All",
     basketCounter: 0,
+    basketActive: false,
     modalActive: false,
     modalLoginActive: true,
     modalRegisterActive: false,

@@ -10,20 +10,21 @@
           :key="info"
         />
       </div>
+      <The-register-order/>
     </div>
   </div>
 </template>
 
 <script>
 import AppBasketProduct from "../components/AppBasketProduct.vue";
-import { basket } from "../mocks/data";
+import TheRegisterOrder from "../components/TheRegisterOrder";
 export default {
   data() {
     return {
-      basket,
+      basket: JSON.parse(localStorage.getItem('basket')),
     };
   },
-  components: { AppBasketProduct },
+  components: { AppBasketProduct, TheRegisterOrder },
 };
 </script>
 

@@ -1,23 +1,23 @@
 <template>
-  <div class="basket-product">
+  <div class="basket-product" id="basket-product">
     <div class="basket-card">
-      <App-product-card :item="basket" :index="index"/>
+      <App-product-card
+        :item="basket"
+        :quantity="basket.quantity"
+        :index="index"
+      />
     </div>
     <div class="card-info">
       <div class="delete" @click="deleteProduct(index)">&#10006;</div>
       <div class="left-side">
-        <h4>Тематика</h4>
-        <h4>Тип</h4>
-        <h4>Материал</h4>
-        <h4>Размер</h4>
-        <h4>Цена</h4>
+        <h4 v-for="(title, idx) in titles" :key="idx">{{title}}</h4>
       </div>
       <div class="right-side">
-        <h4>{{ basket.topic }}</h4>
-        <h4>{{ basket.type }}</h4>
-        <h4>{{ basket.material }}</h4>
-        <h4>{{ basket.size }}</h4>
-        <h4>{{ basket.price }}руб/шт.</h4>
+        <h4>{{basket.topic}}</h4>
+        <h4>{{basket.type}}</h4>
+        <h4>{{basket.material}}</h4>
+        <h4>{{basket.size}}</h4>
+        <h4>{{basket.price}}руб/шт.</h4>
       </div>
     </div>
   </div>
@@ -26,6 +26,11 @@
 <script>
 import AppProductCard from "./AppProductCard.vue";
 export default {
+  data() {
+    return {
+      titles: ["Тематика", "Тип", "Материал", "Размер", "Цена"]
+    };
+  },
   components: { AppProductCard },
   props: {
     basket: {
@@ -38,7 +43,13 @@ export default {
   },
   methods: {
     deleteProduct(index) {
-      console.log(index);
+      let nodes = document.querySelector('.basket-items')
+      nodes.children[index].remove()
+      this.$store.state.basketCounter--
+      let storage = JSON.parse(localStorage.getItem('basket'))
+      localStorage.clear()
+      storage.basketProducts.splice(index, 1)
+      localStorage.setItem('basket', JSON.stringify(storage))
     },
   },
 };
@@ -69,8 +80,8 @@ h4.left-side {
   background-color: #d02e2e;
   border-radius: 10px;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 6px;
+  right: 6px;
   width: 40px;
   display: flex;
   justify-content: center;

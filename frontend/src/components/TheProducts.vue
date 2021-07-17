@@ -13,6 +13,7 @@
       <App-product-card
         v-for="(product, index) in products"
         :item="product"
+        :title="title.slice(0, -1) + 'а'"
         :index="index"
         :key="index"
       />
@@ -22,17 +23,20 @@
 
 <script>
 import AppProductCard from "./AppProductCard.vue";
+import { products } from "../mocks/data";
+
 export default {
+  data() {
+    return {
+      products
+    };
+  },
   components: { AppProductCard },
   props: {
     title: {
       type: String,
       default: () => "",
-    },
-    products: {
-      type: Array,
-      default: () => [],
-    },
+    }
   },
 };
 </script>

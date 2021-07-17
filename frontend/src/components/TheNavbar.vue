@@ -28,15 +28,23 @@
           </button>
         </ul>
         <router-link to="/basket" class="basket">
-          <div class="counter">{{ $store.state.basketCounter }}</div>
-          <img src="../../public/img/basket.png" alt="basket" />
+          <div
+            class="counter"
+            v-if="$store.state.basketCounter > 0"
+          >
+            {{ $store.state.basketCounter}}
+          </div>
+          <img
+            src="/img/basket.png"
+            alt="basket" id="basket-img"
+          />
         </router-link>
       </div>
     </div>
-
     <div v-if="$store.state.modalActive">
       <App-modal />
     </div>
+    {{checkPath()}}
   </div>
 </template>
 
@@ -49,6 +57,13 @@ export default {
       if (!this.$store.state.modalActive) {
         this.$store.state.modalActive = true;
         document.querySelector("body").style.overflow = "hidden";
+      }
+    },
+    checkPath() {
+      if (this.$route.path == "/basket") {
+        this.$store.state.basketActive = true;
+      } else {
+        this.$store.state.basketActive = false;
       }
     },
   },
@@ -80,7 +95,7 @@ export default {
 .counter {
   position: absolute;
   width: 25px;
-  height: 15px;
+  height: 20px;
   border-radius: 10px;
   background-color: #fc7500;
   display: flex;
