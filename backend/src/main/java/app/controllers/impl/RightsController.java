@@ -28,6 +28,8 @@ public class RightsController extends RESTController<RightsDTO.Request.AddRights
         return super.getBy(id);
     }
 
+
+
     @Operation(
             summary = "Создать",
             description = "Создать и сохранить права аккаунта в БД"
@@ -37,6 +39,8 @@ public class RightsController extends RESTController<RightsDTO.Request.AddRights
         return super.save(inputAcc);
     }
 
+
+
     @Operation(
             summary = "Редактировать",
             description = "Редактировать информацию о правах"
@@ -45,6 +49,8 @@ public class RightsController extends RESTController<RightsDTO.Request.AddRights
     public RightsDTO.Request.AddRights edit(Long id, RightsDTO.Request.AddRights edited) {
         return super.edit(id, edited);
     }
+
+
 
     @Operation(
             summary = "Удалить",

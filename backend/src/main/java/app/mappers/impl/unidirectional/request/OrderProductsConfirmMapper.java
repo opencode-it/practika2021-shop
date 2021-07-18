@@ -36,23 +36,21 @@ public abstract class OrderProductsConfirmMapper implements
     public abstract Order toEntity(OrdersDTO.Request.ConfirmOrder dto);
 
     @AfterMapping
-    public void boundProducts(OrdersDTO.Request.ConfirmOrder source, @MappingTarget  Order target) {
+    public void boundProducts(OrdersDTO.Request.ConfirmOrder source, @MappingTarget Order target) {
         Account orderedAcc = accs.getOne(source.getAccountId());
         target.setAccount(orderedAcc);
-        List<OrdersProducts> orderedProducts = new ArrayList<>(){
-            {
-                source.getOrderedProductIds().entrySet().stream().forEach(pa -> {
-                    Product orderedProduct = products.getOne(pa.getKey());
-                    Integer amount = pa.getValue();
+        List<OrdersProducts> orderedProducts = new ArrayList<>();
+        source.getOrderedProductIds().entrySet().stream().forEach(pa -> {
+            Product orderedProduct = products.getOne(pa.getKey());
+            Integer amount = pa.getValue();
 
-                    OrdersProducts op = new OrdersProducts();
-                    op.setProduct(orderedProduct);
-                    op.setCount(amount);
+            OrdersProducts op = new OrdersProducts();
+            op.setProduct(orderedProduct);
+            op.setCount(amount);
 
-                    add(op);
-                });
-            }
-        };
+            orderedProducts.add(op);
+        });
+
 
         target.setOrdersProducts(Set.copyOf(orderedProducts));
         target.setDate(LocalDateTime.now());

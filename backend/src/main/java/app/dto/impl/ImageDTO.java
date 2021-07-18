@@ -2,6 +2,8 @@ package app.dto.impl;
 
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import app.dto.interfaces.image.FileName;
+import app.dto.interfaces.image.ImageDuty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
@@ -9,14 +11,6 @@ import lombok.Value;
  * @author ZubchenkoArtem
  * */
 public enum ImageDTO {;
-
-    private interface FileName {
-        String getFileName();
-    }
-
-    private interface ImageDuty {
-        String getImageDuty();
-    }
 
     public enum Request {;
         /**

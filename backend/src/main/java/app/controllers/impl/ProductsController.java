@@ -3,11 +3,14 @@
  */
 package app.controllers.impl;
 
+import app.algorithms.recommendations.impl.CommonRecommendations;
+import app.algorithms.recommendations.impl.TypeRecommendations;
 import app.dto.impl.FilterProductDTO;
 import app.dto.impl.ProductDTO;
 import app.services.ext.ProductCreateAndGetBaseService;
 import app.services.ext.ProductEditAndGetFullService;
-import app.services.ext.ProductFilterAndGetFullService;
+import app.services.ext.ProductFilterAndGetBaseService;
+import app.services.ext.ProductForAccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +31,7 @@ import java.util.Optional;
 @RequestMapping("/products")
 public class ProductsController {
     @Autowired
-    private ProductFilterAndGetFullService filterBaseProducts;
+    private ProductFilterAndGetBaseService filterBaseProducts;
 
     @Autowired
     private ProductEditAndGetFullService editFullProduct;
@@ -36,33 +39,62 @@ public class ProductsController {
     @Autowired
     private ProductCreateAndGetBaseService createBaseProduct;
 
+
+    private final ProductForAccountService recommendations
+            = ProductForAccountService.with(new CommonRecommendations());
+    private final ProductForAccountService typedRecommendations
+            = ProductForAccountService.with(new TypeRecommendations());
+
+
     @Operation(
             summary = "Отобразить каталог",
             description = "Запрос на отображение товаров в каталоге"
     )
     @GetMapping
-    public List<ProductDTO.Response.GetFull> findAll() {
-        return filterBaseProducts.findAll();
+    public Optional<List<ProductDTO.Response.GetBase>> findAll(@RequestBody ProductDTO.Request.GetAll request) {
+        return recommendations.recommendFor(request);
     }
+
+
+
+    @Operation(
+            summary = "Отобразить страницу с категорией товаров в каталоге",
+            description = "Запрос на отображение товаров определенного типа в каталоге"
+    )
+    @GetMapping("/{type}")
+    public Optional<List<ProductDTO.Response.GetBase>> findAllInType(@PathVariable String type,
+                                                           @RequestBody ProductDTO.Request.GetTypeAll request) {
+        request.setType(type);
+        return typedRecommendations.recommendFor(request);
+
+    }
+
+
 
     @Operation(
             summary = "Применить фильтр",
             description = "Запрос на отображение товаров по фильтру"
     )
     @GetMapping("/filtered")
-    public Optional<List<ProductDTO.Response.GetFull>> findAllFiltered(
+    public Optional<List<ProductDTO.Response.GetBase>> findAllFiltered(
             @RequestBody FilterProductDTO.Request.FilterByCommonFeatures request) {
         return filterBaseProducts.findByFilter(request);
     }
+
+
 
     @Operation(
             summary = "Отобразить товар",
             description = "Запрос на открытие страницы конкретного товара"
     )
     @GetMapping("/{id}")
-    public Optional<ProductDTO.Response.GetFull> getBy(@PathVariable("id") Long id) {
-        return editFullProduct.find(id);
+    public Optional<ProductDTO.Response.GetFull> getBy(@PathVariable("id") Long id,
+                                                       @RequestBody ProductDTO.Request.GetForAccount request) {
+        request.setProductId(id);
+        return recommendations.find(id);
     }
+
+
 
     @Operation(
             summary = "Добавить товар",
@@ -72,6 +104,8 @@ public class ProductsController {
     public void save(@RequestBody ProductDTO.Request.CreateProduct newProduct) {
         createBaseProduct.create(newProduct);
     }
+
+
 
     @Operation(
             summary = "Изменить",
@@ -83,6 +117,8 @@ public class ProductsController {
         editFullProduct.create(request);
         return editFullProduct.find(id);
     }
+
+
 
     @Operation(
             summary = "Удалить",

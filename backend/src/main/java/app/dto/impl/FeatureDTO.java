@@ -5,6 +5,12 @@ package app.dto.impl;
 
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import app.dto.interfaces.Id;
+import app.dto.interfaces.feature.FeaturePrice;
+import app.dto.interfaces.feature.FeatureValue;
+import app.dto.interfaces.Name;
+import app.dto.interfaces.feature.ResponseUnits;
+import app.dto.interfaces.feature.Units;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
@@ -14,45 +20,6 @@ import lombok.Value;
  * запросы и ответы по характеристикам конкретного продукта
  */
 public enum FeatureDTO {;
-
-    private interface Id {
-        Long getId();
-    }
-
-    private interface Name {
-        String getName();
-    }
-
-    /**
-     * Содержит информацию о измеряемой
-     * характеристики продукта
-     * для клиента
-     */
-    private interface ResponseUnits {
-        UnitsDTO.Response.Get getUnits();
-    }
-
-    /**
-     * Содержит информацию об
-     * измеряемой характеристики продукта
-     * для сервера
-     */
-    private interface Units {
-        UnitsDTO.Request.Get getUnits();
-    }
-
-    /**
-     * Ссодержит значение безмерочной
-     * характеристики продукта
-     */
-    private interface FeatureValue {
-        String getFeatureValue();
-    }
-
-
-    private interface FeaturePrice {
-        Integer getFeaturePrice();
-    }
 
     public enum Request {;
 
