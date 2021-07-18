@@ -19,7 +19,6 @@ import java.util.Optional;
 * */
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Log
 public abstract class RESTController<I extends RequestDTO,
                                      O extends ResponseDTO,
@@ -27,6 +26,8 @@ public abstract class RESTController<I extends RequestDTO,
 
     @Autowired
     protected S service;
+
+
     /**
      * Метод, срабатывающтй при GET запросе, с путём ../../
      * @return  Возвращает  список экземпляров {@link O}
@@ -35,6 +36,8 @@ public abstract class RESTController<I extends RequestDTO,
     public List<O> findAll() {
         return service.findAll();
     }
+
+
     /**
      * Метод, срабатывающтй при GET запросе, с путём ../../{id}
      * @param id - ID объекта
@@ -44,6 +47,8 @@ public abstract class RESTController<I extends RequestDTO,
     public Optional<O> getBy(@PathVariable("id") Long id) {
         return service.find(id);
     }
+
+
     /**
      * Метод, срабатывающтй при POST запросе, с путём ../../{id}
      * @param inputAcc - Экзмепляр {@link I} с даннми для загрузки в БД
@@ -58,6 +63,8 @@ public abstract class RESTController<I extends RequestDTO,
         }
         return inputAcc;
     }
+
+
     /**
      * Метод, срабатывающтй при PUT запросе, с путём ../../{id}
      * @param id - ID сущности, в которорй необходимы изменения
@@ -76,6 +83,8 @@ public abstract class RESTController<I extends RequestDTO,
         return edited;
 
     }
+
+
     /**
      * Метод, срабатывающтй при DELETE запросе, с путём ../../{id}
      * @param id - ID сущности, в которую необходимо удалить
