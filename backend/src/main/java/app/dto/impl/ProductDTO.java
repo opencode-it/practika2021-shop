@@ -4,8 +4,25 @@
 package app.dto.impl;
 
 import app.dto.DTO;
+import app.dto.NeedsRecommendationsDTO;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
+import app.dto.interfaces.Id;
+import app.dto.interfaces.Name;
+import app.dto.interfaces.order.Status;
+import app.dto.interfaces.product.AdditionalPrice;
+import app.dto.interfaces.product.Amount;
+import app.dto.interfaces.product.BasePrice;
+import app.dto.interfaces.product.Description;
+import app.dto.interfaces.product.Features;
+import app.dto.interfaces.product.FeaturesRequests;
+import app.dto.interfaces.product.FullPrice;
+import app.dto.interfaces.product.Image;
+import app.dto.interfaces.product.ImagesSet;
+import app.dto.interfaces.product.LoadedImagesSet;
+import app.dto.interfaces.product.ProductId;
+import app.dto.interfaces.product.Type;
+import app.dto.interfaces.product.UnitsFeatures;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Value;
@@ -19,118 +36,47 @@ import java.util.Set;
  */
 public enum ProductDTO implements DTO {;
 
-    private interface Id {
-        Long getId();
-    }
-
-    private interface AccountId {
-        Long getAccountId();
-    }
-
-    //TODO не помнбю, было ли у класса продукта имя, но на схеме вроде точно не было
-    private interface Name {
-        String getName();
-    }
-
-    private interface Description {
-        String getDescription();
-    }
-
-    private interface Type {
-        String getType();
-    }
-
-    /**
-     * Для фильтрации общего списка продуктов
-     * по конкретным характеристикам
-     */
-    private interface FeaturesRequests {
-        Set<FeatureDTO.Request.Get> getRequestedFeatures();
-    }
-
-
-    /**
-     * Мерочные характеристики продукта
-     */
-    private interface UnitsFeatures {
-        Set<FeatureDTO.Response.GetWithUnits> getUnitsFeatures();
-    }
-
-    /**
-     * Безмерочные характеристики продукта
-     */
-    private interface Features {
-        Set<FeatureDTO.Response.GetUnitless> getFeatures();
-    }
-
-    /**
-     * Превьюшное изображение продукта
-     */
-    private interface Image {
-        ImageDTO.Response.GetImage getImage();
-    }
-
-    /**
-     * Все доступные изображения продукта
-     */
-    private interface ImagesSet {
-        Set<ImageDTO.Response.GetImage> getImagesSet();
-    }
-
-    /**
-     * Все доступные изображения продукта
-     */
-    private interface LoadedImagesSet {
-        Set<ImageDTO.Request.Get> getImages();
-    }
-
-    /**
-     * Наценка за счет изменения характеристик
-     */
-    private interface AdditionalPrice {
-        BigDecimal getAdditionalPrice();
-    }
-
-    /**
-     * Изначальная цена продукта без конкретных изменений
-     */
-    private interface BasePrice {
-        BigDecimal getBasePrice();
-    }
-
-    /**
-     * Полная суммированная стоимость продукта
-     */
-    private interface FullPrice {
-        BigDecimal getFullPrice();
-    }
-
-    /**
-     * Состояние наличия продукта
-     */
-    private interface Status {
-        String getStatus();
-    }
-
-    private interface Amount {
-        Integer getAmount();
-    }
-
     public enum Request {;
 
-        /**
-        * Запрос на продукт по его ID
-        */
+        //TODO в помойку
         @Data
         @AllArgsConstructor
+        @Deprecated(forRemoval = true)
         public static class Get implements Id, RequestDTO {
             private Long id;
         }
 
+        /**
+         * Передавать id аккаунта на сервер, чтобы при ответе
+         * тот мог выдать рекомендованные товары
+         */
         @Data
         @AllArgsConstructor
-        public static class GetForAccount implements AccountId, RequestDTO {
+        public static class GetAll implements NeedsRecommendationsDTO {
             private Long accountId;
+        }
+
+        /**
+         * Передает id аккаунта на сервер и запрашиваемую
+         * страницу категории товаров, чтобы выдать
+         * рекомендации внутри категории
+         */
+        @Data
+        @AllArgsConstructor
+        public static class GetTypeAll implements Type, NeedsRecommendationsDTO {
+            private String type;
+            private Long accountId;
+        }
+
+        /**
+         * Запоминает конкретно просмотренные пользователем продукт,
+         * чтобы использовать его в дальнейших рекомендациях
+         */
+        @Data
+        @AllArgsConstructor
+        public static class GetForAccount implements ProductId, NeedsRecommendationsDTO {
+            private Long accountId;
+            private Long productId;
         }
 
         @Data

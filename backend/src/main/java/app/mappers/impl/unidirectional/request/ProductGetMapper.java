@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper
-public interface ProductGetMapper extends RequestMapper<Product, ProductDTO.Request.Get> {
+public interface ProductGetMapper extends RequestMapper<Product, ProductDTO.Request.GetAll> {
 
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "desription", ignore = true)
@@ -17,5 +17,5 @@ public interface ProductGetMapper extends RequestMapper<Product, ProductDTO.Requ
     @Mapping(target = "type", ignore = true)
     @Mapping(target = "features", ignore = true)
     @Override
-    Product toEntity(ProductDTO.Request.Get dto);
+    Product toEntity(ProductDTO.Request.GetAll dto);
 }
