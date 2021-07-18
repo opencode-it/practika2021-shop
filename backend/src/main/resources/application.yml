@@ -5,6 +5,7 @@ server:
       enabled: true
 
 spring:
+
   datasource:
     username: 'pracktika2021'
     password: 'KC8mmymg7vL3'
@@ -25,11 +26,13 @@ spring:
     secret-key: KC8mmymg7vL3
     secure: true
 
- #security:
- #  oauth2:
- #    client:
- #      registration:
- #          client-id: --
- #          client-secret: --
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 35541507052-oh08hc1v6alfibvudf2nt6q30119pise.apps.googleusercontent.com
+            clientSecret: 3yq3zm1rFH0ALs3t7dfrQtkG
+
 
 
