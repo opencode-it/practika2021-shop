@@ -3,6 +3,7 @@ package app.services;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
 import app.entities.AbstractEntity;
+import app.exceptions.FieldsMergerFailedException;
 import app.mappers.RequestMapper;
 import app.mappers.ResponseMapper;
 import app.repositories.LongKeyRepository;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -53,7 +55,7 @@ public abstract class CRUDService<E extends AbstractEntity,
     /**
      *
      * @param dto объект RequestDTO, который конвертируется маппером
-     *            и сохраняется репозиторием как сущность
+     *            и сохраняется репозиторием как объект сущности
      * @return объект ResponseDTO - представление созданной сущности
      */
     @Override
@@ -65,7 +67,7 @@ public abstract class CRUDService<E extends AbstractEntity,
     /**
      *
      * @param dto объект RequestDTO, который конвертируется маппером
-     *            и обновляется репозиторием как сущность
+     *            и обновляется репозиторием как объект сущности
      * @return объект ResponseDTO - представление "старой" сущности до обновления
      */
     @Override
@@ -79,31 +81,45 @@ public abstract class CRUDService<E extends AbstractEntity,
 
     /**
      * При конвертации усеченных версий ResponseDTO в сущность
-     * некоторые поля "новой" сущности заполняются значениями null.
-     * При обновлении вместо них подставляются значения полей из "старой" сущности
-     * @param oldEntity "старая" сущность, извлеченная из БД по id
-     * @param entityWithChanges сущность с изменениями
+     * некоторые поля нового объекта сущности заполняются значениями null.
+     * При обновлении вместо них подставляются значения полей из старого объекта сущности
+     * @param oldEntity старый объект сущности, извлеченный из БД по id
+     * @param entityWithChanges объект сущности с изменениями
      */
     protected void mergeFieldsOnUpdate(E oldEntity, E entityWithChanges) {
         try {
+            String fieldName;
+            String setterName;
+            String getterName;
             for(Field f : entityWithChanges.getClass().getDeclaredFields()) {
                 f.setAccessible(true);
                 if (Objects.isNull(f.get(entityWithChanges))) {
-                    f.set(entityWithChanges, oldEntity.getClass()
-                                                        .getField(f.getName())
-                                                        .get(oldEntity));
+                    fieldName = f.getName();
+                    setterName = "set"
+                            .concat(fieldName.substring(0, 1).toUpperCase())
+                            .concat(fieldName.substring(1));
+                    getterName = setterName.replaceFirst("s", "g");
+                    entityWithChanges
+                            .getClass()
+                            .getDeclaredMethod(setterName, f.getType())
+                            .invoke(entityWithChanges, oldEntity
+                                                        .getClass()
+                                                        .getDeclaredMethod(getterName)
+                                                        .invoke(oldEntity)
+                            );
                 }
             }
-        } catch (IllegalAccessException | NoSuchFieldException e) {
-            log.warning("Fields merger failed for " + entityWithChanges.toString());
+        } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            throw new FieldsMergerFailedException("Fields merger failed for "
+                                                        .concat(entityWithChanges.toString()));
         }
     }
 
     /**
      *
      * @param dtoList список RequestDTO, который конвертируется маппером
-     *                и сохраняется репозиторием как список сущностей
-     * @return список ResponseDTO - представление сохраненных сущностей
+     *                и сохраняется репозиторием как список объектов сущности
+     * @return список ResponseDTO - представление сохраненных объектов сущности
      */
     @Override
     public List<O> saveAll(List<I> dtoList) {
@@ -124,7 +140,7 @@ public abstract class CRUDService<E extends AbstractEntity,
 
     /**
      *
-     * @param id ключ, по которому осуществляется поиск сущности в БД
+     * @param id ключ, по которому осуществляется поиск объекта сущности в БД
      * @return Optional с результатом поиска в БД
      */
     @Override
@@ -154,7 +170,7 @@ public abstract class CRUDService<E extends AbstractEntity,
 
     /**
      *
-     * @param dto RequestDTO с ключом, по которому сущность удаляется из БД
+     * @param dto RequestDTO с ключом, по которому объект сущности удаляется из БД
      */
     @Override
     public void delete(I dto) {
@@ -163,7 +179,7 @@ public abstract class CRUDService<E extends AbstractEntity,
 
     /**
      *
-     * @param id ключ, по которому сущность удаляется из БД
+     * @param id ключ, по которому объект сущности удаляется из БД
      */
     @Override
     public void delete(Long id) {
@@ -173,7 +189,7 @@ public abstract class CRUDService<E extends AbstractEntity,
     /**
      *
      * @param dto RequestDTO - представление сущности
-     * @return есть ли сущность с заданным ключом в таблице
+     * @return есть ли объект сущности с заданным ключом в таблице
      */
     @Override
     public Boolean exists(I dto) {
@@ -184,7 +200,7 @@ public abstract class CRUDService<E extends AbstractEntity,
     /**
      *
      * @param id ключ
-     * @return есть ли сущность с заданным ключом в таблице
+     * @return есть ли объект сущности с заданным ключом в таблице
      */
     @Override
     public Boolean exists(Long id) {
