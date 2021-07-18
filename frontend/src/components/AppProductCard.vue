@@ -7,14 +7,17 @@
   >
     <div class="router-item">
       <img :src="item.link" class="item" alt="item" />
-      <span
-        v-if="!$store.state.basketActive"
-        class="product-name">{{
+      <span v-if="!$store.state.basketActive" class="product-name">{{
         item.name.substring(0, 12)
       }}</span>
       <div v-if="$store.state.basketActive" class="flex-basket">
         <div class="left-arrow arrow" @click="remove(index)">&lt;</div>
-        <input type="number" :value="count" class="input-count" id="input-count" />
+        <input
+          type="number"
+          :value="count"
+          class="input-count"
+          id="input-count"
+        />
         <div class="right-arrow arrow" @click="add(index)">&gt;</div>
       </div>
     </div>
@@ -29,7 +32,7 @@ export default {
     return {
       basket,
       count: this.quantity,
-      id: this.item.id
+      id: this.item.id,
     };
   },
   props: {
@@ -39,7 +42,7 @@ export default {
     },
     index: {
       type: Number,
-      default: () => 0
+      default: () => 0,
     },
     title: {
       type: String,
@@ -62,19 +65,19 @@ export default {
       }
     },
     add(index) {
-      this.count++
-      let storage = JSON.parse(localStorage.getItem('basket'))
-      localStorage.removeItem("basket")
-      storage.basketProducts[index].quantity++
-      localStorage.setItem('basket', JSON.stringify(storage))
+      this.count++;
+      let storage = JSON.parse(localStorage.getItem("basket"));
+      localStorage.removeItem("basket");
+      storage.basketProducts[index].quantity++;
+      localStorage.setItem("basket", JSON.stringify(storage));
     },
     remove(index) {
       if (this.count !== 1) {
-        this.count--
-        let storage = JSON.parse(localStorage.getItem('basket'))
-        localStorage.removeItem("basket")
-        storage.basketProducts[index].quantity--
-        localStorage.setItem('basket', JSON.stringify(storage))
+        this.count--;
+        let storage = JSON.parse(localStorage.getItem("basket"));
+        localStorage.removeItem("basket");
+        storage.basketProducts[index].quantity--;
+        localStorage.setItem("basket", JSON.stringify(storage));
       }
     },
   },
@@ -82,7 +85,8 @@ export default {
     filterProducts() {
       if (
         this.item.type == this.title ||
-        (this.typeMain == this.item.type || this.typeMain == `All`)
+        this.typeMain == this.item.type ||
+        this.typeMain == `All`
       ) {
         if (
           this.item.topic == this.$store.state.catalogTopic ||
@@ -95,14 +99,14 @@ export default {
         return true;
       }
       return false;
-    }
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-input[type='number'] {
-  -moz-appearance:textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 input::-webkit-outer-spin-button,

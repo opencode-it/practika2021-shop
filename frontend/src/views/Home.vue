@@ -2,11 +2,7 @@
   <div class="home">
     <div class="container">
       <TheSlider />
-      <TheProducts
-        v-for="title in titles"
-        :key="title"
-        :title="title"
-      />
+      <TheProducts v-for="title in titles" :key="title" :title="title" />
       <TheAbout />
     </div>
   </div>
@@ -24,14 +20,6 @@ export default {
     };
   },
   components: { TheProducts, TheAbout, TheSlider },
-  created() {
-    try {
-      const per = JSON.parse(localStorage.getItem('basket')).basketProducts.length
-      console.log(per)
-    } catch (e) {
-      localStorage.setItem('basket', JSON.stringify({"basketProducts": []}))
-    }
-  }
 };
 </script>
 

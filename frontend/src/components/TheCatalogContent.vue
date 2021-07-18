@@ -9,38 +9,148 @@
         <div class="panel active">
           <h4 class="panel-text">Кружки</h4>
           <h6 class="panel-text" @change="slider">
-            Высота от <input v-model.number="options.minHeightCup" type="number" class="min-price" min="0" max="150"/>
-            до <input v-model.number="options.maxHeightCup" type="number" class="max-price" min="0" max="150"/>мм
+            Высота от
+            <input
+              v-model.number="options.minHeightCup"
+              type="number"
+              class="min-price"
+              min="0"
+              max="150"
+            />
+            до
+            <input
+              v-model.number="options.maxHeightCup"
+              type="number"
+              class="max-price"
+              min="0"
+              max="150"
+            />мм
           </h6>
           <div class="range-slider">
-            <input @change="slider" v-model.number="options.minHeightCup" min="0" max="150" step="10" type="range" />
-            <input @change="slider" v-model.number="options.maxHeightCup" min="0" max="150" step="10" type="range" />
+            <input
+              @change="slider"
+              v-model.number="options.minHeightCup"
+              min="0"
+              max="150"
+              step="10"
+              type="range"
+            />
+            <input
+              @change="slider"
+              v-model.number="options.maxHeightCup"
+              min="0"
+              max="150"
+              step="10"
+              type="range"
+            />
           </div>
           <h6 class="panel-text">
-            Диаметр от <input v-model.number="options.minDiameterCup" type="number" class="min-price" min="0" max="150"/>
-            до <input v-model.number="options.maxDiameterCup" type="number" class="max-price" min="0" max="150"/>мм
+            Диаметр от
+            <input
+              v-model.number="options.minDiameterCup"
+              type="number"
+              class="min-price"
+              min="0"
+              max="150"
+            />
+            до
+            <input
+              v-model.number="options.maxDiameterCup"
+              type="number"
+              class="max-price"
+              min="0"
+              max="150"
+            />мм
           </h6>
           <div class="range-slider">
-            <input @change="slider" v-model.number="options.minDiameterCup" min="0" max="150" step="10" type="range" />
-            <input @change="slider" v-model.number="options.maxDiameterCup" min="0" max="150" step="10" type="range" />
+            <input
+              @change="slider"
+              v-model.number="options.minDiameterCup"
+              min="0"
+              max="150"
+              step="10"
+              type="range"
+            />
+            <input
+              @change="slider"
+              v-model.number="options.maxDiameterCup"
+              min="0"
+              max="150"
+              step="10"
+              type="range"
+            />
           </div>
           <h4 class="panel-text">Майки</h4>
           <h6 class="panel-text">
-            <input v-model.number="options.minTshirt" type="number" class="min-price"  min="44" max="54"/>
-            <input v-model.number="options.maxTshirt" type="number" class="max-price"  min="44" max="54"/>
+            <input
+              v-model.number="options.minTshirt"
+              type="number"
+              class="min-price"
+              min="44"
+              max="54"
+            />
+            <input
+              v-model.number="options.maxTshirt"
+              type="number"
+              class="max-price"
+              min="44"
+              max="54"
+            />
           </h6>
           <div class="range-slider">
-            <input @change="slider" v-model.number="options.minTshirt" min="44" max="54" step="2" type="range" />
-            <input @change="slider" v-model.number="options.maxTshirt" min="44" max="54" step="2" type="range" />
+            <input
+              @change="slider"
+              v-model.number="options.minTshirt"
+              min="44"
+              max="54"
+              step="2"
+              type="range"
+            />
+            <input
+              @change="slider"
+              v-model.number="options.maxTshirt"
+              min="44"
+              max="54"
+              step="2"
+              type="range"
+            />
           </div>
           <h4 class="panel-text">Тарелки</h4>
           <h6 class="panel-text">
-            Высота от <input v-model.number="options.minHeightPlate" type="number" class="min-price"  min="0" max="10"/>
-            до <input v-model.number="options.maxHeightPlate" type="number" class="max-price"  min="0" max="10"/>мм
+            Высота от
+            <input
+              v-model.number="options.minHeightPlate"
+              type="number"
+              class="min-price"
+              min="0"
+              max="10"
+            />
+            до
+            <input
+              v-model.number="options.maxHeightPlate"
+              type="number"
+              class="max-price"
+              min="0"
+              max="10"
+            />мм
           </h6>
           <div class="range-slider">
-            <input @change="slider" v-model.number="options.minHeightPlate" min="0" max="10" step="1" type="range" />
-            <input @change="slider" v-model.number="options.maxHeightPlate" min="0" max="10" step="1" type="range" />
+            <input
+              @change="slider"
+              v-model.number="options.minHeightPlate"
+              min="0"
+              max="10"
+              step="1"
+              type="range"
+            />
+            <input
+              @change="slider"
+              v-model.number="options.maxHeightPlate"
+              min="0"
+              max="10"
+              step="1"
+              type="range"
+            />
           </div>
         </div>
         <button class="accordion" @click="move(1)">
@@ -62,7 +172,8 @@
             v-for="(item, index) in topics"
             :key="item"
             @click="topicEvent(index)"
-          >{{item}}
+          >
+            {{ item }}
           </h4>
         </div>
       </div>
@@ -193,7 +304,7 @@ export default {
   justify-items: end;
 }
 
-.topics{
+.topics {
   font-size: 21px;
   margin-bottom: 4px;
   user-select: none;
@@ -202,10 +313,10 @@ export default {
   }
 }
 
-.min-price{
+.min-price {
   min-width: 30px;
 }
-.max-price{
+.max-price {
   min-width: 35px;
 }
 
@@ -222,74 +333,72 @@ export default {
 }
 
 .range-slider svg,
-.range-slider input[type=range] {
+.range-slider input[type="range"] {
   position: absolute;
   left: 0;
   bottom: 0;
 }
 
-input[type=number] {
+input[type="number"] {
   text-align: center;
   -moz-appearance: textfield;
 }
 
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-input[type=number]:invalid,
-input[type=number]:out-of-range {
+input[type="number"]:invalid,
+input[type="number"]:out-of-range {
   border: 2px solid #ff6347;
 }
 
-input[type=range] {
+input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
 }
 
-input[type=range]:focus {
+input[type="range"]:focus {
   outline: none;
 }
 
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #B8B3AD;
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: #b8b3ad;
 }
 
-input[type=range]:focus::-ms-fill-lower {
-  background: #B8B3AD;
+input[type="range"]:focus::-ms-fill-lower {
+  background: #b8b3ad;
 }
 
-input[type=range]:focus::-ms-fill-upper {
-  background: #B8B3AD;
+input[type="range"]:focus::-ms-fill-upper {
+  background: #b8b3ad;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
+input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
   animate: 0.2s;
-  background: #B8B3AD;
+  background: #b8b3ad;
   border-radius: 1px;
   box-shadow: none;
   border: 0;
 }
 
-
-input[type=range]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   z-index: 2;
   position: relative;
   box-shadow: 0px 0px 0px #000;
-  border: 1px solid #ED7102;
+  border: 1px solid #ed7102;
   height: 18px;
   width: 18px;
   border-radius: 25px;
-  background: #ED7102;
+  background: #ed7102;
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -7px;
 }
-
 
 .panel-text {
   margin-top: 12px;
@@ -339,7 +448,6 @@ input[type=range]::-webkit-slider-thumb {
     transition-duration: 0.8s;
   }
 }
-
 
 .panel {
   text-align: center;

@@ -3,10 +3,7 @@
     <div class="products-place">
       <router-link to="/catalog/cups" class="products-sector">
         <h2 class="products-title">{{ title }}</h2>
-        <img
-          src="/img/title-element.svg"
-          class="products-title__element"
-        />
+        <img src="/img/title-element.svg" class="products-title__element" />
       </router-link>
     </div>
     <div class="products-flex">
@@ -28,7 +25,7 @@ import { products } from "../mocks/data";
 export default {
   data() {
     return {
-      products
+      products,
     };
   },
   components: { AppProductCard },
@@ -36,7 +33,7 @@ export default {
     title: {
       type: String,
       default: () => "",
-    }
+    },
   },
 };
 </script>
