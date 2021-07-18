@@ -7,7 +7,8 @@
         v-for="(item, index) in titles"
         :key="index"
         @click="navbarEvent(index)"
-      >{{item}}
+      >
+        {{ item }}
       </li>
     </ul>
   </div>
@@ -18,13 +19,13 @@ export default {
   data() {
     return {
       isActive: {
-        color: "#ed7102"
+        color: "#ed7102",
       },
       isDisabled: {
-        color: "black"
+        color: "black",
       },
       flags: [true, false, false, false],
-      titles: ["Все", "Кружки", "Майки", "Тарелки"]
+      titles: ["Все", "Кружки", "Майки", "Тарелки"],
     };
   },
   props: {
@@ -40,19 +41,19 @@ export default {
       this.flags[index] = true;
 
       if (this.titles[index] == "Все") {
-        this.$store.state.catalogType = "All"
+        this.$store.state.catalogType = "All";
       }
       if (this.titles[index] == "Кружки") {
-        this.$store.state.catalogType = "Кружка"
+        this.$store.state.catalogType = "Кружка";
       }
       if (this.titles[index] == "Майки") {
-        this.$store.state.catalogType = "Майка"
+        this.$store.state.catalogType = "Майка";
       }
       if (this.titles[index] == "Тарелки") {
-        this.$store.state.catalogType = "Тарелка"
+        this.$store.state.catalogType = "Тарелка";
       }
     },
-  }
+  },
 };
 </script>
 

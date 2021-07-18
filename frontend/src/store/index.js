@@ -6,7 +6,7 @@ export default createStore({
     sumOrder: 0,
     catalogType: "All",
     catalogTopic: "All",
-    basketCounter: 0,
+    basketCounter: JSON.parse(localStorage.getItem("basket-counter")),
     basketActive: false,
     modalActive: false,
     modalLoginActive: true,

@@ -10,14 +10,14 @@
     <div class="card-info">
       <div class="delete" @click="deleteProduct(index)">&#10006;</div>
       <div class="left-side">
-        <h4 v-for="(title, idx) in titles" :key="idx">{{title}}</h4>
+        <h4 v-for="(title, idx) in titles" :key="idx">{{ title }}</h4>
       </div>
       <div class="right-side">
-        <h4>{{basket.topic}}</h4>
-        <h4>{{basket.type}}</h4>
-        <h4>{{basket.material}}</h4>
-        <h4>{{basket.size}}</h4>
-        <h4>{{basket.price}}руб/шт.</h4>
+        <h4>{{ basket.topic }}</h4>
+        <h4>{{ basket.type }}</h4>
+        <h4>{{ basket.material }}</h4>
+        <h4>{{ basket.size }}</h4>
+        <h4>{{ basket.price }}руб/шт.</h4>
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@ import AppProductCard from "./AppProductCard.vue";
 export default {
   data() {
     return {
-      titles: ["Тематика", "Тип", "Материал", "Размер", "Цена"]
+      titles: ["Тематика", "Тип", "Материал", "Размер", "Цена"],
     };
   },
   components: { AppProductCard },
@@ -38,18 +38,25 @@ export default {
       default: () => {},
     },
     index: {
-      type: Number
-    }
+      type: Number,
+    },
   },
   methods: {
     deleteProduct(index) {
-      let nodes = document.querySelector('.basket-items')
-      nodes.children[index].remove()
-      this.$store.state.basketCounter--
-      let storage = JSON.parse(localStorage.getItem('basket'))
-      localStorage.clear()
-      storage.basketProducts.splice(index, 1)
-      localStorage.setItem('basket', JSON.stringify(storage))
+      let nodes = document.querySelectorAll(".basket-product");
+      nodes[index].style.display = "none";
+      this.$store.state.basketCounter > 0
+        ? this.$store.state.basketCounter--
+        : null;
+      localStorage.removeItem("basket-counter");
+      localStorage.setItem(
+        "basket-counter",
+        JSON.stringify(this.$store.state.basketCounter)
+      );
+      let storage = JSON.parse(localStorage.getItem("basket"));
+      localStorage.removeItem("basket");
+      storage.basketProducts.splice(index, 1);
+      localStorage.setItem("basket", JSON.stringify(storage));
     },
   },
 };

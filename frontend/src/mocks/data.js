@@ -1,4 +1,3 @@
-
 export const products = [
   {
     link: require("../../public/img/cups/cup1.svg"),
@@ -181,7 +180,6 @@ export const products = [
     price: "1800",
   },
 ];
-
 
 export const basket = {
   basketProducts: [

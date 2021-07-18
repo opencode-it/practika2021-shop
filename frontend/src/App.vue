@@ -12,6 +12,15 @@ import TheFooter from "./components/TheFooter.vue";
 
 export default {
   components: { TheNavbar, TheFooter },
+  created() {
+    try {
+      JSON.parse(localStorage.getItem("basket")).basketProducts.length;
+      JSON.parse(localStorage.getItem("basket-counter"));
+    } catch (e) {
+      localStorage.setItem("basket", JSON.stringify({ basketProducts: [] }));
+      localStorage.setItem("basket-counter", JSON.stringify(0));
+    }
+  },
 };
 </script>
 

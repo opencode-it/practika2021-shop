@@ -39,11 +39,7 @@
           </div>
           <div class="btn-center">
             <button type="button" class="google-auth">
-              <img
-                src="/img/google.png"
-                alt="google"
-                class="google"
-              />
+              <img src="/img/google.png" alt="google" class="google" />
               <h2 class="google-text">Войти с помощью Google</h2>
             </button>
           </div>
@@ -101,11 +97,7 @@
 
           <div class="btn-center">
             <button type="button" class="google-auth">
-              <img
-                src="/img/google.png"
-                alt="google"
-                class="google"
-              />
+              <img src="/img/google.png" alt="google" class="google" />
               <h2 class="google-text">Войти с помощью Google</h2>
             </button>
           </div>
