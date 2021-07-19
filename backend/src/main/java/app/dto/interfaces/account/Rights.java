@@ -1,5 +1,7 @@
 package app.dto.interfaces.account;
 
+import app.dto.impl.RightsDTO;
+
 public interface Rights {
-    String getRights();
+    RightsDTO.Response.Get getRights();
 }
