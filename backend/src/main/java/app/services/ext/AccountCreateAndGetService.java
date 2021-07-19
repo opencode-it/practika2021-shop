@@ -12,6 +12,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class AccountCreateAndGetService extends CRUDService<Account,
@@ -33,5 +36,10 @@ public class AccountCreateAndGetService extends CRUDService<Account,
                 .ifPresent(r -> dto.setRights(rightsMapper.toDto(r)));
         Account createdAccount = repository.save(requestMapper.toEntity(dto));
         return responseMapper.toDto(createdAccount);
+    }
+
+    Optional<List<AccountDTO.Response.GetFullInfo>> findByToken(AccountDTO.Request.Get dto) {
+         List<Account> accountsWithToken = repository.findByToken(dto.getToken());
+         return Optional.of(responseMapper.toDtoList(accountsWithToken));
     }
 }
