@@ -2,9 +2,12 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
+    cardFlag: false,
+    sumOrder: 0,
     catalogType: "All",
-    watch: 14,
-    basketCounter: 0,
+    catalogTopic: "All",
+    basketCounter: JSON.parse(localStorage.getItem("basket-counter")),
+    basketActive: false,
     modalActive: false,
     modalLoginActive: true,
     modalRegisterActive: false,
