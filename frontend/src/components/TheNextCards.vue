@@ -9,7 +9,7 @@
 export default {
   methods: {
     getOtherCards() {
-      this.$store.state.watch += 14
+      this.$store.state.watch += 14;
     },
   },
 };

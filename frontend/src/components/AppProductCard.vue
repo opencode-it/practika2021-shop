@@ -3,46 +3,116 @@
     to=""
     @click.prevent="checkClass"
     class="flex-item"
-    v-if="typeMain == item.type || typeMain == `All`"
+    v-if="filterProducts"
   >
     <div class="router-item">
       <img :src="item.link" class="item" alt="item" />
-      <span v-if="item.name" class="product-name">{{
+      <span v-if="!$store.state.basketActive" class="product-name">{{
         item.name.substring(0, 12)
       }}</span>
-      <div v-if="!item.name" class="flex-basket">
-        <div class="left-arrow arrow" @click="add">&lt;</div>
-        <input type="number" class="input-count" id="input-count" />
-        <div class="right-arrow arrow">&gt;</div>
+      <div v-if="$store.state.basketActive" class="flex-basket">
+        <div class="left-arrow arrow" @click="remove(index)">&lt;</div>
+        <input
+          type="number"
+          :value="count"
+          class="input-count"
+          id="input-count"
+        />
+        <div class="right-arrow arrow" @click="add(index)">&gt;</div>
       </div>
     </div>
   </router-link>
 </template>
 
 <script>
+import { basket } from "../mocks/data";
+
 export default {
+  data() {
+    return {
+      basket,
+      count: this.quantity,
+      id: this.item.id,
+    };
+  },
   props: {
     item: {
       type: Object,
       default: () => {},
     },
+    index: {
+      type: Number,
+      default: () => 0,
+    },
+    title: {
+      type: String,
+      default: () => "",
+    },
     typeMain: {
       type: String,
+      default: () => "",
+    },
+    quantity: {
+      type: Number,
+      default: () => 1,
     },
   },
   methods: {
     checkClass(event) {
       if (event.target.className == "item") {
-        this.$router.push("/catalog");
+        this.$store.state.cardFlag = false;
+        this.$router.push("/product/" + this.id);
       }
     },
-    add() {},
-    remove() {},
+    add(index) {
+      this.count++;
+      let storage = JSON.parse(localStorage.getItem("basket"));
+      localStorage.removeItem("basket");
+      storage.basketProducts[index].quantity++;
+      localStorage.setItem("basket", JSON.stringify(storage));
+    },
+    remove(index) {
+      if (this.count !== 1) {
+        this.count--;
+        let storage = JSON.parse(localStorage.getItem("basket"));
+        localStorage.removeItem("basket");
+        storage.basketProducts[index].quantity--;
+        localStorage.setItem("basket", JSON.stringify(storage));
+      }
+    },
+  },
+  computed: {
+    filterProducts() {
+      if (
+        this.item.type == this.title ||
+        this.typeMain == this.item.type ||
+        this.typeMain == `All`
+      ) {
+        if (
+          this.item.topic == this.$store.state.catalogTopic ||
+          this.$store.state.catalogTopic == `All`
+        ) {
+          return true;
+        }
+      }
+      if (this.$store.state.basketActive) {
+        return true;
+      }
+      return false;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 .product-name {
   display: flex;
   justify-content: center;
@@ -57,9 +127,14 @@ export default {
   font-size: 30px;
   color: #ed7102;
   background-color: #b8b3ad;
+  border: 2px solid #b8b3ad;
   display: flex;
   justify-content: center;
   align-items: center;
+  &:active {
+    border: 2px solid #ed7102;
+    color: #b8b3ad;
+  }
 }
 
 .right-arrow {
@@ -80,7 +155,9 @@ export default {
 }
 
 .input-count {
-  display: block;
+  display: flex;
+  text-align: center;
+  font-size: 20px;
   width: 60px;
   border: none;
   height: 34px;
