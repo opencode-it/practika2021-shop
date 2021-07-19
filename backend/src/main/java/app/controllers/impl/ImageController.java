@@ -21,6 +21,10 @@ public class ImageController extends RESTController<ImageDTO.Request.Get,
     @Autowired
     private Minio minio;
 
+    public ImageController(ImageGetService service) {
+        super(service);
+    }
+
     /**
      * Метод, срабатывающтй при POST запросе, с путём /assets/images/upload
      * @param file - фалй с изображением
