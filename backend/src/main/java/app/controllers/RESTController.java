@@ -19,6 +19,7 @@ import java.util.Optional;
 * */
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Log
 public abstract class RESTController<I extends RequestDTO,
                                      O extends ResponseDTO,
