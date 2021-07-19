@@ -1,8 +1,13 @@
 <template>
   <div class="container">
     <div class="basket-page">
-      <h2 class="basket-title">Корзина товаров</h2>
-      <div class="basket-items">
+      <h2 class="basket-title" v-if="$store.state.basketCounter > 0">
+        Корзина товаров
+      </h2>
+      <h2 class="basket-title" v-if="$store.state.basketCounter == 0">
+        Корзина пока пуста
+      </h2>
+      <div class="basket-items" id="basket-items">
         <App-basket-product
           :basket="info"
           v-for="(info, index) in basket.basketProducts"
@@ -10,20 +15,21 @@
           :key="info"
         />
       </div>
+      <The-register-order />
     </div>
   </div>
 </template>
 
 <script>
 import AppBasketProduct from "../components/AppBasketProduct.vue";
-import { basket } from "../mocks/data";
+import TheRegisterOrder from "../components/TheRegisterOrder";
 export default {
   data() {
     return {
-      basket,
+      basket: JSON.parse(localStorage.getItem("basket")),
     };
   },
-  components: { AppBasketProduct },
+  components: { AppBasketProduct, TheRegisterOrder },
 };
 </script>
 

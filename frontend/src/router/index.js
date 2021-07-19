@@ -4,6 +4,7 @@ import Constructor from "../views/Constructor.vue";
 import Catalog from "../views/Сatalog.vue";
 import Basket from "../views/Basket.vue";
 import Incorrect from "../views/Incorrect.vue";
+import Product from "../views/Product.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/:notFound(.*)",
     name: "Incorrect",
     component: Incorrect,
+  },
+  {
+    path: "/product/:id",
+    name: "Product",
+    component: Product,
   },
 ];
 
