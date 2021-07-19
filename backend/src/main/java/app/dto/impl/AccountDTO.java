@@ -28,8 +28,9 @@ public enum AccountDTO {;
          */
         @Data
         @AllArgsConstructor
-        public static class Get implements Id, RequestDTO  {
+        public static class Get implements Id, Token, RequestDTO  {
             private Long id;
+            private String token;
         }
 
         /**
@@ -62,7 +63,8 @@ public enum AccountDTO {;
         * Основная информация о пользователе
         */
         @Value
-        public static class GetShortInfo implements Email, FullName, ResponseDTO  {
+        public static class GetShortInfo implements Id, Email, FullName, ResponseDTO  {
+            Long id;
             String email;
             String fullName;
         }
