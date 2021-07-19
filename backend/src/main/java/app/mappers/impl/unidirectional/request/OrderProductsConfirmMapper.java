@@ -55,6 +55,5 @@ public abstract class OrderProductsConfirmMapper implements
         target.setOrdersProducts(Set.copyOf(orderedProducts));
         target.setDate(LocalDateTime.now());
 
-        //TODO я не уверена, как лучше ставить новый статус заказа: они же сохранены в бд?
     }
 }

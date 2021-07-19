@@ -1,5 +1,6 @@
 package app.dto.impl;
 
+import app.annotation.Deprecated;
 import app.dto.DTO;
 import app.dto.RequestDTO;
 import app.dto.ResponseDTO;
@@ -9,8 +10,7 @@ import lombok.Value;
 
 //TODO расширить @Deprecated, чтобы можно было писать сообщение ниже в него
 //TODO в помойку
-//Илья: @Deprecated("I don't want to play with you anymore") смотрелось бы идельно
-@Deprecated
+@Deprecated("I don't want to play with you anymore")
 public enum SlotDTO {;
 
     private interface Id {

@@ -3,6 +3,7 @@
  */
 package app.dto.impl;
 
+import app.annotation.Deprecated;
 import app.dto.DTO;
 import app.dto.NeedsRecommendationsDTO;
 import app.dto.RequestDTO;
@@ -38,10 +39,9 @@ public enum ProductDTO implements DTO {;
 
     public enum Request {;
 
-        //TODO в помойку
+        @Deprecated("В помойку")
         @Data
         @AllArgsConstructor
-        @Deprecated(forRemoval = true)
         public static class Get implements Id, RequestDTO {
             private Long id;
         }
