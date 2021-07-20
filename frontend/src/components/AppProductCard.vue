@@ -55,7 +55,7 @@ export default {
     quantity: {
       type: Number,
       default: () => 1,
-    },
+    }
   },
   methods: {
     checkClass(event) {
@@ -82,6 +82,12 @@ export default {
     },
   },
   computed: {
+    check() {
+      if (this.homepage) {
+        return this.homepage < 6 || this.homepage < 12 || this.homepage < 18 ? true : false
+      }
+      return true;
+    },
     filterProducts() {
       if (
         this.item.type == this.title ||

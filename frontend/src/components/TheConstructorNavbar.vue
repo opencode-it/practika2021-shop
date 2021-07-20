@@ -17,6 +17,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -34,6 +35,9 @@ export default {
     takeTitle(index) {
       for (let i = 0; i < this.flags.length; i++) {
         this.flags[i] = false;
+      }
+      if (this.titles[index] == "Кружка") {
+        this.$store.state.constructorProduct = "cup"
       }
       this.flags[index] = true;
     },
