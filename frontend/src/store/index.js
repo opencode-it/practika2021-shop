@@ -8,6 +8,7 @@ export default createStore({
     catalogTopic: "All",
     basketCounter: JSON.parse(localStorage.getItem("basket-counter")),
     basketActive: false,
+    constructorProduct: "tshirt",
     modalActive: false,
     modalLoginActive: true,
     modalRegisterActive: false,
